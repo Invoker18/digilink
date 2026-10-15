@@ -1,6 +1,6 @@
-# DigiLink Corporation
+# Digilink Corporation
 
-DigiLink is a responsive marketing site for a nearshore customer experience and contact-center partner based in Isla de Margarita. It is built with Nuxt, Nuxt UI, and Tailwind CSS.
+Digilink is a responsive marketing site for a nearshore customer experience and contact-center partner based in Isla de Margarita. It is built with Nuxt, Nuxt UI, and Tailwind CSS.
 
 ## Stack
 

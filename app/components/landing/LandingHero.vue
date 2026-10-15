@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import hero from '@/assets/images/hero.jpg'
+import hero from '@/assets/images/hero.webp'
 const metrics = [
   ['99.9', '%', 'Operational uptime'],
   ['24', '/7', 'Bilingual coverage'],
-  ['40', '%+', 'Average cost savings'],
+  ['20', '+', 'Years of experience'],
   ['4.9', '/5', 'Client satisfaction']
 ]
 </script>
@@ -14,23 +14,25 @@ const metrics = [
       class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(121_181_214/10%)_1px,transparent_1px),linear-gradient(90deg,rgb(121_181_214/10%)_1px,transparent_1px)] mask-[linear-gradient(90deg,#000,transparent_75%)] bg-size-[64px_64px] opacity-30"
     />
     <div
-      class="relative mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-9 sm:w-[calc(100%-3rem)] lg:grid-cols-2 lg:items-center lg:gap-17"
+      class="relative mx-auto grid w-full max-w-295 gap-9 px-5 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-12 xl:gap-17 xl:px-0"
     >
       <div class="pb-0 lg:pb-22">
         <p
           class="flex items-center gap-2.5 text-[10px] font-bold tracking-[.16em] text-cyan-400 uppercase"
         >
-          <span class="size-1.5 rounded-full bg-emerald-400 ring-5 ring-emerald-400/10" />
-          DigiLink Corporation · Isla de Margarita
+          <span
+            class="size-1.5 rounded-full bg-emerald-400 ring-5 ring-emerald-400/10 motion-safe:animate-[ping_1.5s_infinite]"
+          />
+          Digilink Corporation · Delivery Hub
         </p>
         <h1
           class="mt-5 max-w-160 text-[clamp(2.45rem,11vw,4.4rem)] leading-[1.04] font-bold tracking-tighter"
         >
-          Exceptional customer care, <em class="text-cyan-400 not-italic">island engineered.</em>
+          Exceptional customer care, <em class="text-cyan-400 not-italic">expertly delivered.</em>
         </h1>
         <p class="mt-5 max-w-140 text-[15px] leading-7 text-slate-300 sm:mt-6 sm:text-[17px]">
-          Build a bilingual, high-performance contact center team from Isla de Margarita, aligned to
-          your hours, your culture, and your growth.
+          Build a bilingual, high-performance team backed by 20+ years of operational experience,
+          aligned to your hours, your culture, and your growth.
         </p>
         <div class="mt-7 flex flex-col gap-3 sm:flex-row">
           <UButton
@@ -68,7 +70,7 @@ const metrics = [
         </div>
       </div>
       <figure
-        class="relative mt-2 mb-16 h-95 overflow-hidden rounded-md sm:h-110 lg:mt-0 lg:-mr-10 lg:h-132"
+        class="relative mt-2 mb-10 h-95 overflow-hidden rounded-3xl sm:h-110 lg:mt-0 lg:mb-0 lg:h-132"
       >
         <img
           :src="hero"
@@ -95,20 +97,20 @@ const metrics = [
           </b>
         </figcaption>
         <div
-          class="absolute top-5 right-2 z-10 flex items-center gap-2 rounded-lg border border-white/15 bg-[#041c30]/75 px-2.5 py-2 text-cyan-400 backdrop-blur sm:top-[31%] sm:right-4 sm:px-4 sm:py-3"
+          class="absolute top-5 right-2 z-10 flex items-center gap-2 rounded-lg border border-white/15 bg-[#041c30]/75 px-2.5 py-2 text-cyan-400 backdrop-blur sm:top-[15%] sm:right-4 sm:px-4 sm:py-3"
         >
           <UIcon name="i-lucide-sparkles" />
           <span class="grid">
-            <b class="text-[11px] text-white">94.8% CSAT</b>
-            <small class="text-[8px] text-slate-300">Across active programs</small>
+            <b class="text-[11px] text-white">20+ years</b>
+            <small class="text-[8px] text-slate-300">Of operational excellence</small>
           </span>
         </div>
         <div
-          class="absolute right-2 bottom-20 z-10 flex items-center gap-2 rounded-lg border border-white/15 bg-[#041c30]/75 px-2.5 py-2 backdrop-blur sm:right-6 sm:bottom-29 sm:px-4 sm:py-3"
+          class="absolute right-2 bottom-20 z-10 flex items-center gap-2 rounded-lg border border-white/15 bg-[#041c30]/75 px-2.5 py-2 backdrop-blur sm:right-6 sm:bottom-28 sm:px-4 sm:py-3"
         >
           <UIcon name="i-lucide-headset" class="text-cyan-400" />
           <span class="grid">
-            <b class="text-[11px]">128 bilingual agents</b>
+            <b class="text-[11px]">100+ bilingual agents</b>
             <small class="hidden text-[8px] text-slate-300 sm:block">
               Ready to represent your brand
             </small>
@@ -117,12 +119,12 @@ const metrics = [
       </figure>
     </div>
     <div
-      class="relative mx-auto mt-7 grid w-full snap-x snap-mandatory grid-cols-[repeat(4,190px)] overflow-x-auto border-t border-white/10 sm:mt-0 sm:w-[calc(100%-3rem)] sm:grid-cols-4 sm:overflow-visible"
+      class="relative mx-auto mt-7 grid w-full grid-cols-2 divide-y border-t border-white/10 sm:grid-cols-4"
     >
       <div
         v-for="metric in metrics"
         :key="metric[2]"
-        class="flex min-h-21 snap-start items-center justify-center gap-3 border-r border-white/10 last:border-0 sm:min-h-24"
+        class="flex min-h-21 items-center justify-center gap-3 border-r border-white/10 last:border-0 sm:min-h-24"
       >
         <strong class="text-2xl">
           {{ metric[0] }}

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'DigiLink Corporation | Nearshore Customer Experience',
-  description: 'Bilingual, high-performance contact center teams from Isla de Margarita.'
+  title: 'Digilink Corporation | Nearshore Customer Experience',
+  description:
+    'Bilingual, high-performance customer experience and technology teams with 20+ years of operational experience.'
 })
 </script>
 

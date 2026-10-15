@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import dataCenter from '@/assets/images/datacenter.jpg'
-import facility01 from '@/assets/images/facility-01.jpg'
+import dataCenter from '@/assets/images/datacenter.webp'
+import desk from '@/assets/images/desk.webp'
 
 const features = [
   {
@@ -11,7 +11,7 @@ const features = [
   {
     icon: 'i-lucide-lock-keyhole',
     title: 'Controlled workplace',
-    text: 'Managed workstations inside a supervised professional facility.'
+    text: 'Managed workstations inside a supervised professional delivery hub.'
   },
   {
     icon: 'i-lucide-layers-3',
@@ -73,24 +73,27 @@ const features = [
           class="size-full object-cover brightness-75 saturate-75"
         />
         <div
-          class="absolute inset-0 bg-linear-to-t from-[#02111f]/90 via-transparent to-transparent"
+          class="absolute inset-0 bg-linear-to-br from-[#02111f]/90 via-transparent to-transparent"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-tr from-[#02111f]/90 via-transparent to-transparent"
         />
         <figcaption
           class="absolute top-4 left-4 flex items-center gap-2 rounded-lg border border-white/15 bg-[#021424]/80 px-3 py-2 text-cyan-400 backdrop-blur"
         >
           <UIcon name="i-lucide-lock-keyhole" />
           <span class="grid text-[8px] tracking-[.13em] text-slate-400 uppercase">
-            DigiLink infrastructure
+            Digilink infrastructure
             <b class="text-[11px] tracking-normal text-white normal-case">On-site & controlled</b>
           </span>
         </figcaption>
         <div class="absolute bottom-5 left-5 flex items-center gap-2">
           <span
-            class="size-2 rounded-full border-2 border-emerald-400 ring-6 ring-emerald-400/15"
+            class="size-2 rounded-full border-2 border-emerald-400 ring-6 ring-emerald-400/15 motion-safe:animate-[ping_1.5s_infinite]"
           />
           <span class="grid gap-0.5"
             ><b class="text-[12px]">Network core</b
-            ><small class="text-[8px] text-slate-300">Inside our facility</small></span
+            ><small class="text-[8px] text-slate-300">Inside our delivery hub</small></span
           >
         </div>
       </figure>
@@ -99,17 +102,17 @@ const features = [
       class="relative mx-auto mt-14 h-45 w-[calc(100%-2rem)] max-w-295 overflow-hidden rounded-xl border border-white/10 sm:mt-20 sm:w-[calc(100%-3rem)]"
     >
       <img
-        :src="facility01"
-        alt="DigiLink operations floor"
+        :src="desk"
+        alt="Digilink operations floor"
         class="size-full object-cover brightness-40 saturate-75"
       />
       <div class="absolute inset-0 bg-linear-to-r from-[#071b31] via-[#071b31]/70 to-transparent" />
       <figcaption class="absolute inset-y-0 left-6 grid content-center gap-3 sm:left-9">
         <span class="text-[8px] font-bold tracking-[.16em] text-cyan-400 uppercase"
-          >The DigiLink difference</span
+          >The Digilink difference</span
         ><b class="text-xl leading-snug sm:text-2xl"
           >People, technology, and accountability<br class="hidden sm:block" />
-          in one secure location.</b
+          in one accountable operation.</b
         >
       </figcaption>
     </figure>

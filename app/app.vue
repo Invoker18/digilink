@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import ogimage from '@/assets/images/ogimage.png'
+import ogimage from '@/assets/images/logo-digilink.png'
 useHead({
   meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
   link: [{ rel: 'icon', href: '/favicon.ico' }],

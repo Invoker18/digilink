@@ -2,11 +2,14 @@
 import logo from '~/assets/images/logo-digilink.png'
 
 const menuOpen = ref(false)
+const route = useRoute()
+const homeAnchor = (anchor: string) => (route.path === '/' ? anchor : `/${anchor}`)
+
 const links = [
-  { label: 'Services', href: '#services' },
-  { label: 'Our facility', href: '#facility' },
-  { label: 'Infrastructure', href: '#infrastructure' },
-  { label: 'Contact', href: '#contact' }
+  { label: 'Services', href: homeAnchor('#services') },
+  { label: 'Development', href: '/software-development' },
+  { label: 'Our advantage', href: homeAnchor('#facility') },
+  { label: 'Contact', href: homeAnchor('#contact') }
 ]
 </script>
 
@@ -17,8 +20,8 @@ const links = [
     <div
       class="mx-auto flex h-17 w-[calc(100%-2rem)] max-w-295 items-center justify-between gap-5 sm:h-20 sm:w-[calc(100%-3rem)]"
     >
-      <a href="#top" aria-label="DigiLink home">
-        <img :src="logo" alt="DigiLink Corporation" class="w-36 sm:w-44" />
+      <a href="#top" aria-label="Digilink home">
+        <img :src="logo" alt="Digilink Corporation" class="w-36 sm:w-44" />
       </a>
       <nav
         :class="
@@ -37,7 +40,7 @@ const links = [
         >
       </nav>
       <UButton
-        to="#contact"
+        :to="homeAnchor('#contact')"
         size="sm"
         trailing-icon="i-lucide-arrow-right"
         class="hidden bg-cyan-400 font-bold text-[#03233d] hover:bg-cyan-300 sm:inline-flex"
