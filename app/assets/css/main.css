@@ -1,10 +1,9 @@
-@import "tailwindcss";
-@import "@nuxt/ui";
+@import 'tailwindcss';
+@import '@nuxt/ui';
 
 @theme static {
-  --font-sans: 'Public Sans', sans-serif;
+  --font-sans: 'DM Sans', sans-serif;
 }
-
 
 @layer base {
   html {

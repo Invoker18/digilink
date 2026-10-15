@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import hero from '@/assets/images/hero.jpg'
 const metrics = [
   ['99.9', '%', 'Operational uptime'],
   ['24', '/7', 'Bilingual coverage'],
@@ -67,46 +68,51 @@ const metrics = [
         </div>
       </div>
       <figure
-        class="relative mt-2 h-95 overflow-hidden rounded-l-[88px] sm:h-110 lg:mt-0 lg:-mr-10 lg:h-132 lg:rounded-l-[180px]"
+        class="relative mt-2 mb-16 h-95 overflow-hidden rounded-md sm:h-110 lg:mt-0 lg:-mr-10 lg:h-132"
       >
         <img
-          src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
+          :src="hero"
           alt="Customer service team collaborating in a modern office"
-          class="size-full object-cover brightness-70 saturate-75"
+          class="size-full object-cover brightness-70 grayscale-25"
         />
         <div
-          class="absolute inset-0 bg-linear-to-r from-[#071b31] via-transparent to-transparent"
+          class="absolute inset-0 bg-linear-to-tr from-[#071b31] via-transparent to-transparent"
         />
         <div
-          class="absolute inset-0 bg-linear-to-t from-[#071b31]/90 via-transparent to-transparent"
+          class="absolute inset-0 bg-linear-to-bl from-[#071b31]/90 via-transparent to-transparent"
         />
         <figcaption
           class="absolute inset-x-7 bottom-6 z-10 grid gap-2 sm:right-10 sm:bottom-10 sm:left-14 sm:gap-3"
         >
-          <span class="text-[8px] tracking-[.16em] text-slate-300"
-            ><i class="mr-2 inline-block size-1.5 rounded-full bg-emerald-400" />DIGILINK
-            OPERATIONS</span
-          ><b class="text-[19px] leading-tight sm:text-[22px]"
-            >Our people.<br /><em class="text-cyan-400 not-italic">Your customer experience.</em></b
-          >
+          <span class="text-[8px] tracking-[.16em] text-slate-300">
+            <i class="mr-2 inline-block size-1.5 rounded-full bg-emerald-400" />
+            DIGILINK OPERATIONS
+          </span>
+          <b class="text-[19px] leading-tight sm:text-[22px]">
+            Our people.
+            <br />
+            <em class="text-cyan-400 not-italic">Your customer experience.</em>
+          </b>
         </figcaption>
         <div
           class="absolute top-5 right-2 z-10 flex items-center gap-2 rounded-lg border border-white/15 bg-[#041c30]/75 px-2.5 py-2 text-cyan-400 backdrop-blur sm:top-[31%] sm:right-4 sm:px-4 sm:py-3"
         >
-          <UIcon name="i-lucide-sparkles" /><span class="grid"
-            ><b class="text-[11px] text-white">94.8% CSAT</b
-            ><small class="text-[8px] text-slate-300">Across active programs</small></span
-          >
+          <UIcon name="i-lucide-sparkles" />
+          <span class="grid">
+            <b class="text-[11px] text-white">94.8% CSAT</b>
+            <small class="text-[8px] text-slate-300">Across active programs</small>
+          </span>
         </div>
         <div
           class="absolute right-2 bottom-20 z-10 flex items-center gap-2 rounded-lg border border-white/15 bg-[#041c30]/75 px-2.5 py-2 backdrop-blur sm:right-6 sm:bottom-29 sm:px-4 sm:py-3"
         >
-          <UIcon name="i-lucide-headset" class="text-cyan-400" /><span class="grid"
-            ><b class="text-[11px]">128 bilingual agents</b
-            ><small class="hidden text-[8px] text-slate-300 sm:block"
-              >Ready to represent your brand</small
-            ></span
-          >
+          <UIcon name="i-lucide-headset" class="text-cyan-400" />
+          <span class="grid">
+            <b class="text-[11px]">128 bilingual agents</b>
+            <small class="hidden text-[8px] text-slate-300 sm:block">
+              Ready to represent your brand
+            </small>
+          </span>
         </div>
       </figure>
     </div>
@@ -118,9 +124,11 @@ const metrics = [
         :key="metric[2]"
         class="flex min-h-21 snap-start items-center justify-center gap-3 border-r border-white/10 last:border-0 sm:min-h-24"
       >
-        <strong class="text-2xl"
-          >{{ metric[0] }}<em class="text-sm text-cyan-400 not-italic">{{ metric[1] }}</em></strong
-        ><span class="w-19 text-[9px] tracking-wide text-slate-400 uppercase">{{ metric[2] }}</span>
+        <strong class="text-2xl">
+          {{ metric[0] }}
+          <em class="text-sm text-cyan-400 not-italic">{{ metric[1] }}</em>
+        </strong>
+        <span class="w-19 text-[9px] tracking-wide text-slate-400 uppercase">{{ metric[2] }}</span>
       </div>
     </div>
   </section>

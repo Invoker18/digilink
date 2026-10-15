@@ -1,64 +1,72 @@
-# Nuxt Starter Template
+# DigiLink Corporation
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+DigiLink is a responsive marketing site for a nearshore customer experience and contact-center partner based in Isla de Margarita. It is built with Nuxt, Nuxt UI, and Tailwind CSS.
 
-Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
+## Stack
 
-- [Live demo](https://starter-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
+- Nuxt 4 and Vue 3
+- Nuxt UI
+- Tailwind CSS 4
+- Iconify Lucide icons
+- TypeScript and ESLint
 
-<a href="https://starter-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png" width="830" height="466">
-  </picture>
-</a>
+## Requirements
 
-> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
+- Node.js 20 or newer
+- pnpm 12 or newer
 
-## Quick Start
+## Getting Started
 
-```bash [Terminal]
-npm create nuxt@latest -- -t ui
-```
-
-## Deploy your own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
-
-## Setup
-
-Make sure to install the dependencies:
+Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+Start the development server at `http://localhost:3000`:
 
 ```bash
 pnpm dev
 ```
 
+## Scripts
+
+| Command          | Description                            |
+| ---------------- | -------------------------------------- |
+| `pnpm dev`       | Run the local Nuxt development server. |
+| `pnpm build`     | Create a production build.             |
+| `pnpm preview`   | Preview the production build locally.  |
+| `pnpm lint`      | Run ESLint across the project.         |
+| `pnpm typecheck` | Run Nuxt and TypeScript checks.        |
+
+## Project Structure
+
+```text
+app/
+  assets/
+    css/main.css              Tailwind and Nuxt UI entry point
+    images/                   Local image assets and logo
+  components/
+    AppHeader.vue             Shared responsive navigation
+    AppFooter.vue             Shared footer
+    landing/                  Landing-page sections
+  layouts/default.vue         Application layout
+  pages/index.vue             Landing-page composition and SEO metadata
+```
+
+Each landing-page section is a focused Vue component. Visual styling belongs in Tailwind utility classes in the template; `app/assets/css/main.css` is reserved for Tailwind, Nuxt UI, and global accessibility or scrolling defaults.
+
+## Content and Assets
+
+Update copy or section-specific imagery in the matching component under `app/components/landing`. Place project-owned images in `app/assets/images` and import them from the component that uses them.
+
 ## Production
 
-Build the application for production:
+Create and preview a production build locally:
 
 ```bash
 pnpm build
-```
-
-Locally preview production build:
-
-```bash
 pnpm preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-## Renovate integration
-
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+The home route is configured for prerendering in `nuxt.config.ts`.
