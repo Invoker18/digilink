@@ -7,6 +7,7 @@
 </template>
 
 <script setup>
+import ogimage from '@/assets/images/ogimage.png'
 useHead({
   meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
   link: [{ rel: 'icon', href: '/favicon.ico' }],
@@ -24,7 +25,7 @@ useSeoMeta({
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
+  ogImage: ogimage,
   twitterCard: 'summary_large_image'
 })
 </script>
