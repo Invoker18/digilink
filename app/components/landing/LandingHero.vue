@@ -39,7 +39,7 @@ const metrics = [
             to="#contact"
             size="xl"
             trailing-icon="i-lucide-arrow-right"
-            class="justify-center bg-cyan-400 font-bold text-[#03233d] hover:bg-cyan-300"
+            class="justify-center bg-cyan-400 font-semibold text-[#03233d] hover:bg-cyan-300"
           >
             Build your team
           </UButton>

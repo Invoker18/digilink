@@ -1,11 +1,29 @@
 <script setup lang="ts">
 const submitted = ref(false)
+
+const nextSteps = [
+  {
+    icon: 'i-lucide-clipboard-pen-line',
+    title: 'Share your priorities',
+    text: 'Tell us about the work, timeline, and team you need.'
+  },
+  {
+    icon: 'i-lucide-users-round',
+    title: 'Meet a solutions lead',
+    text: 'We will schedule a focused discovery conversation.'
+  },
+  {
+    icon: 'i-lucide-file-check-2',
+    title: 'Receive your plan',
+    text: 'Get a clear staffing approach and next steps.'
+  }
+]
 </script>
 
 <template>
-  <section id="contact" class="bg-[#05172b] py-18 text-white sm:py-28">
+  <section id="contact" class="relative overflow-hidden bg-[#05172b] py-18 text-white sm:py-28">
     <div
-      class="mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-9 sm:w-[calc(100%-3rem)] lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-24"
+      class="relative mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-9 sm:w-[calc(100%-3rem)] lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-24"
     >
       <div>
         <p class="text-[11px] font-bold tracking-[.16em] text-cyan-400 uppercase">
@@ -20,14 +38,36 @@ const submitted = ref(false)
           Tell us what you're solving. We'll reply with a tailored staffing plan and transparent
           estimate within one business day.
         </p>
-        <div class="mt-7 flex gap-3 text-cyan-400">
-          <UIcon name="i-lucide-phone" class="mt-0.5 size-5" />
-          <span class="grid gap-1 text-[10px] tracking-widest text-slate-400 uppercase">
-            Prefer to talk?
-            <b class="text-[12px] tracking-normal text-white normal-case">
-              Schedule a 30-minute discovery call
-            </b>
-          </span>
+        <div class="mt-8 border-t border-white/10 pt-5">
+          <p class="text-[10px] font-bold tracking-[.14em] text-cyan-400 uppercase">
+            What happens next
+          </p>
+          <div class="mt-4 grid gap-4">
+            <div v-for="step in nextSteps" :key="step.title" class="flex gap-3">
+              <span
+                class="grid size-8 shrink-0 place-items-center rounded-md bg-cyan-400/10 text-cyan-400"
+              >
+                <UIcon :name="step.icon" class="size-4" />
+              </span>
+              <span class="grid gap-0.5 pt-0.5">
+                <b class="text-[12px] text-white">{{ step.title }}</b>
+                <small class="text-[11px] leading-5 text-slate-400">{{ step.text }}</small>
+              </span>
+            </div>
+          </div>
+          <div
+            class="mt-6 flex items-center gap-3 rounded-lg border border-emerald-400/20 bg-emerald-400/5 px-4 py-3"
+          >
+            <span class="size-2 rounded-full bg-emerald-400 ring-4 ring-emerald-400/10" />
+            <span class="grid gap-0.5">
+              <b class="text-[10px] text-emerald-100"
+                >A thoughtful response, not an automated handoff.</b
+              >
+              <small class="text-[9px] text-emerald-100/60"
+                >Expect to hear from our team within one business day.</small
+              >
+            </span>
+          </div>
         </div>
       </div>
       <div class="rounded-xl border border-white/15 bg-white/5 p-4 backdrop-blur sm:p-8">
@@ -105,7 +145,7 @@ const submitted = ref(false)
             block
             size="lg"
             trailing-icon="i-lucide-arrow-right"
-            class="mt-4 bg-cyan-400 font-bold text-[#03233d] hover:bg-cyan-300"
+            class="mt-4 bg-cyan-400 font-semibold text-[#03233d] hover:bg-cyan-300"
           >
             Request a tailored quote
           </UButton>

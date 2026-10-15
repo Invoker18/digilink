@@ -41,9 +41,8 @@ const links = [
       </nav>
       <UButton
         :to="homeAnchor('#contact')"
-        size="sm"
         trailing-icon="i-lucide-arrow-right"
-        class="hidden bg-cyan-400 font-bold text-[#03233d] hover:bg-cyan-300 sm:inline-flex"
+        class="hidden bg-cyan-400 font-semibold text-[#03233d] hover:bg-cyan-300 sm:inline-flex"
         >Schedule a call</UButton
       >
       <UButton
