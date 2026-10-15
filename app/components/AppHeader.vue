@@ -11,6 +11,11 @@ const links = [
   { label: 'Our advantage', href: homeAnchor('#facility') },
   { label: 'Contact', href: homeAnchor('#contact') }
 ]
+
+const goTop = () => {
+  navigateTo('/')
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 </script>
 
 <template>
@@ -20,8 +25,8 @@ const links = [
     <div
       class="mx-auto flex h-17 w-[calc(100%-2rem)] max-w-295 items-center justify-between gap-5 sm:h-20 sm:w-[calc(100%-3rem)]"
     >
-      <a href="#top" aria-label="Digilink home">
-        <img :src="logo" alt="Digilink Corporation" class="w-36 sm:w-44" />
+      <a @click="goTop()" aria-label="Digilink home">
+        <img :src="logo" alt="Digilink Corporation" class="w-36 cursor-pointer sm:w-44" />
       </a>
       <nav
         :class="

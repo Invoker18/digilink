@@ -48,12 +48,15 @@ import facility03 from '@/assets/images/facility-03.webp'
         </div>
 
         <!-- Badge -->
-        <span
-          class="absolute top-3 left-3 flex items-center gap-2 rounded-full bg-[#041c30]/80 px-3 py-2 text-[9px] font-bold text-white backdrop-blur"
+        <div
+          class="absolute top-3 left-3 z-10 flex items-center gap-2 rounded-lg border border-white/15 bg-[#041c30]/75 px-2.5 py-2 text-cyan-400 backdrop-blur sm:py-3"
         >
-          <i class="size-1.5 rounded-full bg-emerald-400" />
-          20+ years of operational excellence
-        </span>
+          <UIcon name="i-lucide-sparkles" />
+          <span class="grid">
+            <b class="text-[11px] text-white">20+ years</b>
+            <small class="text-[8px] text-slate-300">Of operational excellence</small>
+          </span>
+        </div>
       </div>
       <div class="lg:max-w-none">
         <p class="text-[11px] font-bold tracking-[.16em] text-cyan-600 uppercase">Why Digilink</p>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import hero from '@/assets/images/hero.webp'
+import RotatingText from '../bits/rotating-text.vue'
 const metrics = [
   ['99.9', '%', 'Operational uptime'],
   ['24', '/7', 'Bilingual coverage'],
@@ -28,7 +29,11 @@ const metrics = [
         <h1
           class="mt-5 max-w-160 text-[clamp(2.45rem,11vw,4.4rem)] leading-[1.04] font-bold tracking-tighter"
         >
-          Exceptional customer care, <em class="text-cyan-400 not-italic">expertly delivered.</em>
+          Exceptional customer care,
+          <em class="text-cyan-400 not-italic">
+            <RotatingText :texts="['expertly', 'thoughtfully', 'reliably']" />
+            delivered.</em
+          >
         </h1>
         <p class="mt-5 max-w-140 text-[15px] leading-7 text-slate-300 sm:mt-6 sm:text-[17px]">
           Build a bilingual, high-performance team backed by 20+ years of operational experience,

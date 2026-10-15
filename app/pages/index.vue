@@ -11,5 +11,6 @@ useSeoMeta({
   <LandingServices />
   <LandingFacility />
   <LandingInfrastructure />
+  <LandingPartners />
   <LandingContact />
 </template>
