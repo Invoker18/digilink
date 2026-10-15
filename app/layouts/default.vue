@@ -1,17 +1,11 @@
-
 <template>
-  <div
-    class="selection:bg-primary-400/30 flex min-h-screen w-full flex-col overflow-x-clip bg-linear-to-r font-sans antialiased"
-  >
+  <div class="min-h-screen overflow-x-clip font-sans antialiased">
+    <AppHeader />
 
-    <navbar />
-
-    <UMain class="divide-dorado-400/30 mx-auto w-full flex-1 divide-y">
+    <UMain class="w-full overflow-x-clip bg-[#f4f8fb] text-[#071b31]">
       <slot />
     </UMain>
 
-    <!-- <Footer /> -->
-
-    <!-- <CookieBanner /> -->
+    <AppFooter />
   </div>
 </template>
