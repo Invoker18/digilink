@@ -16,11 +16,11 @@ const partners: Partner[] = [
 </script>
 
 <template>
-  <section id="partners" class="border-y border-white/10 bg-[#071b31] py-8 sm:py-10">
+  <section id="partners" class="bg-matisse-950 border-y border-white/10 py-8 sm:py-10">
     <div
       class="mx-auto flex w-[calc(100%-2rem)] flex-col gap-6 sm:w-[calc(100%-3rem)] lg:max-w-295 lg:flex-row lg:items-center lg:justify-between lg:gap-12"
     >
-      <p class="shrink-0 text-[10px] font-bold tracking-[.16em] text-cyan-400 uppercase">
+      <p class="text-bright-blue-400 shrink-0 text-[10px] font-bold tracking-[.16em] uppercase">
         Trusted business partners
       </p>
       <div class="grid border-y border-white/15 sm:grid-cols-3 sm:border-y-0 sm:border-l">

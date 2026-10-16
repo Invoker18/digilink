@@ -1,5 +1,94 @@
 <script setup lang="ts">
+import type { FormError, FormErrorEvent, FormSubmitEvent } from '@nuxt/ui'
+
 const submitted = ref(false)
+const isSubmitting = ref(false)
+const submissionError = ref('')
+const config = useRuntimeConfig()
+
+type ContactFormState = {
+  firstName: string
+  lastName: string
+  email: string
+  service: string
+  message: string
+}
+
+const formState = reactive<ContactFormState>({
+  firstName: '',
+  lastName: '',
+  email: '',
+  service: '',
+  message: ''
+})
+
+const serviceOptions = [
+  'Customer Experience',
+  'Technical Helpdesk',
+  'Revenue Operations',
+  'Back Office'
+]
+
+const formFieldUi = {
+  label: 'text-oslo-gray-200',
+  error: 'mt-1.5 text-bright-blue-300'
+}
+
+const darkControlUi = {
+  base: 'bg-matisse-950/75 text-white placeholder:text-oslo-gray-400 ring-1 ring-inset ring-white/15 hover:bg-matisse-950/90 hover:ring-bright-blue-400/40 focus:bg-matisse-950/90 focus:ring-2 focus:ring-bright-blue-400/45 min-h-12'
+}
+
+const darkSelectUi = {
+  ...darkControlUi,
+  value: 'text-white',
+  placeholder: 'text-oslo-gray-400',
+  trailingIcon: 'text-bright-blue-400',
+  content: 'border border-bright-blue-400/25 bg-matisse-900 shadow-2xl',
+  item: 'text-oslo-gray-100 before:bg-transparent hover:before:bg-bright-blue-400/20 data-highlighted:not-data-disabled:text-white data-highlighted:not-data-disabled:before:bg-bright-blue-400/20',
+  itemLabel: 'text-inherit'
+}
+
+const validate = (state: Partial<ContactFormState>): FormError[] => {
+  const errors: FormError[] = []
+
+  if (!state.firstName?.trim())
+    errors.push({ name: 'firstName', message: 'Enter your first name.' })
+  if (!state.lastName?.trim()) errors.push({ name: 'lastName', message: 'Enter your last name.' })
+  if (!state.email?.trim()) {
+    errors.push({ name: 'email', message: 'Enter your work email.' })
+  } else if (!/^\S+@\S+\.\S+$/.test(state.email)) {
+    errors.push({ name: 'email', message: 'Enter a valid email address.' })
+  }
+  if (!state.service) errors.push({ name: 'service', message: 'Choose a service.' })
+  if (!state.message?.trim()) errors.push({ name: 'message', message: 'Tell us what you need.' })
+
+  return errors
+}
+
+const onError = (event: FormErrorEvent) => {
+  const firstErrorId = event.errors[0]?.id
+  if (!firstErrorId) return
+
+  document.getElementById(firstErrorId)?.focus()
+}
+
+const onSubmit = async (event: FormSubmitEvent<ContactFormState>) => {
+  isSubmitting.value = true
+  submissionError.value = ''
+
+  try {
+    await $fetch(config.public.contactApiUrl || '/api/contact', {
+      method: 'POST',
+      body: event.data
+    })
+    submitted.value = true
+  } catch {
+    submissionError.value =
+      'We could not send your request. Please try again or contact us directly.'
+  } finally {
+    isSubmitting.value = false
+  }
+}
 
 const nextSteps = [
   {
@@ -21,12 +110,12 @@ const nextSteps = [
 </script>
 
 <template>
-  <section id="contact" class="relative overflow-hidden bg-[#05172b] py-18 text-white sm:py-28">
+  <section id="contact" class="bg-matisse-950 relative overflow-hidden py-18 text-white sm:py-28">
     <div
       class="relative mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-9 sm:w-[calc(100%-3rem)] lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-24"
     >
       <div>
-        <p class="text-[11px] font-bold tracking-[.16em] text-cyan-400 uppercase">
+        <p class="text-bright-blue-400 text-[11px] font-bold tracking-[.16em] uppercase">
           Let's build together
         </p>
         <h2
@@ -34,122 +123,148 @@ const nextSteps = [
         >
           Your next great team starts here.
         </h2>
-        <p class="mt-5 max-w-120 leading-7 text-slate-300">
+        <p class="text-oslo-gray-200 mt-5 max-w-120 leading-7">
           Tell us what you're solving. We'll reply with a tailored staffing plan and transparent
           estimate within one business day.
         </p>
         <div class="mt-8 border-t border-white/10 pt-5">
-          <p class="text-[10px] font-bold tracking-[.14em] text-cyan-400 uppercase">
+          <p class="text-bright-blue-400 text-[10px] font-bold tracking-[.14em] uppercase">
             What happens next
           </p>
           <div class="mt-4 grid gap-4">
             <div v-for="step in nextSteps" :key="step.title" class="flex gap-3">
               <span
-                class="grid size-8 shrink-0 place-items-center rounded-md bg-cyan-400/10 text-cyan-400"
+                class="bg-bright-blue-400/18 text-bright-blue-400 ring-bright-blue-400/20 grid size-8 shrink-0 place-items-center rounded-md ring-1"
               >
                 <UIcon :name="step.icon" class="size-4" />
               </span>
               <span class="grid gap-0.5 pt-0.5">
                 <b class="text-[12px] text-white">{{ step.title }}</b>
-                <small class="text-[11px] leading-5 text-slate-400">{{ step.text }}</small>
+                <small class="text-oslo-gray-300 text-[11px] leading-5">{{ step.text }}</small>
               </span>
             </div>
           </div>
           <div
-            class="mt-6 flex items-center gap-3 rounded-lg border border-emerald-400/20 bg-emerald-400/5 px-4 py-3"
+            class="border-bright-blue-400/40 bg-bright-blue-400/10 mt-6 flex items-center gap-3 rounded-lg border px-4 py-3"
           >
-            <span class="size-2 rounded-full bg-emerald-400 ring-4 ring-emerald-400/10" />
+            <span class="bg-bright-blue-400 ring-bright-blue-400/10 size-2 rounded-full ring-4" />
             <span class="grid gap-0.5">
-              <b class="text-[10px] text-emerald-100"
+              <b class="text-bright-blue-100 text-[10px]"
                 >A thoughtful response, not an automated handoff.</b
               >
-              <small class="text-[9px] text-emerald-100/60"
+              <small class="text-bright-blue-100/60 text-[9px]"
                 >Expect to hear from our team within one business day.</small
               >
             </span>
           </div>
         </div>
       </div>
-      <div class="rounded-xl border border-white/15 bg-white/5 p-4 backdrop-blur sm:p-8">
+      <div
+        class="border-bright-blue-400/25 bg-matisse-900/55 rounded-xl border p-4 backdrop-blur sm:p-8"
+      >
         <div
           v-if="submitted"
           class="grid min-h-80 place-content-center justify-items-center gap-3 text-center"
         >
           <UIcon
             name="i-lucide-check"
-            class="size-14 rounded-full bg-emerald-400/10 p-3 text-emerald-400"
+            class="bg-bright-blue-400/18 text-bright-blue-400 ring-bright-blue-400/20 size-14 rounded-full p-3 ring-1"
           />
           <h3 class="text-xl font-bold">Thank you. We're on it.</h3>
-          <p class="max-w-75 text-slate-300">
+          <p class="text-oslo-gray-200 max-w-75">
             A solutions specialist will be in touch within one business day.
           </p>
           <UButton variant="outline" color="neutral" @click="submitted = false">
             Send another inquiry
           </UButton>
         </div>
-        <form v-else @submit.prevent="submitted = true">
+        <UForm
+          v-else
+          :state="formState"
+          :validate="validate"
+          :disabled="isSubmitting"
+          class="grid gap-3"
+          @submit="onSubmit"
+          @error="onError"
+        >
           <div class="mb-5 grid gap-1 sm:flex sm:items-center sm:justify-between">
             <h3 class="text-lg font-bold">Start the conversation</h3>
-            <span class="text-[9px] text-emerald-300">Usually replies in under 4 hours</span>
+            <span class="text-bright-blue-400 text-[9px]">Usually replies in under 4 hours</span>
           </div>
           <div class="grid gap-3 sm:grid-cols-2">
-            <label class="grid gap-1.5 text-[11px] text-slate-300">
-              First name
-              <input
-                required
+            <UFormField label="First name" name="firstName" :ui="formFieldUi" class="text-[11px]">
+              <UInput
+                v-model="formState.firstName"
                 placeholder="Alex"
-                class="min-h-12 rounded-md border border-white/15 bg-[#010e1b]/60 px-3 text-base transition outline-none focus:border-cyan-400"
+                variant="none"
+                :ui="darkControlUi"
+                class="w-full"
               />
-            </label>
-            <label class="grid gap-1.5 text-[11px] text-slate-300">
-              Last name
-              <input
-                required
+            </UFormField>
+            <UFormField label="Last name" name="lastName" :ui="formFieldUi" class="text-[11px]">
+              <UInput
+                v-model="formState.lastName"
                 placeholder="Morgan"
-                class="min-h-12 rounded-md border border-white/15 bg-[#010e1b]/60 px-3 text-base transition outline-none focus:border-cyan-400"
+                variant="none"
+                :ui="darkControlUi"
+                class="w-full"
               />
-            </label>
+            </UFormField>
           </div>
-          <label class="mt-3 grid gap-1.5 text-[11px] text-slate-300">
-            Work email
-            <input
-              required
+          <UFormField label="Work email" name="email" :ui="formFieldUi" class="text-[11px]">
+            <UInput
+              v-model="formState.email"
               type="email"
               placeholder="alex@company.com"
-              class="min-h-12 rounded-md border border-white/15 bg-[#010e1b]/60 px-3 text-base transition outline-none focus:border-cyan-400"
+              variant="none"
+              :ui="darkControlUi"
+              class="w-full"
             />
-          </label>
-          <label class="mt-3 grid gap-1.5 text-[11px] text-slate-300">
-            What can we help you with?
-            <select
-              required
-              class="min-h-12 rounded-md border border-white/15 bg-[#010e1b]/60 px-3 text-base transition outline-none focus:border-cyan-400"
-            >
-              <option value="" disabled selected>Select a service</option>
-              <option>Customer Experience</option>
-              <option>Technical Helpdesk</option>
-              <option>Revenue Operations</option>
-              <option>Back Office</option>
-            </select>
-          </label>
-          <label class="mt-3 grid gap-1.5 text-[11px] text-slate-300">
-            Tell us about your needs
-            <textarea
-              rows="3"
+          </UFormField>
+          <UFormField
+            label="What can we help you with?"
+            name="service"
+            :ui="formFieldUi"
+            class="text-[11px]"
+          >
+            <USelect
+              v-model="formState.service"
+              :items="serviceOptions"
+              placeholder="Select a service"
+              variant="none"
+              :ui="darkSelectUi"
+              class="w-full"
+            />
+          </UFormField>
+          <UFormField
+            label="Tell us about your needs"
+            name="message"
+            :ui="formFieldUi"
+            class="text-[11px]"
+          >
+            <UTextarea
+              v-model="formState.message"
+              :rows="3"
               placeholder="Team size, channels, launch timeline..."
-              class="rounded-md border border-white/15 bg-[#010e1b]/60 px-3 py-2 text-base transition outline-none focus:border-cyan-400"
+              variant="none"
+              :ui="darkControlUi"
+              class="w-full"
             />
-          </label>
+          </UFormField>
+          <p v-if="submissionError" class="text-bright-blue-300 text-[11px]" role="alert">
+            {{ submissionError }}
+          </p>
           <UButton
             type="submit"
             block
             size="lg"
             trailing-icon="i-lucide-arrow-right"
-            class="mt-4 bg-cyan-400 font-semibold text-[#03233d] hover:bg-cyan-300"
+            :loading="isSubmitting"
+            class="bg-bright-blue-500 text-matisse-950 hover:bg-bright-blue-400 mt-4 font-semibold"
           >
             Request a tailored quote
           </UButton>
-        </form>
+        </UForm>
       </div>
     </div>
   </section>

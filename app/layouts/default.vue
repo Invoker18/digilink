@@ -2,7 +2,7 @@
   <div class="min-h-screen overflow-x-clip font-sans antialiased">
     <AppHeader />
 
-    <UMain class="w-full overflow-x-clip bg-[#f4f8fb] text-[#071b31]">
+    <UMain class="bg-silver-50 text-matisse-950 w-full overflow-x-clip">
       <slot />
     </UMain>
 

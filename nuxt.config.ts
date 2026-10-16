@@ -12,6 +12,12 @@ export default defineNuxtConfig({
     colorMode: false
   },
 
+  runtimeConfig: {
+    public: {
+      contactApiUrl: process.env.NUXT_PUBLIC_CONTACT_API_URL || '/api/contact'
+    }
+  },
+
   routeRules: {
     '/': { prerender: true }
   },

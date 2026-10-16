@@ -13,26 +13,26 @@ const metrics = ref([
 <template>
   <section
     :style="{ backgroundImage: `url(${hero})` }"
-    class="relative isolate overflow-hidden bg-[#071b31] bg-cover bg-position-[68%_center] pt-29 text-white sm:pt-43 lg:bg-center"
+    class="bg-matisse-950 relative isolate overflow-hidden bg-cover bg-position-[68%_center] pt-29 text-white sm:pt-43 lg:bg-center"
   >
     <div
-      class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(7_27_49/.82)_0%,rgb(7_27_49/.72)_38%,rgb(7_27_49/.94)_100%)] lg:hidden"
+      class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(9_41_66/.82)_0%,rgb(9_41_66/.72)_38%,rgb(9_41_66/.94)_100%)] lg:hidden"
     />
     <div
-      class="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,#071b31_0%,rgb(7_27_49/.94)_29%,rgb(7_27_49/.55)_57%,rgb(7_27_49/.15)_100%)] lg:block"
+      class="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,#092942_0%,rgb(9_41_66/.94)_29%,rgb(9_41_66/.55)_57%,rgb(9_41_66/.15)_100%)] lg:block"
     />
     <div
-      class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(121_181_214/10%)_1px,transparent_1px),linear-gradient(90deg,rgb(121_181_214/10%)_1px,transparent_1px)] mask-[linear-gradient(90deg,#000,transparent_75%)] bg-size-[64px_64px] opacity-30"
+      class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(134_199_255/10%)_1px,transparent_1px),linear-gradient(90deg,rgb(134_199_255/10%)_1px,transparent_1px)] mask-[linear-gradient(90deg,#000,transparent_75%)] bg-size-[64px_64px] opacity-30"
     />
     <div
       class="relative z-10 mx-auto flex min-h-105 w-full max-w-295 items-center px-5 sm:min-h-120 sm:px-8 lg:min-h-132 lg:pb-0 xl:px-0"
     >
       <div class="w-full lg:w-[58%]">
         <p
-          class="flex items-center gap-2.5 text-[10px] font-bold tracking-[.16em] text-cyan-400 uppercase"
+          class="text-bright-blue-500 flex items-center gap-2.5 text-[10px] font-bold tracking-[.16em] uppercase"
         >
           <span
-            class="size-1.5 rounded-full bg-emerald-400 ring-5 ring-emerald-400/10 motion-safe:animate-[ping_1.5s_infinite]"
+            class="bg-bright-blue-500 ring-bright-blue-500/10 size-1.5 rounded-full ring-5 motion-safe:animate-[ping_1.5s_infinite]"
           />
           Digilink Corporation
         </p>
@@ -42,7 +42,7 @@ const metrics = ref([
           Exceptional customer care,
           <RotatingText
             :texts="['expertly', 'thoughtfully', 'reliably']"
-            main-class-name="inline-flex text-cyan-400 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+            main-class-name="inline-flex text-bright-blue-500 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
             stagger-from="last"
             :initial="{ y: '100%' }"
             :animate="{ y: 0 }"
@@ -53,9 +53,9 @@ const metrics = ref([
             :rotation-interval="4000"
           />
           <br />
-          <em class="text-cyan-400 not-italic"> delivered.</em>
+          <em class="text-bright-blue-500 not-italic"> delivered.</em>
         </h1>
-        <p class="mt-5 max-w-140 text-[15px] leading-7 text-slate-300 sm:mt-6 sm:text-[17px]">
+        <p class="text-oslo-gray-200 mt-5 max-w-140 text-[15px] leading-7 sm:mt-6 sm:text-[17px]">
           Build a bilingual, high-performance team backed by 20+ years of operational experience,
           aligned to your hours, your culture, and your growth.
         </p>
@@ -64,7 +64,7 @@ const metrics = ref([
             to="#contact"
             size="xl"
             trailing-icon="i-lucide-arrow-right"
-            class="justify-center bg-cyan-400 font-semibold text-[#03233d] hover:bg-cyan-300"
+            class="bg-bright-blue-500 text-matisse-950 hover:bg-bright-blue-500 justify-center font-semibold"
           >
             Build your team
           </UButton>
@@ -83,7 +83,7 @@ const metrics = ref([
             <b class="text-[19px] leading-tight sm:text-[22px]">
               Our people.
               <br />
-              <em class="text-cyan-400 not-italic">Your customer experience.</em>
+              <em class="text-bright-blue-500 not-italic">Your customer experience.</em>
             </b>
           </div>
           <!-- <div class="flex">
@@ -91,7 +91,7 @@ const metrics = ref([
               v-for="(avatar, index) in ['AM', 'CR', 'JS']"
               :key="avatar"
               :class="index ? '-ml-2 bg-[#c1bbed]' : 'bg-[#f0bd9b]'"
-              class="grid size-7 place-items-center rounded-full border-2 border-[#071b31] text-[8px] text-[#071b31]"
+              class="grid size-7 place-items-center rounded-full border-2 border-matisse-950 text-[8px] text-matisse-950"
               >{{ avatar }}</b
             >
           </div>
@@ -103,7 +103,7 @@ const metrics = ref([
       </div>
     </div>
     <div
-      class="relative z-10 mx-auto grid w-full grid-cols-2 divide-y border-y border-white/10 bg-[#031220]/65 backdrop-blur-sm sm:grid-cols-4"
+      class="bg-matisse-950/65 relative z-10 mx-auto grid w-full grid-cols-2 divide-y border-y border-white/10 backdrop-blur-sm sm:grid-cols-4"
     >
       <div
         v-for="metric in metrics"
@@ -112,9 +112,9 @@ const metrics = ref([
       >
         <div class="flex items-center gap-1.5 font-bold">
           <CountUp :to="metric.value" :from="0" :duration="2" className="text-2xl " />
-          <em class="text-sm text-cyan-400 not-italic">{{ metric.suffix }}</em>
+          <em class="text-bright-blue-500 text-sm not-italic">{{ metric.suffix }}</em>
         </div>
-        <span class="w-19 text-[9px] tracking-wide text-slate-400 uppercase">{{
+        <span class="text-oslo-gray-300 w-19 text-[9px] tracking-wide uppercase">{{
           metric.label
         }}</span>
       </div>

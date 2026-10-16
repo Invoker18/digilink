@@ -56,6 +56,16 @@ app/
 
 Each landing-page section is a focused Vue component. Visual styling belongs in Tailwind utility classes in the template; `app/assets/css/main.css` is reserved for Tailwind, Nuxt UI, and global accessibility or scrolling defaults.
 
+## Contact Form API
+
+The landing contact form validates input with Nuxt UI and sends a `POST` request to `/api/contact` by default. Point it to an external backend by setting `NUXT_PUBLIC_CONTACT_API_URL`:
+
+```bash
+NUXT_PUBLIC_CONTACT_API_URL=https://api.example.com/contact
+```
+
+The JSON request body contains `firstName`, `lastName`, `email`, `service`, and `message`.
+
 ## Content and Assets
 
 Update copy or section-specific imagery in the matching component under `app/components/landing`. Place project-owned images in `app/assets/images` and import them from the component that uses them.

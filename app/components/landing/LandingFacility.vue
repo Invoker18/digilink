@@ -19,7 +19,7 @@ import facility03 from '@/assets/images/facility-03.webp'
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"
           />
           <div
-            class="absolute inset-0 bg-linear-to-t from-[#071b31]/90 via-transparent to-transparent"
+            class="from-matisse-950/90 absolute inset-0 bg-linear-to-t via-transparent to-transparent"
           />
         </div>
 
@@ -31,7 +31,7 @@ import facility03 from '@/assets/images/facility-03.webp'
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"
           />
           <div
-            class="absolute inset-0 bg-linear-to-t from-[#071b31]/90 via-transparent to-transparent"
+            class="from-matisse-950/90 absolute inset-0 bg-linear-to-t via-transparent to-transparent"
           />
         </div>
 
@@ -43,35 +43,37 @@ import facility03 from '@/assets/images/facility-03.webp'
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"
           />
           <div
-            class="absolute inset-0 bg-linear-to-t from-[#071b31]/90 via-transparent to-transparent"
+            class="from-matisse-950/90 absolute inset-0 bg-linear-to-t via-transparent to-transparent"
           />
         </div>
 
         <!-- Badge -->
         <div
-          class="absolute top-3 left-3 z-10 flex items-center gap-2 rounded-lg border border-white/15 bg-[#041c30]/75 px-2.5 py-2 text-cyan-400 backdrop-blur sm:py-3"
+          class="border-bright-blue-400/35 bg-matisse-950/90 text-bright-blue-400 absolute top-3 left-3 z-10 flex items-center gap-2 rounded-lg border px-2.5 py-2 shadow-[0_10px_24px_rgb(0_149_255/0.18)] backdrop-blur sm:py-3"
         >
           <UIcon name="i-lucide-sparkles" />
           <span class="grid">
             <b class="text-[11px] text-white">20+ years</b>
-            <small class="text-[8px] text-slate-300">Of operational excellence</small>
+            <small class="text-oslo-gray-200 text-[8px]">Of operational excellence</small>
           </span>
         </div>
       </div>
       <div class="lg:max-w-none">
-        <p class="text-[11px] font-bold tracking-[.16em] text-cyan-600 uppercase">Why Digilink</p>
+        <p class="text-bright-blue-600 text-[11px] font-bold tracking-[.16em] uppercase">
+          Why Digilink
+        </p>
         <h2
-          class="mt-5 text-5xl leading-[1.12] font-semibold tracking-tighter text-[#0c2947] lg:mt-3 lg:text-[clamp(2.25rem,4vw,3.25rem)] lg:leading-tight"
+          class="text-matisse-950 mt-5 text-5xl leading-[1.12] font-semibold tracking-tighter lg:mt-3 lg:text-[clamp(2.25rem,4vw,3.25rem)] lg:leading-tight"
         >
           Experience that scales.<br />Service that performs.
         </h2>
         <p
-          class="mt-6 max-w-140 text-[15px] leading-7 text-[#688096] lg:mt-5 lg:max-w-none lg:text-base"
+          class="text-oslo-gray-600 mt-6 max-w-140 text-[15px] leading-7 lg:mt-5 lg:max-w-none lg:text-base"
         >
           For more than two decades, Digilink has paired skilled teams, disciplined processes, and
           hands-on leadership to deliver dependable customer and technical experiences.
         </p>
-        <div class="mt-8 divide-y divide-[#dfebf1] lg:mt-6">
+        <div class="divide-silver-200 mt-8 divide-y lg:mt-6">
           <div
             v-for="item in [
               {
@@ -94,19 +96,22 @@ import facility03 from '@/assets/images/facility-03.webp'
             class="flex gap-4 py-5 lg:gap-3 lg:py-4"
           >
             <div
-              class="size-10 shrink-0 rounded-lg bg-cyan-50 p-2.5 outline outline-cyan-300 lg:p-2"
+              class="bg-bright-blue-50 outline-bright-blue-300 size-10 shrink-0 rounded-lg p-2.5 outline lg:p-2"
             >
-              <UIcon :name="item.icon" class="h-full w-full flex-1 font-light text-cyan-300" />
+              <UIcon
+                :name="item.icon"
+                class="text-bright-blue-500 h-full w-full flex-1 font-light"
+              />
             </div>
             <span class="grid gap-1">
-              <b class="font-medium text-[#0c2947]">{{ item.title }}</b>
-              <small class="text-xs leading-5 text-[#688096]">{{ item.text }}</small>
+              <b class="text-matisse-950 font-medium">{{ item.title }}</b>
+              <small class="text-oslo-gray-600 text-xs leading-5">{{ item.text }}</small>
             </span>
           </div>
         </div>
         <a
           href="#contact"
-          class="mt-10 flex items-center gap-2 text-xs font-bold text-cyan-600 lg:mt-5 lg:text-cyan-700"
+          class="text-bright-blue-600 hover:text-bright-blue-500 mt-10 flex items-center gap-2 text-xs font-bold transition lg:mt-5"
         >
           See how we work
           <UIcon name="i-lucide-arrow-right" />

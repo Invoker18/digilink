@@ -3,7 +3,7 @@ import logo from '~/assets/images/logo-digilink.png'
 </script>
 
 <template>
-  <footer class="bg-[#031220] py-14 text-slate-400">
+  <footer class="bg-matisse-950 text-oslo-gray-300 py-14">
     <div
       class="mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-9 sm:w-[calc(100%-3rem)] sm:grid-cols-3"
     >
@@ -15,15 +15,15 @@ import logo from '~/assets/images/logo-digilink.png'
       </div>
       <div class="grid content-start gap-2 text-[11px]">
         <b class="mb-2 text-white">Services</b>
-        <a href="#services" class="hover:text-cyan-400">Call Center</a>
-        <a href="#services" class="hover:text-cyan-400">Technical Support</a>
-        <a href="#services" class="hover:text-cyan-400">Software Development</a>
+        <a href="#services" class="hover:text-bright-blue-400">Call Center</a>
+        <a href="#services" class="hover:text-bright-blue-400">Technical Support</a>
+        <a href="#services" class="hover:text-bright-blue-400">Software Development</a>
       </div>
       <div class="grid content-start gap-2 text-[11px]">
         <b class="mb-2 text-white">Company</b>
-        <a href="#facility" class="hover:text-cyan-400">Our Advantage</a>
-        <a href="#infrastructure" class="hover:text-cyan-400">Infrastructure</a>
-        <a href="#contact" class="hover:text-cyan-400">Contact</a>
+        <a href="#facility" class="hover:text-bright-blue-400">Our Advantage</a>
+        <a href="#infrastructure" class="hover:text-bright-blue-400">Infrastructure</a>
+        <a href="#contact" class="hover:text-bright-blue-400">Contact</a>
       </div>
     </div>
   </footer>
