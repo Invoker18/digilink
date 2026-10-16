@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import type { FormError, FormErrorEvent, FormSubmitEvent } from '@nuxt/ui'
+import SpotlightCard from '../bits/spotlight-card.vue'
+
+type ContactVariant = 'general' | 'development'
+
+const props = withDefaults(defineProps<{ variant?: ContactVariant }>(), {
+  variant: 'general'
+})
 
 const submitted = ref(false)
 const isSubmitting = ref(false)
@@ -21,12 +28,44 @@ const formState = reactive<ContactFormState>({
   message: ''
 })
 
-const serviceOptions = [
-  'Customer Experience',
-  'Technical Helpdesk',
-  'Revenue Operations',
-  'Back Office'
-]
+const serviceOptions = computed(() =>
+  props.variant === 'development'
+    ? [
+        'Dedicated development team',
+        'Project delivery',
+        'QA and quality engineering',
+        'Integration or automation'
+      ]
+    : ['Customer Experience', 'Technical Helpdesk', 'Revenue Operations', 'Back Office']
+)
+
+const copy = computed(() =>
+  props.variant === 'development'
+    ? {
+        eyebrow: 'Build with Digilink',
+        title: 'Let’s talk about your next release.',
+        description:
+          'Tell us where you need capacity, capability, or delivery support. A technology specialist will follow up with a tailored approach.',
+        formTitle: 'Tell us what you’re building',
+        serviceLabel: 'What do you need?',
+        messageLabel: 'Tell us about the work',
+        messagePlaceholder: 'Team size, product, timeline, or technical priorities...',
+        submitLabel: 'Start the conversation',
+        successMessage: 'A technology specialist will be in touch within one business day.'
+      }
+    : {
+        eyebrow: "Let's build together",
+        title: 'Your next great team starts here.',
+        description:
+          "Tell us what you're solving. We'll reply with a tailored staffing plan and transparent estimate within one business day.",
+        formTitle: 'Start the conversation',
+        serviceLabel: 'What can we help you with?',
+        messageLabel: 'Tell us about your needs',
+        messagePlaceholder: 'Team size, channels, launch timeline...',
+        submitLabel: 'Request a tailored quote',
+        successMessage: 'A solutions specialist will be in touch within one business day.'
+      }
+)
 
 const formFieldUi = {
   label: 'text-oslo-gray-200',
@@ -115,16 +154,15 @@ const nextSteps = [
     >
       <div>
         <p class="text-bright-blue-400 text-[11px] font-bold tracking-[.16em] uppercase">
-          Let's build together
+          {{ copy.eyebrow }}
         </p>
         <h2
           class="mt-3 text-[clamp(2.25rem,4vw,3.25rem)] leading-tight font-bold tracking-[-.04em]"
         >
-          Your next great team starts here.
+          {{ copy.title }}
         </h2>
         <p class="text-oslo-gray-200 mt-5 max-w-120 leading-7">
-          Tell us what you're solving. We'll reply with a tailored staffing plan and transparent
-          estimate within one business day.
+          {{ copy.description }}
         </p>
         <div class="mt-8 border-t border-white/10 pt-5">
           <p class="text-bright-blue-400 text-[10px] font-bold tracking-[.14em] uppercase">
@@ -158,22 +196,28 @@ const nextSteps = [
           </div>
         </div>
       </div>
-      <div
-        class="border-bright-blue-400/25 bg-matisse-900/55 rounded-xl border p-4 backdrop-blur sm:p-8"
+      <SpotlightCard
+        spotlight-color="rgb(32 178 255 / 0.2)"
+        class="border-bright-blue-400/25 bg-matisse-900/55 relative rounded-xl border p-4 backdrop-blur sm:p-8"
       >
         <div
           v-if="submitted"
-          class="grid min-h-80 place-content-center justify-items-center gap-3 text-center"
+          class="border-bright-blue-400/30 bg-bright-blue-400/8 relative grid min-h-80 place-content-center justify-items-center gap-4 rounded-lg border p-6 text-center"
         >
           <UIcon
             name="i-lucide-check"
-            class="bg-bright-blue-400/18 text-bright-blue-400 ring-bright-blue-400/20 size-14 rounded-full p-3 ring-1"
+            class="bg-bright-blue-400 text-matisse-950 ring-bright-blue-300/30 size-14 rounded-full p-3 shadow-[0_0_28px_rgb(0_149_255/0.35)] ring-4"
           />
           <h3 class="text-xl font-bold">Thank you. We're on it.</h3>
           <p class="text-oslo-gray-200 max-w-75">
-            A solutions specialist will be in touch within one business day.
+            {{ copy.successMessage }}
           </p>
-          <UButton variant="outline" color="neutral" @click="submitted = false">
+          <UButton
+            variant="outline"
+            color="neutral"
+            class="border-bright-blue-300/45 bg-matisse-950/50 hover:bg-matisse-950/75 text-white"
+            @click="submitted = false"
+          >
             Send another inquiry
           </UButton>
         </div>
@@ -182,12 +226,12 @@ const nextSteps = [
           :state="formState"
           :validate="validate"
           :disabled="isSubmitting"
-          class="grid gap-3"
+          class="relative grid gap-3"
           @submit="onSubmit"
           @error="onError"
         >
           <div class="mb-5 grid gap-1 sm:flex sm:items-center sm:justify-between">
-            <h3 class="text-lg font-bold">Start the conversation</h3>
+            <h3 class="text-lg font-bold">{{ copy.formTitle }}</h3>
             <span class="text-bright-blue-400 text-[9px]">Usually replies in under 4 hours</span>
           </div>
           <div class="grid gap-3 sm:grid-cols-2">
@@ -221,7 +265,7 @@ const nextSteps = [
             />
           </UFormField>
           <UFormField
-            label="What can we help you with?"
+            :label="copy.serviceLabel"
             name="service"
             :ui="formFieldUi"
             class="text-[11px]"
@@ -236,7 +280,7 @@ const nextSteps = [
             />
           </UFormField>
           <UFormField
-            label="Tell us about your needs"
+            :label="copy.messageLabel"
             name="message"
             :ui="formFieldUi"
             class="text-[11px]"
@@ -244,7 +288,7 @@ const nextSteps = [
             <UTextarea
               v-model="formState.message"
               :rows="3"
-              placeholder="Team size, channels, launch timeline..."
+              :placeholder="copy.messagePlaceholder"
               variant="none"
               :ui="darkControlUi"
               class="w-full"
@@ -261,10 +305,10 @@ const nextSteps = [
             :loading="isSubmitting"
             class="bg-bright-blue-500 text-matisse-950 hover:bg-bright-blue-400 mt-4 font-semibold"
           >
-            Request a tailored quote
+            {{ copy.submitLabel }}
           </UButton>
         </UForm>
-      </div>
+      </SpotlightCard>
     </div>
   </section>
 </template>

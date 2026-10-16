@@ -66,8 +66,6 @@ const engagementModels = [
     points: ['Clear scope and milestones', 'Delivery leadership', 'Transition-ready handoff']
   }
 ]
-
-const submitted = ref(false)
 </script>
 
 <template>
@@ -126,9 +124,7 @@ const submitted = ref(false)
         <div class="mt-9 grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
           <span class="grid gap-1"
             ><b class="text-bright-blue-400 text-xl">Proven</b
-            ><small class="text-oslo-gray-300 text-[10px]"
-              >Experience you can rely on</small
-            ></span
+            ><small class="text-oslo-gray-300 text-[10px]">Experience you can rely on</small></span
           >
           <span class="grid gap-1"
             ><b class="text-bright-blue-400 text-xl">Dedicated</b
@@ -256,98 +252,5 @@ const submitted = ref(false)
     </div>
   </section>
 
-  <section id="contact" class="bg-matisse-950 py-18 text-white sm:py-28">
-    <div
-      class="mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-9 sm:w-[calc(100%-3rem)] lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-24"
-    >
-      <div>
-        <p class="text-bright-blue-400 text-[11px] font-bold tracking-[.16em] uppercase">
-          Build with Digilink
-        </p>
-        <h2
-          class="mt-3 text-[clamp(2.25rem,4vw,3.25rem)] leading-tight font-bold tracking-[-.04em]"
-        >
-          Let’s talk about your next release.
-        </h2>
-        <p class="text-oslo-gray-200 mt-5 max-w-120 leading-7">
-          Tell us where you need capacity, capability, or delivery support. A technology specialist
-          will follow up with a tailored approach.
-        </p>
-        <div class="text-bright-blue-400 mt-7 flex gap-3">
-          <UIcon name="i-lucide-calendar-days" class="mt-0.5 size-5" /><span
-            class="text-oslo-gray-300 grid gap-1 text-[10px] tracking-widest uppercase"
-            >Start with a conversation<b class="text-[12px] tracking-normal text-white normal-case"
-              >Schedule a 30-minute discovery call</b
-            ></span
-          >
-        </div>
-      </div>
-      <SpotlightCard
-        spotlight-color="rgb(32 178 255 / 0.2)"
-        class="border-bright-blue-400/25 bg-matisse-900/55 relative rounded-xl border p-4 backdrop-blur sm:p-8"
-      >
-        <div
-          v-if="submitted"
-          class="relative grid min-h-80 place-content-center justify-items-center gap-3 text-center"
-        >
-          <UIcon
-            name="i-lucide-check"
-            class="bg-bright-blue-400/18 text-bright-blue-400 ring-bright-blue-400/20 size-14 rounded-full p-3 ring-1"
-          />
-          <h3 class="text-xl font-bold">Thank you. We’re on it.</h3>
-          <p class="text-oslo-gray-200 max-w-75">
-            A technology specialist will be in touch within one business day.
-          </p>
-          <UButton variant="outline" color="neutral" @click="submitted = false"
-            >Send another inquiry</UButton
-          >
-        </div>
-        <form v-else class="relative" @submit.prevent="submitted = true">
-          <div class="mb-5">
-            <h3 class="text-lg font-bold">Tell us what you’re building</h3>
-            <span class="text-bright-blue-400 text-[9px]">Usually replies in under 4 hours</span>
-          </div>
-          <div class="grid gap-3 sm:grid-cols-2">
-            <label class="text-oslo-gray-200 grid gap-1.5 text-[11px]"
-              >First name<input
-                required
-                placeholder="Alex"
-                class="bg-matisse-950/75 focus:border-bright-blue-400 focus:ring-bright-blue-400/20 min-h-12 rounded-md border border-white/15 px-3 text-base transition outline-none focus:ring-2" /></label
-            ><label class="text-oslo-gray-200 grid gap-1.5 text-[11px]"
-              >Work email<input
-                required
-                type="email"
-                placeholder="alex@company.com"
-                class="bg-matisse-950/75 focus:border-bright-blue-400 focus:ring-bright-blue-400/20 min-h-12 rounded-md border border-white/15 px-3 text-base transition outline-none focus:ring-2"
-            /></label>
-          </div>
-          <label class="text-oslo-gray-200 mt-3 grid gap-1.5 text-[11px]"
-            >What do you need?<select
-              required
-              class="bg-matisse-950/75 focus:border-bright-blue-400 focus:ring-bright-blue-400/20 min-h-12 rounded-md border border-white/15 px-3 text-base transition outline-none focus:ring-2"
-            >
-              <option value="" disabled selected>Select a need</option>
-              <option>Dedicated development team</option>
-              <option>Project delivery</option>
-              <option>QA and quality engineering</option>
-              <option>Integration or automation</option>
-            </select></label
-          ><label class="text-oslo-gray-200 mt-3 grid gap-1.5 text-[11px]"
-            >Tell us about the work<textarea
-              rows="3"
-              placeholder="Team size, product, timeline, or technical priorities..."
-              class="bg-matisse-950/75 focus:border-bright-blue-400 focus:ring-bright-blue-400/20 rounded-md border border-white/15 px-3 py-2 text-base transition outline-none focus:ring-2"
-            /></label
-          ><UButton
-            type="submit"
-            block
-            size="lg"
-            trailing-icon="i-lucide-arrow-right"
-            class="bg-bright-blue-500 text-matisse-950 hover:bg-bright-blue-400 mt-4 font-bold"
-            >Start the conversation</UButton
-          >
-        </form>
-      </SpotlightCard>
-    </div>
-  </section>
+  <LandingContact variant="development" />
 </template>
