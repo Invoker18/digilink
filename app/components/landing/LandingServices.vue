@@ -52,11 +52,11 @@ const waveBars = ['h-3', 'h-5', 'h-8', 'h-4', 'h-7']
           </p>
         </div>
       </div>
-      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-12">
-        <article class="col-span-1 sm:col-span-2 lg:col-span-6">
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:auto-rows-88 lg:grid-cols-12">
+        <article class="col-span-1 h-full min-h-72 sm:col-span-2 lg:col-span-6">
           <SpotlightCard
-            spotlight-color="#020d18"
-            class="group relative flex min-h-72 w-full flex-col overflow-hidden rounded-lg bg-[#092039] p-4 text-balance text-white transition duration-300 hover:-translate-y-1 hover:shadow-2xl sm:col-span-full sm:p-6 lg:col-span-6"
+            spotlight-color="rgba(0, 200, 245, 0.22)"
+            class="group relative flex h-full w-full flex-col overflow-hidden rounded-lg border-0 bg-[#092039] p-4 text-balance text-white transition duration-300 hover:-translate-y-1 hover:shadow-2xl sm:p-6"
           >
             <div
               class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(0_200_245/12%)_1px,transparent_1px),linear-gradient(90deg,rgb(0_200_245/12%)_1px,transparent_1px)] mask-[linear-gradient(135deg,#000,transparent_68%)] bg-size-[34px_34px] opacity-35"
@@ -116,22 +116,27 @@ const waveBars = ['h-3', 'h-5', 'h-8', 'h-4', 'h-7']
         <article
           v-for="service in secondaryServices"
           :key="service.title"
-          class="group relative flex min-h-72 flex-col overflow-hidden rounded-lg border border-[#dce6ee] bg-white p-4 text-balance text-[#0c2947] transition duration-300 hover:-translate-y-1 hover:shadow-2xl sm:p-6 lg:col-span-3"
+          class="h-full min-h-72 lg:col-span-3"
         >
-          <div class="relative flex justify-between">
-            <span
-              class="grid size-11 place-items-center rounded-lg bg-cyan-50 text-xl text-cyan-600 transition duration-300 group-hover:scale-110"
-              ><UIcon :name="service.icon"
-            /></span>
-            <small class="text-[10px] text-slate-400">{{ service.number }}</small>
-          </div>
-          <h3 class="relative mt-7 text-lg font-bold">{{ service.title }}</h3>
-          <p class="relative mt-3 text-[13px] leading-6 text-[#688096]">{{ service.text }}</p>
-          <a
-            :href="service.href"
-            class="relative mt-auto flex items-center gap-2 pt-5 text-[12px] font-bold text-cyan-700"
-            >{{ service.action }} <UIcon name="i-lucide-arrow-right"
-          /></a>
+          <SpotlightCard
+            spotlight-color="rgba(0, 145, 220, 0.16)"
+            class="group relative flex h-full w-full flex-col overflow-hidden rounded-lg border border-[#dce6ee] bg-white p-4 text-balance text-[#0c2947] transition duration-300 hover:-translate-y-1 hover:shadow-2xl sm:p-6"
+          >
+            <div class="relative flex justify-between">
+              <span
+                class="grid size-11 place-items-center rounded-lg bg-cyan-50 text-xl text-cyan-600 transition duration-300 group-hover:scale-110"
+                ><UIcon :name="service.icon"
+              /></span>
+              <small class="text-[10px] text-slate-400">{{ service.number }}</small>
+            </div>
+            <h3 class="relative mt-7 text-lg font-bold">{{ service.title }}</h3>
+            <p class="relative mt-3 text-[13px] leading-6 text-[#688096]">{{ service.text }}</p>
+            <a
+              :href="service.href"
+              class="relative mt-auto flex items-center gap-2 pt-5 text-[12px] font-bold text-cyan-700"
+              >{{ service.action }} <UIcon name="i-lucide-arrow-right"
+            /></a>
+          </SpotlightCard>
         </article>
       </div>
     </div>
