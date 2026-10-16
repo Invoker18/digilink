@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import desk from '@/assets/images/desk.webp'
+import SpotlightCard from '@/components/bits/spotlight-card.vue'
 
 useSeoMeta({
   title: 'Software Development Teams | Digilink Corporation',
   description:
-    'Extend your product team with dedicated nearshore software developers, QA specialists, and delivery support from Digilink.'
+    'Extend your product team with proven software developers, QA specialists, and delivery support from Digilink.'
 })
 
 const capabilities = [
@@ -70,14 +71,23 @@ const submitted = ref(false)
 </script>
 
 <template>
-  <section class="bg-matisse-950 relative overflow-hidden pt-29 text-white sm:pt-42">
+  <section
+    :style="{ backgroundImage: `url(${desk})` }"
+    class="bg-matisse-950 relative isolate overflow-hidden bg-cover bg-center pt-29 text-white sm:pt-42"
+  >
     <div
-      class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(8_114_201/10%)_1px,transparent_1px),linear-gradient(90deg,rgb(8_114_201/10%)_1px,transparent_1px)] mask-[linear-gradient(90deg,#000,transparent_75%)] bg-size-[64px_64px] opacity-30"
+      class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(6_31_56/.88)_0%,rgb(6_31_56/.72)_45%,rgb(6_31_56/.94)_100%)] lg:hidden"
     />
     <div
-      class="relative mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-10 pb-16 sm:w-[calc(100%-3rem)] sm:pb-24 lg:grid-cols-[1fr_.9fr] lg:items-center lg:gap-20"
+      class="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,#061f38_0%,rgb(6_31_56/.94)_31%,rgb(6_31_56/.58)_58%,rgb(6_31_56/.22)_100%)] lg:block"
+    />
+    <div
+      class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(134_199_255/10%)_1px,transparent_1px),linear-gradient(90deg,rgb(134_199_255/10%)_1px,transparent_1px)] mask-[linear-gradient(90deg,#000,transparent_75%)] bg-size-[64px_64px] opacity-30"
+    />
+    <div
+      class="relative z-10 mx-auto flex min-h-120 w-[calc(100%-2rem)] max-w-295 items-center pb-16 sm:min-h-132 sm:w-[calc(100%-3rem)] sm:pb-24"
     >
-      <div>
+      <div class="w-full lg:w-[60%]">
         <p
           class="text-bright-blue-400 flex items-center gap-2.5 text-[10px] font-bold tracking-[.16em] uppercase"
         >
@@ -93,8 +103,8 @@ const submitted = ref(false)
           <em class="text-bright-blue-400 not-italic">keep your roadmap moving.</em>
         </h1>
         <p class="text-oslo-gray-200 mt-6 max-w-130 text-[16px] leading-7 sm:text-[18px]">
-          Add proven nearshore development talent to your organization, with the structure,
-          visibility, and operational support to deliver meaningful work.
+          Add proven development talent to your organization, with the structure, visibility, and
+          operational support to deliver meaningful work.
         </p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <UButton
@@ -115,8 +125,10 @@ const submitted = ref(false)
         </div>
         <div class="mt-9 grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
           <span class="grid gap-1"
-            ><b class="text-bright-blue-400 text-xl">Nearshore</b
-            ><small class="text-oslo-gray-300 text-[10px]">EST-aligned collaboration</small></span
+            ><b class="text-bright-blue-400 text-xl">Proven</b
+            ><small class="text-oslo-gray-300 text-[10px]"
+              >Experience you can rely on</small
+            ></span
           >
           <span class="grid gap-1"
             ><b class="text-bright-blue-400 text-xl">Dedicated</b
@@ -128,28 +140,6 @@ const submitted = ref(false)
           >
         </div>
       </div>
-      <figure
-        class="border-bright-blue-400/25 relative h-100 overflow-hidden rounded-lg border sm:h-125"
-      >
-        <img
-          :src="desk"
-          alt="Software team collaborating at the Digilink delivery hub"
-          class="size-full object-cover brightness-55 saturate-75"
-        />
-        <div
-          class="from-matisse-950 via-matisse-950/25 absolute inset-0 bg-linear-to-tr to-transparent"
-        />
-        <figcaption
-          class="border-bright-blue-400/25 bg-matisse-950/90 absolute right-5 bottom-5 left-5 border p-5 backdrop-blur"
-        >
-          <span class="text-bright-blue-400 text-[9px] font-bold tracking-[.15em] uppercase"
-            >Your embedded delivery partner</span
-          >
-          <b class="mt-2 block text-xl leading-snug"
-            >Engineering talent that fits into the way your team already works.</b
-          >
-        </figcaption>
-      </figure>
     </div>
   </section>
 
@@ -172,25 +162,31 @@ const submitted = ref(false)
         </p>
       </div>
       <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <article
-          v-for="capability in capabilities"
-          :key="capability.title"
-          class="group border-silver-200 hover:border-bright-blue-300 min-h-66 border bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
-        >
-          <span
-            class="bg-bright-blue-50 text-bright-blue-600 grid size-11 place-items-center rounded-lg text-xl transition group-hover:scale-110"
-            ><UIcon :name="capability.icon"
-          /></span>
-          <h3 class="text-matisse-950 mt-7 text-lg font-bold">{{ capability.title }}</h3>
-          <p class="text-oslo-gray-600 mt-3 text-[13px] leading-6">{{ capability.text }}</p>
+        <article v-for="capability in capabilities" :key="capability.title" class="min-h-66">
+          <SpotlightCard
+            spotlight-color="rgb(8 114 201 / 0.16)"
+            class="group border-silver-200 hover:border-bright-blue-300 relative h-full rounded-lg border bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <span
+              class="bg-bright-blue-50 text-bright-blue-600 relative grid size-11 place-items-center rounded-lg text-xl transition group-hover:scale-110"
+              ><UIcon :name="capability.icon"
+            /></span>
+            <h3 class="text-matisse-950 relative mt-7 text-lg font-bold">{{ capability.title }}</h3>
+            <p class="text-oslo-gray-600 relative mt-3 text-[13px] leading-6">
+              {{ capability.text }}
+            </p>
+          </SpotlightCard>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="bg-matisse-900 py-18 text-white sm:py-28">
+  <section class="bg-matisse-950 relative overflow-hidden py-18 text-white sm:py-28">
     <div
-      class="mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-10 sm:w-[calc(100%-3rem)] lg:grid-cols-[.8fr_1.2fr] lg:gap-20"
+      class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(32_178_255/10%)_1px,transparent_1px),linear-gradient(90deg,rgb(32_178_255/10%)_1px,transparent_1px)] mask-[linear-gradient(90deg,#000,transparent_78%)] bg-size-[64px_64px] opacity-25"
+    />
+    <div
+      class="relative z-10 mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-10 sm:w-[calc(100%-3rem)] lg:grid-cols-[.8fr_1.2fr] lg:gap-20"
     >
       <div>
         <p class="text-bright-blue-400 text-[11px] font-bold tracking-[.16em] uppercase">
@@ -235,23 +231,26 @@ const submitted = ref(false)
         </h2>
       </div>
       <div class="mx-auto mt-10 grid max-w-210 gap-4 md:grid-cols-2">
-        <article
-          v-for="model in engagementModels"
-          :key="model.title"
-          class="border-silver-200 border p-7"
-        >
-          <UIcon name="i-lucide-users-round" class="text-bright-blue-600 size-6" />
-          <h3 class="text-matisse-950 mt-5 text-xl font-bold">{{ model.title }}</h3>
-          <p class="text-oslo-gray-600 mt-2 text-[14px] leading-6">{{ model.description }}</p>
-          <ul class="border-silver-200 mt-6 grid gap-3 border-t pt-5">
-            <li
-              v-for="point in model.points"
-              :key="point"
-              class="text-matisse-800 flex items-center gap-2 text-[12px] font-medium"
-            >
-              <UIcon name="i-lucide-check" class="text-bright-blue-500 size-4" />{{ point }}
-            </li>
-          </ul>
+        <article v-for="model in engagementModels" :key="model.title" class="min-h-full">
+          <SpotlightCard
+            spotlight-color="rgb(8 114 201 / 0.14)"
+            class="border-silver-200 hover:border-bright-blue-300 relative h-full rounded-lg border bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <UIcon name="i-lucide-users-round" class="text-bright-blue-600 relative size-6" />
+            <h3 class="text-matisse-950 relative mt-5 text-xl font-bold">{{ model.title }}</h3>
+            <p class="text-oslo-gray-600 relative mt-2 text-[14px] leading-6">
+              {{ model.description }}
+            </p>
+            <ul class="border-silver-200 relative mt-6 grid gap-3 border-t pt-5">
+              <li
+                v-for="point in model.points"
+                :key="point"
+                class="text-matisse-800 flex items-center gap-2 text-[12px] font-medium"
+              >
+                <UIcon name="i-lucide-check" class="text-bright-blue-500 size-4" />{{ point }}
+              </li>
+            </ul>
+          </SpotlightCard>
         </article>
       </div>
     </div>
@@ -283,12 +282,13 @@ const submitted = ref(false)
           >
         </div>
       </div>
-      <div
-        class="border-bright-blue-400/25 bg-matisse-900/55 rounded-xl border p-4 backdrop-blur sm:p-8"
+      <SpotlightCard
+        spotlight-color="rgb(32 178 255 / 0.2)"
+        class="border-bright-blue-400/25 bg-matisse-900/55 relative rounded-xl border p-4 backdrop-blur sm:p-8"
       >
         <div
           v-if="submitted"
-          class="grid min-h-80 place-content-center justify-items-center gap-3 text-center"
+          class="relative grid min-h-80 place-content-center justify-items-center gap-3 text-center"
         >
           <UIcon
             name="i-lucide-check"
@@ -302,7 +302,7 @@ const submitted = ref(false)
             >Send another inquiry</UButton
           >
         </div>
-        <form v-else @submit.prevent="submitted = true">
+        <form v-else class="relative" @submit.prevent="submitted = true">
           <div class="mb-5">
             <h3 class="text-lg font-bold">Tell us what you’re building</h3>
             <span class="text-bright-blue-400 text-[9px]">Usually replies in under 4 hours</span>
@@ -347,7 +347,7 @@ const submitted = ref(false)
             >Start the conversation</UButton
           >
         </form>
-      </div>
+      </SpotlightCard>
     </div>
   </section>
 </template>

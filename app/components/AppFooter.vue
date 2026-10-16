@@ -66,7 +66,7 @@ const companyLinks = [
           An operational partner for teams that need dependable capacity and shared momentum.
         </p>
         <span class="text-oslo-gray-300 mt-5 flex items-center gap-2 text-[10px]">
-          Bilingual teams, EST-aligned
+          Bilingual teams, aligned to your operation
         </span>
       </div>
     </div>

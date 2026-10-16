@@ -20,7 +20,9 @@ const partners: Partner[] = [
     <div
       class="mx-auto flex w-[calc(100%-2rem)] flex-col gap-6 sm:w-[calc(100%-3rem)] lg:max-w-295 lg:flex-row lg:items-center lg:justify-between lg:gap-12"
     >
-      <p class="text-bright-blue-400 shrink-0 text-[10px] font-bold tracking-[.16em] uppercase">
+      <p
+        class="text-bright-blue-400 shrink-0 text-center text-[10px] font-bold tracking-[.16em] uppercase lg:text-left"
+      >
         Trusted business partners
       </p>
       <div class="grid border-white/15 sm:grid-cols-3">
