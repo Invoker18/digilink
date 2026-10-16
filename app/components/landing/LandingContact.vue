@@ -4,7 +4,6 @@ import type { FormError, FormErrorEvent, FormSubmitEvent } from '@nuxt/ui'
 const submitted = ref(false)
 const isSubmitting = ref(false)
 const submissionError = ref('')
-const config = useRuntimeConfig()
 
 type ContactFormState = {
   firstName: string
@@ -77,7 +76,7 @@ const onSubmit = async (event: FormSubmitEvent<ContactFormState>) => {
   submissionError.value = ''
 
   try {
-    await $fetch(config.public.contactApiUrl || '/api/contact', {
+    await $fetch('/api/send', {
       method: 'POST',
       body: event.data
     })
@@ -269,3 +268,15 @@ const nextSteps = [
     </div>
   </section>
 </template>
+
+<style scoped>
+:deep(input:-webkit-autofill),
+:deep(input:-webkit-autofill:hover),
+:deep(input:-webkit-autofill:focus),
+:deep(input:autofill) {
+  -webkit-text-fill-color: var(--color-oslo-gray-50);
+  caret-color: var(--color-oslo-gray-50);
+  box-shadow: 0 0 0 1000px var(--color-matisse-950) inset;
+  -webkit-box-shadow: 0 0 0 1000px var(--color-matisse-950) inset;
+}
+</style>

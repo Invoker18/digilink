@@ -3,6 +3,7 @@ import logo from '~/assets/images/logo-digilink.png'
 
 const menuOpen = ref(false)
 const route = useRoute()
+const activeSection = ref('')
 const homeAnchor = (anchor: string) => (route.path === '/' ? anchor : `/${anchor}`)
 
 const links = [
@@ -16,6 +17,49 @@ const goTop = () => {
   navigateTo('/')
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
+
+const isActiveLink = (href: string) => {
+  if (href === '/software-development') return route.path === href
+  return route.path === '/' && activeSection.value === href
+}
+
+const handleNavigation = (href: string) => {
+  if (href.startsWith('#')) activeSection.value = href
+  menuOpen.value = false
+}
+
+let sectionObserver: IntersectionObserver | undefined
+
+const observeHomeSections = () => {
+  sectionObserver?.disconnect()
+  if (route.path !== '/') return
+
+  activeSection.value = route.hash
+  const sectionIds = links.map((link) => link.href).filter((href) => href.startsWith('#'))
+
+  sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const activeEntry = entries.find((entry) => entry.isIntersecting)
+      if (activeEntry) activeSection.value = `#${activeEntry.target.id}`
+    },
+    { rootMargin: '-35% 0px -55% 0px' }
+  )
+
+  sectionIds.forEach((href) => {
+    const section = document.getElementById(href.slice(1))
+    if (section) sectionObserver?.observe(section)
+  })
+}
+
+onMounted(() => {
+  observeHomeSections()
+  watch(
+    () => route.path,
+    () => nextTick(observeHomeSections)
+  )
+})
+
+onBeforeUnmount(() => sectionObserver?.disconnect())
 </script>
 
 <template>
@@ -32,15 +76,20 @@ const goTop = () => {
         :class="
           menuOpen ? 'grid max-h-80 opacity-100' : 'max-h-0 opacity-0 sm:max-h-none sm:opacity-100'
         "
-        class="bg-matisse-950/98 absolute inset-x-0 top-17 overflow-hidden border-b border-white/10 transition-all sm:static sm:flex sm:gap-7 sm:overflow-visible sm:border-0 sm:bg-transparent"
+        class="bg-matisse-950/98 absolute inset-x-0 top-17 overflow-hidden border-b border-white/10 transition-all sm:static sm:flex sm:items-center sm:gap-2 sm:overflow-visible sm:border-0 sm:bg-transparent lg:gap-6"
         aria-label="Main navigation"
       >
         <a
           v-for="link in links"
           :key="link.href"
           :href="link.href"
-          class="hover:text-bright-blue-400 sm:text-oslo-gray-300 min-h-13.5 border-b border-white/10 px-6 py-4 text-[15px] text-white transition sm:min-h-0 sm:border-0 sm:p-0 sm:text-[13px]"
-          @click="menuOpen = false"
+          :class="
+            isActiveLink(link.href)
+              ? 'text-bright-blue-400 sm:text-white lg:after:scale-x-100'
+              : 'sm:text-oslo-gray-200 text-white'
+          "
+          class="lg:after:via-bright-blue-400 relative min-h-13.5 border-b border-white/10 px-6 py-4 text-[15px] font-medium transition-colors duration-200 hover:text-white sm:min-h-0 sm:border-0 sm:px-1 sm:py-2 sm:text-[13px] lg:after:absolute lg:after:right-0 lg:after:bottom-0 lg:after:left-0 lg:after:h-px lg:after:origin-center lg:after:scale-x-0 lg:after:bg-linear-to-r lg:after:from-transparent lg:after:to-transparent lg:after:transition-transform lg:after:duration-200 lg:hover:after:scale-x-100"
+          @click="handleNavigation(link.href)"
           >{{ link.label }}</a
         >
       </nav>

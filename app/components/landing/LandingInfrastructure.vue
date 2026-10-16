@@ -56,12 +56,12 @@ const features = [
           class="border-bright-blue-400/40 bg-bright-blue-400/10 text-bright-blue-400 mt-5 flex items-center gap-3 rounded-lg border px-4 py-3"
         >
           <UIcon name="i-lucide-check" class="size-4 shrink-0" />
-          <span class="grid gap-0.5"
-            ><b class="text-bright-blue-100 text-[10px]">Security is an operational advantage</b
-            ><small class="text-bright-blue-100/50 text-[8px]"
-              >Infrastructure, people, and process in one accountable location.</small
-            ></span
-          >
+          <span class="grid gap-0.5">
+            <b class="text-bright-blue-100 text-[10px]">Security is an operational advantage</b>
+            <small class="text-bright-blue-100/50 text-[8px]">
+              Infrastructure, people, and process in one accountable location.
+            </small>
+          </span>
         </div>
       </div>
       <figure
@@ -89,7 +89,7 @@ const features = [
         </figcaption>
         <div class="absolute bottom-5 left-5 flex items-center gap-3">
           <span
-            class="bg-bright-blue-400/90 ring-bright-blue-400/15 border-bright-blue-400 size-2 rounded-full border-2 ring-6 motion-safe:animate-[ping_1.5s_infinite]"
+            class="size-2 rounded-full border-2 border-emerald-400 bg-emerald-400/90 ring-6 ring-emerald-400/15 motion-safe:animate-[ping_1.5s_infinite]"
           />
           <span class="grid gap-0.5"
             ><b class="text-[12px]">Network core</b

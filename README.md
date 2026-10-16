@@ -58,10 +58,12 @@ Each landing-page section is a focused Vue component. Visual styling belongs in 
 
 ## Contact Form API
 
-The landing contact form validates input with Nuxt UI and sends a `POST` request to `/api/contact` by default. Point it to an external backend by setting `NUXT_PUBLIC_CONTACT_API_URL`:
+The landing contact form validates input with Nuxt UI and sends a `POST` request to the built-in `/api/send` handler. The handler sends Digilink inquiry emails through Resend.
 
 ```bash
-NUXT_PUBLIC_CONTACT_API_URL=https://api.example.com/contact
+RESEND_API_KEY=re_...
+RESEND_FROM_EMAIL="Digilink <inquiries@your-domain.com>"
+CONTACT_EMAIL=inbox@your-domain.com
 ```
 
 The JSON request body contains `firstName`, `lastName`, `email`, `service`, and `message`.

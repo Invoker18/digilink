@@ -23,11 +23,11 @@ const partners: Partner[] = [
       <p class="text-bright-blue-400 shrink-0 text-[10px] font-bold tracking-[.16em] uppercase">
         Trusted business partners
       </p>
-      <div class="grid border-y border-white/15 sm:grid-cols-3 sm:border-y-0 sm:border-l">
+      <div class="grid border-white/15 sm:grid-cols-3">
         <div
           v-for="(partner, index) in partners"
           :key="partner.name"
-          :class="index ? 'border-t border-white/15 sm:border-t-0 sm:border-l' : ''"
+          :class="index ? 'border-t border-white/15 sm:border-t-0' : ''"
           class="flex min-h-16 items-center justify-center px-7 py-4 sm:min-w-52"
         >
           <img

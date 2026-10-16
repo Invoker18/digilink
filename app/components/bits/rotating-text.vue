@@ -224,48 +224,54 @@ onUnmounted(() => {
       {{ texts[currentTextIndex] }}
     </span>
 
-    <AnimatePresence :mode="animatePresenceMode" :initial="animatePresenceInitial">
-      <Motion
-        :key="currentTextIndex"
-        tag="span"
-        :class="
-          cn(
-            splitBy === 'lines'
-              ? 'flex w-full flex-col'
-              : 'relative flex flex-wrap whitespace-pre-wrap'
-          )
-        "
-        aria-hidden="true"
-        layout
-      >
-        <span
-          v-for="(wordObj, wordIndex) in elements"
-          :key="wordIndex"
-          :class="cn('inline-flex', splitLevelClassName)"
+    <ClientOnly fallback-tag="span">
+      <AnimatePresence :mode="animatePresenceMode" :initial="animatePresenceInitial">
+        <Motion
+          :key="currentTextIndex"
+          tag="span"
+          :class="
+            cn(
+              splitBy === 'lines'
+                ? 'flex w-full flex-col'
+                : 'relative flex flex-wrap whitespace-pre-wrap'
+            )
+          "
+          aria-hidden="true"
+          layout
         >
-          <Motion
-            v-for="(char, charIndex) in wordObj.characters"
-            :key="charIndex"
-            tag="span"
-            :initial="initial"
-            :animate="animate"
-            :exit="exit"
-            :transition="{
-              ...transition,
-              delay: getStaggerDelay(
-                elements
-                  .slice(0, wordIndex)
-                  .reduce((sum, word) => sum + word.characters.length, 0) + charIndex,
-                elements.reduce((sum, word) => sum + word.characters.length, 0)
-              )
-            }"
-            :class="cn('inline-block', elementLevelClassName)"
+          <span
+            v-for="(wordObj, wordIndex) in elements"
+            :key="wordIndex"
+            :class="cn('inline-flex', splitLevelClassName)"
           >
-            {{ char }}
-          </Motion>
-          <span v-if="wordObj.needsSpace" class="whitespace-pre"></span>
-        </span>
-      </Motion>
-    </AnimatePresence>
+            <Motion
+              v-for="(char, charIndex) in wordObj.characters"
+              :key="charIndex"
+              tag="span"
+              :initial="initial"
+              :animate="animate"
+              :exit="exit"
+              :transition="{
+                ...transition,
+                delay: getStaggerDelay(
+                  elements
+                    .slice(0, wordIndex)
+                    .reduce((sum, word) => sum + word.characters.length, 0) + charIndex,
+                  elements.reduce((sum, word) => sum + word.characters.length, 0)
+                )
+              }"
+              :class="cn('inline-block', elementLevelClassName)"
+            >
+              {{ char }}
+            </Motion>
+            <span v-if="wordObj.needsSpace" class="whitespace-pre"></span>
+          </span>
+        </Motion>
+      </AnimatePresence>
+
+      <template #fallback>
+        <span aria-hidden="true">{{ texts[currentTextIndex] }}</span>
+      </template>
+    </ClientOnly>
   </Motion>
 </template>

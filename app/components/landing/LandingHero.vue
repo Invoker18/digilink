@@ -13,7 +13,7 @@ const metrics = ref([
 <template>
   <section
     :style="{ backgroundImage: `url(${hero})` }"
-    class="bg-matisse-950 relative isolate overflow-hidden bg-cover bg-position-[68%_center] pt-29 text-white sm:pt-43 lg:bg-center"
+    class="relative isolate overflow-hidden bg-[#092942] bg-cover bg-position-[68%_center] pt-29 text-white sm:pt-43 lg:bg-center"
   >
     <div
       class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(9_41_66/.82)_0%,rgb(9_41_66/.72)_38%,rgb(9_41_66/.94)_100%)] lg:hidden"

@@ -9,11 +9,15 @@ export default withNuxt(
     settings: {
       'better-tailwindcss': {
         entryPoint: 'app/assets/css/main.css',
-        attributes: [
-          ...getDefaultAttributes(),
-          ['^v-bind:ui$', [{ match: 'objectValues' }]]
-        ]
+        attributes: [...getDefaultAttributes(), ['^v-bind:ui$', [{ match: 'objectValues' }]]]
       }
+    }
+  },
+  {
+    files: ['server/**/*.ts'],
+    rules: {
+      '@stylistic/operator-linebreak': ['error', 'after'],
+      '@stylistic/quotes': ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }]
     }
   }
 )
