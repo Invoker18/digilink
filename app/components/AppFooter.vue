@@ -31,7 +31,7 @@ const companyLinks = [
         <a
           :href="homeAnchor('#contact')"
           class="text-bright-blue-400 hover:text-bright-blue-300 mt-6 inline-flex items-center gap-2 text-[12px] font-bold transition"
-          >Start a conversation <UIcon name="i-lucide-arrow-up-right" class="size-4"
+        >Start a conversation <UIcon name="i-lucide-arrow-up-right" class="size-4"
         /></a>
       </div>
 
@@ -42,7 +42,7 @@ const companyLinks = [
           :key="link.label"
           :href="link.href"
           class="hover:text-bright-blue-400 w-fit transition"
-          >{{ link.label }}</a
+        >{{ link.label }}</a
         >
       </div>
 
@@ -53,7 +53,7 @@ const companyLinks = [
           :key="link.label"
           :href="link.href"
           class="hover:text-bright-blue-400 w-fit transition"
-          >{{ link.label }}</a
+        >{{ link.label }}</a
         >
       </div>
 
@@ -61,7 +61,9 @@ const companyLinks = [
         <p class="text-bright-blue-400 text-[10px] font-bold tracking-[.14em] uppercase">
           Built for delivery
         </p>
-        <p class="mt-3 text-[14px] leading-6 text-white">Real teams. Real accountability.</p>
+        <p class="mt-3 text-[14px] leading-6 text-white">
+          Real teams. Real accountability.
+        </p>
         <p class="text-oslo-gray-300 mt-2 text-[11px] leading-5">
           An operational partner for teams that need dependable capacity and shared momentum.
         </p>

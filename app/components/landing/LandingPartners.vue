@@ -2,6 +2,7 @@
 import Printres from '@/assets/images/logo-printres.svg'
 import Datalink from '@/assets/images/logo-datalink.png'
 import Arche from '@/assets/images/logo-arche.webp'
+
 type Partner = {
   name: string
   logo?: string

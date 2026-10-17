@@ -54,10 +54,10 @@ const copy = computed(() =>
         successMessage: 'A technology specialist will be in touch within one business day.'
       }
     : {
-        eyebrow: "Let's build together",
+        eyebrow: 'Let\'s build together',
         title: 'Your next great team starts here.',
         description:
-          "Tell us what you're solving. We'll reply with a tailored staffing plan and transparent estimate within one business day.",
+          'Tell us what you\'re solving. We\'ll reply with a tailored staffing plan and transparent estimate within one business day.',
         formTitle: 'Start the conversation',
         serviceLabel: 'What can we help you with?',
         messageLabel: 'Tell us about your needs',
@@ -121,8 +121,8 @@ const onSubmit = async (event: FormSubmitEvent<ContactFormState>) => {
     })
     submitted.value = true
   } catch {
-    submissionError.value =
-      'We could not send your request. Please try again or contact us directly.'
+    submissionError.value
+      = 'We could not send your request. Please try again or contact us directly.'
   } finally {
     isSubmitting.value = false
   }
@@ -187,10 +187,10 @@ const nextSteps = [
             <span class="bg-bright-blue-400 ring-bright-blue-400/10 size-2 rounded-full ring-4" />
             <span class="grid gap-0.5">
               <b class="text-bright-blue-100 text-[10px]"
-                >A thoughtful response, not an automated handoff.</b
+              >A thoughtful response, not an automated handoff.</b
               >
               <small class="text-bright-blue-100/60 text-[9px]"
-                >Expect to hear from our team within one business day.</small
+              >Expect to hear from our team within one business day.</small
               >
             </span>
           </div>
@@ -208,7 +208,9 @@ const nextSteps = [
             name="i-lucide-check"
             class="bg-bright-blue-400 text-matisse-950 ring-bright-blue-300/30 size-14 rounded-full p-3 shadow-[0_0_28px_rgb(0_149_255/0.35)] ring-4"
           />
-          <h3 class="text-xl font-bold">Thank you. We're on it.</h3>
+          <h3 class="text-xl font-bold">
+            Thank you. We're on it.
+          </h3>
           <p class="text-oslo-gray-200 max-w-75">
             {{ copy.successMessage }}
           </p>
@@ -231,7 +233,9 @@ const nextSteps = [
           @error="onError"
         >
           <div class="mb-5 grid gap-1 sm:flex sm:items-center sm:justify-between">
-            <h3 class="text-lg font-bold">{{ copy.formTitle }}</h3>
+            <h3 class="text-lg font-bold">
+              {{ copy.formTitle }}
+            </h3>
             <span class="text-bright-blue-400 text-[9px]">Usually replies in under 4 hours</span>
           </div>
           <div class="grid gap-3 sm:grid-cols-2">

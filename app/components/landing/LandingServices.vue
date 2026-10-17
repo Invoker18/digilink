@@ -131,16 +131,20 @@ const waveBars = ['h-3', 'h-5', 'h-8', 'h-4', 'h-7']
             <div class="relative flex justify-between">
               <span
                 class="bg-bright-blue-50 text-bright-blue-600 grid size-11 place-items-center rounded-lg text-xl transition duration-300 group-hover:scale-110"
-                ><UIcon :name="service.icon"
+              ><UIcon :name="service.icon"
               /></span>
               <small class="text-oslo-gray-400 text-[10px]">{{ service.number }}</small>
             </div>
-            <h3 class="relative mt-7 text-lg font-bold">{{ service.title }}</h3>
-            <p class="text-oslo-gray-600 relative mt-3 text-[13px] leading-6">{{ service.text }}</p>
+            <h3 class="relative mt-7 text-lg font-bold">
+              {{ service.title }}
+            </h3>
+            <p class="text-oslo-gray-600 relative mt-3 text-[13px] leading-6">
+              {{ service.text }}
+            </p>
             <a
               :href="service.href"
               class="text-bright-blue-600 hover:text-bright-blue-500 relative mt-auto flex items-center gap-2 pt-5 text-[12px] font-bold transition"
-              >{{ service.action }} <UIcon name="i-lucide-arrow-right"
+            >{{ service.action }} <UIcon name="i-lucide-arrow-right"
             /></a>
           </SpotlightCard>
         </article>

@@ -226,8 +226,8 @@ onMounted(() => {
     last = now
 
     idleAngle += props.speed * dt
-    const steer =
-      props.followMouse && pointerAngle != null && (!props.autoAnimate || proximityT > 0)
+    const steer
+      = props.followMouse && pointerAngle != null && (!props.autoAnimate || proximityT > 0)
     const target = steer ? pointerAngle! : idleAngle
     const diff = ((target - angle + Math.PI * 3) % (Math.PI * 2)) - Math.PI
     angle += diff * (1 - Math.exp(-dt * 7))
@@ -239,8 +239,8 @@ onMounted(() => {
     lineC.set(props.lineColor)
     baseC.set(props.baseColor)
     program.uniforms.uAngle.value = angle
-    program.uniforms.uRadius.value =
-      Math.min(props.radius, Math.min(sizeRef.w, sizeRef.h) / 2) * dpr
+    program.uniforms.uRadius.value
+      = Math.min(props.radius, Math.min(sizeRef.w, sizeRef.h) / 2) * dpr
     program.uniforms.uLineColor.value = [lineC.r, lineC.g, lineC.b]
     program.uniforms.uBaseColor.value = [baseC.r, baseC.g, baseC.b]
     program.uniforms.uIntensity.value = props.intensity * bright

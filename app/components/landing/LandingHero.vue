@@ -2,6 +2,7 @@
 import hero from '@/assets/images/hero.webp'
 import RotatingText from '../bits/rotating-text.vue'
 import CountUp from '../bits/count-up.vue'
+
 const metrics = ref([
   { value: 99.9, suffix: '%', label: 'Operational uptime', duration: 2 },
   { value: 24, suffix: '/7', label: 'Bilingual coverage', duration: 1 },
@@ -75,7 +76,9 @@ const metrics = ref([
             color="neutral"
             icon="i-lucide-play"
             class="justify-center border-white/25 bg-white/5 text-white hover:bg-white/10"
-            >Explore services</UButton
+          >
+            Explore services
+          </UButton
           >
         </div>
         <div class="my-10 flex items-center gap-3">

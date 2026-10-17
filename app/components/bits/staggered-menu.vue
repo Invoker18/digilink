@@ -2,9 +2,9 @@
   <div class="sm-scope h-full w-full">
     <div
       :class="
-        (className ? className + ' ' : '') +
-        'staggered-menu-wrapper relative z-40 h-full w-full' +
-        (isFixed ? ' fixed-wrapper' : '')
+        (className ? className + ' ' : '')
+          + 'staggered-menu-wrapper relative z-40 h-full w-full'
+          + (isFixed ? ' fixed-wrapper' : '')
       "
       :style="accentColor ? { '--sm-accent': accentColor } : undefined"
       :data-position="position"
@@ -239,8 +239,8 @@ const busyRef = ref(false)
 const itemEntranceTweenRef = ref<gsap.core.Tween | null>(null)
 
 const processedColors = computed(() => {
-  const raw =
-    props.colors && props.colors.length ? props.colors.slice(0, 4) : ['#20251F', '#353F37']
+  const raw
+    = props.colors && props.colors.length ? props.colors.slice(0, 4) : ['#20251F', '#353F37']
   const arr = [...raw]
   if (arr.length >= 3) {
     const mid = Math.floor(arr.length / 2)
@@ -317,7 +317,7 @@ const buildOpenTimeline = (): gsap.core.Timeline | null => {
 
   const tl = gsap.timeline({ paused: true })
 
-  layerStates.forEach((ls: { el: HTMLElement; start: number }, i: number) => {
+  layerStates.forEach((ls: { el: HTMLElement, start: number }, i: number) => {
     tl.fromTo(
       ls.el,
       { xPercent: ls.start },
@@ -354,10 +354,10 @@ const buildOpenTimeline = (): gsap.core.Timeline | null => {
       tl.to(
         numberEls,
         {
-          duration: 0.6,
-          ease: 'power2.out',
+          'duration': 0.6,
+          'ease': 'power2.out',
           '--sm-num-opacity': 1,
-          stagger: { each: 0.08, from: 'start' }
+          'stagger': { each: 0.08, from: 'start' }
         },
         itemsStart + 0.1
       )
@@ -548,10 +548,10 @@ const bindClickAway = () => {
   if (!props.closeOnClickAway) return
   clickAwayHandler = (event: MouseEvent) => {
     if (
-      panelRef.value &&
-      !panelRef.value.contains(event.target as Node) &&
-      toggleBtnRef.value &&
-      !toggleBtnRef.value.contains(event.target as Node)
+      panelRef.value
+      && !panelRef.value.contains(event.target as Node)
+      && toggleBtnRef.value
+      && !toggleBtnRef.value.contains(event.target as Node)
     ) {
       closeMenu()
     }

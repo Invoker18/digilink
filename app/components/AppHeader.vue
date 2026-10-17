@@ -40,11 +40,11 @@ const observeHomeSections = () => {
   if (route.path !== '/') return
 
   activeSection.value = route.hash
-  const sectionIds = links.map((link) => link.href).filter((href) => href.startsWith('#'))
+  const sectionIds = links.map(link => link.href).filter(href => href.startsWith('#'))
 
   sectionObserver = new IntersectionObserver(
     (entries) => {
-      const activeEntry = entries.find((entry) => entry.isIntersecting)
+      const activeEntry = entries.find(entry => entry.isIntersecting)
       if (activeEntry) activeSection.value = `#${activeEntry.target.id}`
     },
     { rootMargin: '-35% 0px -55% 0px' }
@@ -101,7 +101,7 @@ onBeforeUnmount(() => {
           "
           class="lg:after:via-bright-blue-400 relative px-1 py-2 text-[13px] font-medium transition-colors duration-200 hover:text-white lg:after:absolute lg:after:right-0 lg:after:bottom-0 lg:after:left-0 lg:after:h-px lg:after:origin-center lg:after:scale-x-0 lg:after:bg-linear-to-r lg:after:from-transparent lg:after:to-transparent lg:after:transition-transform lg:hover:after:scale-x-100"
           @click="handleNavigation(link.href)"
-          >{{ link.label }}</a
+        >{{ link.label }}</a
         >
       </nav>
       <!-- <SpecularButton
@@ -130,7 +130,9 @@ onBeforeUnmount(() => {
         :to="homeAnchor('#contact')"
         trailing-icon="i-lucide-arrow-right"
         class="bg-bright-blue-500 text-matisse-950 hover:bg-bright-blue-400 hidden font-semibold shadow-[0_8px_24px_rgb(0_149_255/0.25)] transition-all duration-300 ease-linear hover:scale-105 sm:inline-flex"
-        >Schedule a call</UButton
+      >
+        Schedule a call
+      </UButton
       >
       <UButton
         color="neutral"
@@ -173,7 +175,7 @@ onBeforeUnmount(() => {
           ]"
           class="hover:text-bright-blue-300 flex min-h-15 items-center px-1 text-base font-medium transition-colors duration-200"
           @click="handleNavigation(link.href)"
-          >{{ link.label }}</a
+        >{{ link.label }}</a
         >
       </nav>
     </Transition>

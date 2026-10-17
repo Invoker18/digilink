@@ -3,6 +3,7 @@ import facility01 from '@/assets/images/facility-01.webp'
 import facility02 from '@/assets/images/facility-02.webp'
 import facility03 from '@/assets/images/facility-03.webp'
 </script>
+
 <template>
   <section id="facility" class="bg-white py-5 lg:py-28">
     <div
@@ -120,4 +121,5 @@ import facility03 from '@/assets/images/facility-03.webp'
     </div>
   </section>
 </template>
+
 <style scoped></style>
