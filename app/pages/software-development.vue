@@ -110,7 +110,9 @@ const engagementModels = [
             size="xl"
             trailing-icon="i-lucide-arrow-right"
             class="bg-bright-blue-500 text-matisse-950 hover:bg-bright-blue-400 justify-center font-bold"
-            >Build your development team</UButton
+          >
+            Build your development team
+          </UButton
           >
           <UButton
             to="#capabilities"
@@ -118,21 +120,23 @@ const engagementModels = [
             variant="outline"
             color="neutral"
             class="justify-center border-white/25 bg-white/5 text-white hover:bg-white/10"
-            >Explore capabilities</UButton
+          >
+            Explore capabilities
+          </UButton
           >
         </div>
         <div class="mt-9 grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
           <span class="grid gap-1"
-            ><b class="text-bright-blue-400 text-xl">Proven</b
-            ><small class="text-oslo-gray-300 text-[10px]">Experience you can rely on</small></span
+          ><b class="text-bright-blue-400 text-xl">Proven</b
+          ><small class="text-oslo-gray-300 text-[10px]">Experience you can rely on</small></span
           >
           <span class="grid gap-1"
-            ><b class="text-bright-blue-400 text-xl">Dedicated</b
-            ><small class="text-oslo-gray-300 text-[10px]">Teams built around you</small></span
+          ><b class="text-bright-blue-400 text-xl">Dedicated</b
+          ><small class="text-oslo-gray-300 text-[10px]">Teams built around you</small></span
           >
           <span class="grid gap-1"
-            ><b class="text-bright-blue-400 text-xl">Visible</b
-            ><small class="text-oslo-gray-300 text-[10px]">Progress you can follow</small></span
+          ><b class="text-bright-blue-400 text-xl">Visible</b
+          ><small class="text-oslo-gray-300 text-[10px]">Progress you can follow</small></span
           >
         </div>
       </div>
@@ -165,9 +169,11 @@ const engagementModels = [
           >
             <span
               class="bg-bright-blue-50 text-bright-blue-600 relative grid size-11 place-items-center rounded-lg text-xl transition group-hover:scale-110"
-              ><UIcon :name="capability.icon"
+            ><UIcon :name="capability.icon"
             /></span>
-            <h3 class="text-matisse-950 relative mt-7 text-lg font-bold">{{ capability.title }}</h3>
+            <h3 class="text-matisse-950 relative mt-7 text-lg font-bold">
+              {{ capability.title }}
+            </h3>
             <p class="text-oslo-gray-600 relative mt-3 text-[13px] leading-6">
               {{ capability.text }}
             </p>
@@ -206,7 +212,7 @@ const engagementModels = [
         >
           <span class="text-bright-blue-400 text-xl font-bold">{{ step[0] }}</span
           ><span
-            ><b class="text-[15px]">{{ step[1] }}</b>
+          ><b class="text-[15px]">{{ step[1] }}</b>
             <p class="text-oslo-gray-300 mt-1 text-[13px] leading-6">{{ step[2] }}</p></span
           >
         </li>
@@ -233,7 +239,9 @@ const engagementModels = [
             class="border-silver-200 hover:border-bright-blue-300 relative h-full rounded-lg border bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
           >
             <UIcon name="i-lucide-users-round" class="text-bright-blue-600 relative size-6" />
-            <h3 class="text-matisse-950 relative mt-5 text-xl font-bold">{{ model.title }}</h3>
+            <h3 class="text-matisse-950 relative mt-5 text-xl font-bold">
+              {{ model.title }}
+            </h3>
             <p class="text-oslo-gray-600 relative mt-2 text-[14px] leading-6">
               {{ model.description }}
             </p>

@@ -92,8 +92,8 @@ const features = [
             class="size-2 rounded-full border-2 border-emerald-400 bg-emerald-400/90 ring-6 ring-emerald-400/15 motion-safe:animate-[ping_1.5s_infinite]"
           />
           <span class="grid gap-0.5"
-            ><b class="text-[12px]">Network core</b
-            ><small class="text-oslo-gray-200 text-[8px]">Inside our delivery hub</small></span
+          ><b class="text-[12px]">Network core</b
+          ><small class="text-oslo-gray-200 text-[8px]">Inside our delivery hub</small></span
           >
         </div>
       </figure>
@@ -111,9 +111,9 @@ const features = [
       />
       <figcaption class="absolute inset-y-0 left-6 grid content-center gap-3 sm:left-9">
         <span class="text-bright-blue-400 text-[8px] font-bold tracking-[.16em] uppercase"
-          >The Digilink difference</span
+        >The Digilink difference</span
         ><b class="text-xl leading-snug sm:text-2xl"
-          >People, technology, and accountability<br class="hidden sm:block" />
+        >People, technology, and accountability<br class="hidden sm:block" />
           in one accountable operation.</b
         >
       </figcaption>
