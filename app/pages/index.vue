@@ -1,8 +1,9 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 useSeoMeta({
-  title: 'Digilink Corporation | Nearshore Customer Experience',
-  description:
-    'Bilingual, high-performance customer experience and technology teams with 20+ years of operational experience.'
+  title: () => t('seo.homeTitle'),
+  description: () => t('seo.homeDescription')
 })
 </script>
 

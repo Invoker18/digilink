@@ -11,6 +11,7 @@ const props = withDefaults(defineProps<{ variant?: ContactVariant }>(), {
 const submitted = ref(false)
 const isSubmitting = ref(false)
 const submissionError = ref('')
+const { t } = useI18n()
 
 type ContactFormState = {
   firstName: string
@@ -28,44 +29,29 @@ const formState = reactive<ContactFormState>({
   message: ''
 })
 
-const serviceOptions = computed(() =>
-  props.variant === 'development'
-    ? [
-        'Dedicated development team',
-        'Project delivery',
-        'QA and quality engineering',
-        'Integration or automation'
-      ]
-    : ['Customer Experience', 'Technical Helpdesk', 'Revenue Operations', 'Back Office']
-)
+const serviceOptions = computed(() => {
+  const prefix =
+    props.variant === 'development' ? 'contact.development.services' : 'contact.general.services'
+  const count = props.variant === 'development' ? 5 : 4
 
-const copy = computed(() =>
-  props.variant === 'development'
-    ? {
-        eyebrow: 'Build with Digilink',
-        title: 'Let’s talk about your next release.',
-        description:
-          'Tell us where you need capacity, capability, or delivery support. A technology specialist will follow up with a tailored approach.',
-        formTitle: 'Tell us what you’re building',
-        serviceLabel: 'What do you need?',
-        messageLabel: 'Tell us about the work',
-        messagePlaceholder: 'Team size, product, timeline, or technical priorities...',
-        submitLabel: 'Start the conversation',
-        successMessage: 'A technology specialist will be in touch within one business day.'
-      }
-    : {
-        eyebrow: 'Let\'s build together',
-        title: 'Your next great team starts here.',
-        description:
-          'Tell us what you\'re solving. We\'ll reply with a tailored staffing plan and transparent estimate within one business day.',
-        formTitle: 'Start the conversation',
-        serviceLabel: 'What can we help you with?',
-        messageLabel: 'Tell us about your needs',
-        messagePlaceholder: 'Team size, channels, launch timeline...',
-        submitLabel: 'Request a tailored quote',
-        successMessage: 'A solutions specialist will be in touch within one business day.'
-      }
-)
+  return Array.from({ length: count }, (_, index) => t(`${prefix}.${index}`))
+})
+
+const copy = computed(() => {
+  const prefix = props.variant === 'development' ? 'contact.development' : 'contact.general'
+
+  return {
+    eyebrow: t(`${prefix}.eyebrow`),
+    title: t(`${prefix}.title`),
+    description: t(`${prefix}.description`),
+    formTitle: t(`${prefix}.formTitle`),
+    serviceLabel: t(`${prefix}.serviceLabel`),
+    messageLabel: t(`${prefix}.messageLabel`),
+    messagePlaceholder: t(`${prefix}.messagePlaceholder`),
+    submitLabel: t(`${prefix}.submitLabel`),
+    successMessage: t(`${prefix}.successMessage`)
+  }
+})
 
 const formFieldUi = {
   label: 'text-oslo-gray-200',
@@ -90,15 +76,18 @@ const validate = (state: Partial<ContactFormState>): FormError[] => {
   const errors: FormError[] = []
 
   if (!state.firstName?.trim())
-    errors.push({ name: 'firstName', message: 'Enter your first name.' })
-  if (!state.lastName?.trim()) errors.push({ name: 'lastName', message: 'Enter your last name.' })
+    errors.push({ name: 'firstName', message: t('contact.form.validation.firstName') })
+  if (!state.lastName?.trim())
+    errors.push({ name: 'lastName', message: t('contact.form.validation.lastName') })
   if (!state.email?.trim()) {
-    errors.push({ name: 'email', message: 'Enter your work email.' })
+    errors.push({ name: 'email', message: t('contact.form.validation.emailRequired') })
   } else if (!/^\S+@\S+\.\S+$/.test(state.email)) {
-    errors.push({ name: 'email', message: 'Enter a valid email address.' })
+    errors.push({ name: 'email', message: t('contact.form.validation.emailInvalid') })
   }
-  if (!state.service) errors.push({ name: 'service', message: 'Choose a service.' })
-  if (!state.message?.trim()) errors.push({ name: 'message', message: 'Tell us what you need.' })
+  if (!state.service)
+    errors.push({ name: 'service', message: t('contact.form.validation.service') })
+  if (!state.message?.trim())
+    errors.push({ name: 'message', message: t('contact.form.validation.message') })
 
   return errors
 }
@@ -121,38 +110,38 @@ const onSubmit = async (event: FormSubmitEvent<ContactFormState>) => {
     })
     submitted.value = true
   } catch {
-    submissionError.value
-      = 'We could not send your request. Please try again or contact us directly.'
+    submissionError.value = t('contact.form.submitError')
   } finally {
     isSubmitting.value = false
   }
 }
 
-const nextSteps = [
+const nextSteps = computed(() => [
   {
     icon: 'i-lucide-clipboard-pen-line',
-    title: 'Share your priorities',
-    text: 'Tell us about the work, timeline, and team you need.'
+    title: t('contact.steps.0.title'),
+    text: t('contact.steps.0.text')
   },
   {
     icon: 'i-lucide-users-round',
-    title: 'Meet a solutions lead',
-    text: 'We will schedule a focused discovery conversation.'
+    title: t('contact.steps.1.title'),
+    text: t('contact.steps.1.text')
   },
   {
     icon: 'i-lucide-file-check-2',
-    title: 'Receive your plan',
-    text: 'Get a clear staffing approach and next steps.'
+    title: t('contact.steps.2.title'),
+    text: t('contact.steps.2.text')
   }
-]
+])
 </script>
 
 <template>
   <section id="contact" class="bg-matisse-950 relative overflow-hidden py-18 text-white sm:py-28">
     <div
+      data-reveal
       class="relative mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-9 sm:w-[calc(100%-3rem)] lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-24"
     >
-      <div>
+      <div data-reveal-item>
         <p class="text-bright-blue-400 text-[11px] font-bold tracking-[.16em] uppercase">
           {{ copy.eyebrow }}
         </p>
@@ -166,7 +155,7 @@ const nextSteps = [
         </p>
         <div class="mt-8 border-t border-white/10 pt-5">
           <p class="text-bright-blue-400 text-[10px] font-bold tracking-[.14em] uppercase">
-            What happens next
+            {{ t('contact.next') }}
           </p>
           <div class="mt-4 grid gap-4">
             <div v-for="step in nextSteps" :key="step.title" class="flex gap-3">
@@ -186,17 +175,16 @@ const nextSteps = [
           >
             <span class="bg-bright-blue-400 ring-bright-blue-400/10 size-2 rounded-full ring-4" />
             <span class="grid gap-0.5">
-              <b class="text-bright-blue-100 text-[10px]"
-              >A thoughtful response, not an automated handoff.</b
-              >
-              <small class="text-bright-blue-100/60 text-[9px]"
-              >Expect to hear from our team within one business day.</small
-              >
+              <b class="text-bright-blue-100 text-[10px]">{{ t('contact.promise') }}</b>
+              <small class="text-bright-blue-100/60 text-[9px]">{{
+                t('contact.responseTime')
+              }}</small>
             </span>
           </div>
         </div>
       </div>
       <SpotlightCard
+        data-reveal-item
         spotlight-color="rgb(32 178 255 / 0.2)"
         class="border-bright-blue-400/25 bg-matisse-900/55 relative rounded-xl border p-4 backdrop-blur sm:p-8"
       >
@@ -208,9 +196,7 @@ const nextSteps = [
             name="i-lucide-check"
             class="bg-bright-blue-400 text-matisse-950 ring-bright-blue-300/30 size-14 rounded-full p-3 shadow-[0_0_28px_rgb(0_149_255/0.35)] ring-4"
           />
-          <h3 class="text-xl font-bold">
-            Thank you. We're on it.
-          </h3>
+          <h3 class="text-xl font-bold">{{ t('contact.form.successTitle') }}</h3>
           <p class="text-oslo-gray-200 max-w-75">
             {{ copy.successMessage }}
           </p>
@@ -220,7 +206,7 @@ const nextSteps = [
             class="border-bright-blue-300/45 bg-matisse-950/50 hover:bg-matisse-950/75 text-white"
             @click="submitted = false"
           >
-            Send another inquiry
+            {{ t('contact.form.sendAnother') }}
           </UButton>
         </div>
         <UForm
@@ -236,10 +222,15 @@ const nextSteps = [
             <h3 class="text-lg font-bold">
               {{ copy.formTitle }}
             </h3>
-            <span class="text-bright-blue-400 text-[9px]">Usually replies in under 4 hours</span>
+            <span class="text-bright-blue-400 text-[9px]">{{ t('contact.replyTime') }}</span>
           </div>
           <div class="grid gap-3 sm:grid-cols-2">
-            <UFormField label="First name" name="firstName" :ui="formFieldUi" class="text-[11px]">
+            <UFormField
+              :label="t('contact.form.firstName')"
+              name="firstName"
+              :ui="formFieldUi"
+              class="text-[11px]"
+            >
               <UInput
                 v-model="formState.firstName"
                 placeholder="Alex"
@@ -248,7 +239,12 @@ const nextSteps = [
                 class="w-full"
               />
             </UFormField>
-            <UFormField label="Last name" name="lastName" :ui="formFieldUi" class="text-[11px]">
+            <UFormField
+              :label="t('contact.form.lastName')"
+              name="lastName"
+              :ui="formFieldUi"
+              class="text-[11px]"
+            >
               <UInput
                 v-model="formState.lastName"
                 placeholder="Morgan"
@@ -258,7 +254,12 @@ const nextSteps = [
               />
             </UFormField>
           </div>
-          <UFormField label="Work email" name="email" :ui="formFieldUi" class="text-[11px]">
+          <UFormField
+            :label="t('contact.form.workEmail')"
+            name="email"
+            :ui="formFieldUi"
+            class="text-[11px]"
+          >
             <UInput
               v-model="formState.email"
               type="email"
@@ -277,7 +278,7 @@ const nextSteps = [
             <USelect
               v-model="formState.service"
               :items="serviceOptions"
-              placeholder="Select a service"
+              :placeholder="t('contact.form.selectService')"
               variant="none"
               :ui="darkSelectUi"
               class="w-full"

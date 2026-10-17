@@ -2,21 +2,43 @@
 import facility01 from '@/assets/images/facility-01.webp'
 import facility02 from '@/assets/images/facility-02.webp'
 import facility03 from '@/assets/images/facility-03.webp'
+
+const { t } = useI18n()
+
+const facilityItems = computed(() => [
+  {
+    icon: 'i-lucide-clock-3',
+    title: t('home.facility.items.0.title'),
+    text: t('home.facility.items.0.text')
+  },
+  {
+    icon: 'i-lucide-messages-square',
+    title: t('home.facility.items.1.title'),
+    text: t('home.facility.items.1.text')
+  },
+  {
+    icon: 'i-lucide-server',
+    title: t('home.facility.items.2.title'),
+    text: t('home.facility.items.2.text')
+  }
+])
 </script>
 
 <template>
   <section id="facility" class="bg-white py-5 lg:py-28">
     <div
+      data-reveal
       class="mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-9 sm:w-[calc(100%-3rem)] lg:grid-cols-[.94fr_1.06fr] lg:items-center lg:gap-21"
     >
       <div
+        data-reveal-item
         class="relative hidden h-97.5 grid-cols-[1.2fr_.8fr] grid-rows-2 gap-2.5 sm:h-142.5 lg:grid"
       >
         <!-- Main Left Image -->
         <div class="group relative row-span-2 overflow-hidden rounded-l-lg">
           <img
             :src="facility01"
-            alt="Digilink customer service team"
+            :alt="t('home.facility.imageAlts.0')"
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"
           />
           <div
@@ -28,7 +50,7 @@ import facility03 from '@/assets/images/facility-03.webp'
         <div class="group relative overflow-hidden rounded-tr-lg">
           <img
             :src="facility02"
-            alt="Team planning at a table"
+            :alt="t('home.facility.imageAlts.1')"
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"
           />
           <div
@@ -40,7 +62,7 @@ import facility03 from '@/assets/images/facility-03.webp'
         <div class="group relative overflow-hidden rounded-br-lg">
           <img
             :src="facility03"
-            alt="Professionals working together"
+            :alt="t('home.facility.imageAlts.2')"
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"
           />
           <div
@@ -54,45 +76,28 @@ import facility03 from '@/assets/images/facility-03.webp'
         >
           <UIcon name="i-lucide-sparkles" />
           <span class="grid">
-            <b class="text-[11px] text-white">20+ years</b>
-            <small class="text-oslo-gray-200 text-[8px]">Of operational excellence</small>
+            <b class="text-[11px] text-white">{{ t('home.facility.badgeTitle') }}</b>
+            <small class="text-oslo-gray-200 text-[8px]">{{ t('home.facility.badgeText') }}</small>
           </span>
         </div>
       </div>
-      <div class="lg:max-w-none">
+      <div data-reveal-item class="lg:max-w-none">
         <p class="text-bright-blue-600 text-[11px] font-bold tracking-[.16em] uppercase">
-          Why Digilink
+          {{ t('home.facility.eyebrow') }}
         </p>
         <h2
           class="text-matisse-950 mt-5 text-5xl leading-[1.12] font-semibold tracking-tighter lg:mt-3 lg:text-[clamp(2.25rem,4vw,3.25rem)] lg:leading-tight"
         >
-          Experience that scales.<br />Service that performs.
+          {{ t('home.facility.title') }}<br />{{ t('home.facility.titleAccent') }}
         </h2>
         <p
           class="text-oslo-gray-600 mt-6 max-w-140 text-[15px] leading-7 lg:mt-5 lg:max-w-none lg:text-base"
         >
-          For more than two decades, Digilink has paired skilled teams, disciplined processes, and
-          hands-on leadership to deliver dependable customer and technical experiences.
+          {{ t('home.facility.description') }}
         </p>
         <div class="divide-silver-200 mt-8 divide-y lg:mt-6">
           <div
-            v-for="item in [
-              {
-                icon: 'i-lucide-clock-3',
-                title: 'Aligned to your operation',
-                text: 'Responsive coverage, shared workflows, and direct collaboration keep work moving without handoffs.'
-              },
-              {
-                icon: 'i-lucide-messages-square',
-                title: 'Customer-ready communication',
-                text: 'English and Spanish-speaking teams deliver clear, empathetic experiences across every channel.'
-              },
-              {
-                icon: 'i-lucide-server',
-                title: 'Reliable by design',
-                text: 'Resilient connectivity, backup power, monitored systems, and secure workstations protect continuity.'
-              }
-            ]"
+            v-for="item in facilityItems"
             :key="item.title"
             class="flex gap-4 py-5 lg:gap-3 lg:py-4"
           >
@@ -114,7 +119,7 @@ import facility03 from '@/assets/images/facility-03.webp'
           href="#contact"
           class="text-bright-blue-600 hover:text-bright-blue-500 mt-10 flex items-center gap-2 text-xs font-bold transition lg:mt-5"
         >
-          See how we work
+          {{ t('home.facility.action') }}
           <UIcon name="i-lucide-arrow-right" />
         </a>
       </div>

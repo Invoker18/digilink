@@ -2,42 +2,43 @@
 import dataCenter from '@/assets/images/datacenter.webp'
 import desk from '@/assets/images/desk.webp'
 
-const features = [
+const { t } = useI18n()
+const features = computed(() => [
   {
     icon: 'i-lucide-server',
-    title: 'On-site infrastructure',
-    text: 'Dedicated server and network equipment within our delivery environment.'
+    title: t('home.infrastructure.features.0.title'),
+    text: t('home.infrastructure.features.0.text')
   },
   {
     icon: 'i-lucide-lock-keyhole',
-    title: 'Controlled workplace',
-    text: 'Managed workstations inside a supervised professional delivery hub.'
+    title: t('home.infrastructure.features.1.title'),
+    text: t('home.infrastructure.features.1.text')
   },
   {
     icon: 'i-lucide-layers-3',
-    title: 'Operational continuity',
-    text: 'Centralized systems and on-site technical support keep programs connected.'
+    title: t('home.infrastructure.features.2.title'),
+    text: t('home.infrastructure.features.2.text')
   }
-]
+])
 </script>
 
 <template>
   <section id="infrastructure" class="bg-matisse-950 py-18 text-white sm:py-28">
     <div
+      data-reveal
       class="mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-9 sm:w-[calc(100%-3rem)] lg:grid-cols-[1fr_.92fr] lg:items-center lg:gap-24"
     >
-      <div>
+      <div data-reveal-item>
         <p class="text-bright-blue-400 text-[11px] font-bold tracking-[.16em] uppercase">
-          Secure by design
+          {{ t('home.infrastructure.eyebrow') }}
         </p>
         <h2
           class="mt-3 max-w-145 text-[clamp(2.25rem,4vw,3.25rem)] leading-tight font-bold tracking-[-.04em]"
         >
-          Your operation is backed by real infrastructure.
+          {{ t('home.infrastructure.title') }}
         </h2>
         <p class="text-oslo-gray-200 mt-5 max-w-140 leading-7">
-          Our on-site technology environment gives every client a more controlled, reliable
-          foundation than a scattered work-from-home model.
+          {{ t('home.infrastructure.description') }}
         </p>
         <div class="mt-6 divide-y divide-white/10">
           <div v-for="feature in features" :key="feature.title" class="flex gap-4 py-4">
@@ -57,19 +58,22 @@ const features = [
         >
           <UIcon name="i-lucide-check" class="size-4 shrink-0" />
           <span class="grid gap-0.5">
-            <b class="text-bright-blue-100 text-[10px]">Security is an operational advantage</b>
+            <b class="text-bright-blue-100 text-[10px]">{{
+              t('home.infrastructure.calloutTitle')
+            }}</b>
             <small class="text-bright-blue-100/50 text-[8px]">
-              Infrastructure, people, and process in one accountable location.
+              {{ t('home.infrastructure.calloutText') }}
             </small>
           </span>
         </div>
       </div>
       <figure
+        data-reveal-item
         class="border-bright-blue-400/30 relative order-last h-90 overflow-hidden rounded-xl border sm:h-140 lg:order-0"
       >
         <img
           :src="dataCenter"
-          alt="Network server hardware"
+          :alt="t('home.infrastructure.dataCenterAlt')"
           class="size-full object-cover brightness-75 saturate-75"
         />
         <div
@@ -83,8 +87,10 @@ const features = [
         >
           <UIcon name="i-lucide-lock-keyhole" />
           <span class="text-oslo-gray-300 grid text-[8px] tracking-[.13em] uppercase">
-            Digilink infrastructure
-            <b class="text-[11px] tracking-normal text-white normal-case">On-site & controlled</b>
+            {{ t('home.infrastructure.captionLabel') }}
+            <b class="text-[11px] tracking-normal text-white normal-case">{{
+              t('home.infrastructure.captionTitle')
+            }}</b>
           </span>
         </figcaption>
         <div class="absolute bottom-5 left-5 flex items-center gap-3">
@@ -92,30 +98,34 @@ const features = [
             class="size-2 rounded-full border-2 border-emerald-400 bg-emerald-400/90 ring-6 ring-emerald-400/15 motion-safe:animate-[ping_1.5s_infinite]"
           />
           <span class="grid gap-0.5"
-          ><b class="text-[12px]">Network core</b
-          ><small class="text-oslo-gray-200 text-[8px]">Inside our delivery hub</small></span
+            ><b class="text-[12px]">{{ t('home.infrastructure.networkCore') }}</b
+            ><small class="text-oslo-gray-200 text-[8px]">{{
+              t('home.infrastructure.networkText')
+            }}</small></span
           >
         </div>
       </figure>
     </div>
     <figure
+      data-reveal
       class="relative mx-auto mt-14 h-45 w-[calc(100%-2rem)] max-w-295 overflow-hidden rounded-xl border border-white/10 sm:mt-20 sm:w-[calc(100%-3rem)]"
     >
       <img
+        data-reveal-image
         :src="desk"
-        alt="Digilink operations floor"
+        :alt="t('home.infrastructure.operationsAlt')"
         class="size-full object-cover brightness-40 saturate-75"
       />
       <div
         class="from-matisse-950 via-matisse-950/70 absolute inset-0 bg-linear-to-r to-transparent"
       />
       <figcaption class="absolute inset-y-0 left-6 grid content-center gap-3 sm:left-9">
-        <span class="text-bright-blue-400 text-[8px] font-bold tracking-[.16em] uppercase"
-        >The Digilink difference</span
-        ><b class="text-xl leading-snug sm:text-2xl"
-        >People, technology, and accountability<br class="hidden sm:block" />
-          in one accountable operation.</b
-        >
+        <span class="text-bright-blue-400 text-[8px] font-bold tracking-[.16em] uppercase">{{
+          t('home.infrastructure.difference')
+        }}</span
+        ><b class="text-xl leading-snug sm:text-2xl">{{
+          t('home.infrastructure.differenceTitle')
+        }}</b>
       </figcaption>
     </figure>
   </section>

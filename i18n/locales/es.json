@@ -1,0 +1,309 @@
+{
+  "language": {
+    "switcher": "Idioma",
+    "english": "Inglés",
+    "spanish": "Español"
+  },
+  "nav": {
+    "services": "Servicios",
+    "development": "Desarrollo",
+    "advantage": "Nuestra ventaja",
+    "contact": "Contacto",
+    "getInTouch": "Hablemos",
+    "home": "Inicio de Digilink",
+    "main": "Navegación principal",
+    "openMenu": "Abrir menú de navegación",
+    "closeMenu": "Cerrar menú de navegación"
+  },
+  "seo": {
+    "homeTitle": "Digilink Corporation | Experiencia del cliente nearshore",
+    "homeDescription": "Equipos bilingües de experiencia del cliente y tecnología de alto desempeño, respaldados por más de 20 años de experiencia operativa.",
+    "developmentTitle": "Equipos de desarrollo de software | Digilink Corporation",
+    "developmentDescription": "Amplía tu equipo de producto con desarrolladores, especialistas de QA y soporte de entrega comprobados de Digilink."
+  },
+  "footer": {
+    "description": "Equipos bilingües de experiencia del cliente y tecnología, creados para marcas globales ambiciosas.",
+    "startConversation": "Inicia una conversación",
+    "services": "Servicios",
+    "company": "Empresa",
+    "callCenter": "Centro de contacto",
+    "technicalSupport": "Soporte técnico",
+    "softwareDevelopment": "Desarrollo de software",
+    "ourAdvantage": "Nuestra ventaja",
+    "infrastructure": "Infraestructura",
+    "contact": "Contacto",
+    "eyebrow": "Hecho para entregar resultados",
+    "title": "Equipos reales. Responsabilidad real.",
+    "copy": "Un socio operativo para equipos que necesitan capacidad confiable y avance compartido.",
+    "tagline": "Equipos bilingües, alineados a tu operación",
+    "copyright": "Todos los derechos reservados.",
+    "bottomTagline": "Experiencia del cliente y entrega tecnológica"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Digilink Corporation",
+      "titleStart": "Atención al cliente excepcional,",
+      "rotating": ["experta", "atenta", "confiable"],
+      "titleEnd": "entregada.",
+      "description": "Crea un equipo bilingüe de alto desempeño respaldado por más de 20 años de experiencia operativa, alineado a tus horarios, cultura y crecimiento.",
+      "primaryAction": "Crea tu equipo",
+      "secondaryAction": "Explora servicios",
+      "statement": "Nuestra gente.",
+      "statementAccent": "Tu experiencia de cliente.",
+      "operations": {
+        "label": "Operaciones en vivo",
+        "status": "Todos los canales activos",
+        "channels": "Voz, chat, correo",
+        "coverage": "Cobertura 24/7"
+      },
+      "metrics": [
+        "Disponibilidad operativa",
+        "Cobertura bilingüe",
+        "Años de experiencia",
+        "Satisfacción de clientes"
+      ]
+    },
+    "services": {
+      "eyebrow": "Lo que hacemos",
+      "title": "Construido alrededor de conversaciones que importan.",
+      "description": "Nuestro centro de contacto es el corazón de Digilink. Añade talento técnico y de desarrollo a medida que crece tu operación.",
+      "coreLabel": "Nuestra capacidad principal",
+      "coreTitle": "Centro de contacto",
+      "coreDescription": "Equipos bilingües de voz, chat, correo electrónico y redes sociales que representan tu marca las 24 horas.",
+      "corePoints": [
+        "Cobertura alineada a EST",
+        "Agentes en inglés y español",
+        "QA y coaching en vivo"
+      ],
+      "coverage": "cobertura lista",
+      "startConversation": "Inicia una conversación",
+      "technicalTitle": "Soporte técnico",
+      "technicalDescription": "Resolución de problemas de nivel 1 y 2 a cargo de especialistas técnicamente capacitados y orientados a procesos.",
+      "developmentTitle": "Desarrollo de software",
+      "developmentDescription": "Talento de desarrollo dedicado para aplicaciones web, integraciones, mejoras de producto y entrega continua.",
+      "exploreService": "Explora el servicio"
+    },
+    "facility": {
+      "imageAlts": [
+        "Equipo de servicio al cliente de Digilink",
+        "Equipo planificando en una mesa",
+        "Profesionales trabajando juntos"
+      ],
+      "badgeTitle": "+20 años",
+      "badgeText": "De excelencia operativa",
+      "eyebrow": "Por qué Digilink",
+      "title": "Experiencia que escala.",
+      "titleAccent": "Servicio que cumple.",
+      "description": "Durante más de dos décadas, Digilink ha combinado equipos capacitados, procesos disciplinados y liderazgo cercano para ofrecer experiencias de cliente y tecnología confiables.",
+      "items": [
+        {
+          "title": "Alineados a tu operación",
+          "text": "Cobertura ágil, flujos de trabajo compartidos y colaboración directa mantienen el trabajo en movimiento sin traspasos."
+        },
+        {
+          "title": "Comunicación lista para clientes",
+          "text": "Equipos en inglés y español entregan experiencias claras y empáticas en cada canal."
+        },
+        {
+          "title": "Confiabilidad por diseño",
+          "text": "Conectividad resiliente, energía de respaldo, sistemas monitoreados y estaciones seguras protegen la continuidad."
+        }
+      ],
+      "action": "Conoce cómo trabajamos"
+    },
+    "infrastructure": {
+      "eyebrow": "Seguridad por diseño",
+      "title": "Tu operación cuenta con infraestructura real.",
+      "description": "Nuestro entorno tecnológico en sitio brinda a cada cliente una base más controlada y confiable que un modelo remoto disperso.",
+      "features": [
+        {
+          "title": "Infraestructura en sitio",
+          "text": "Equipos de servidor y red dedicados dentro de nuestro entorno de entrega."
+        },
+        {
+          "title": "Espacio de trabajo controlado",
+          "text": "Estaciones gestionadas dentro de un centro de entrega profesional y supervisado."
+        },
+        {
+          "title": "Continuidad operativa",
+          "text": "Sistemas centralizados y soporte técnico en sitio mantienen conectados los programas."
+        }
+      ],
+      "calloutTitle": "La seguridad es una ventaja operativa",
+      "calloutText": "Infraestructura, personas y procesos en una ubicación responsable.",
+      "dataCenterAlt": "Hardware de red y servidores",
+      "captionLabel": "Infraestructura Digilink",
+      "captionTitle": "En sitio y controlada",
+      "networkCore": "Núcleo de red",
+      "networkText": "Dentro de nuestro centro de entrega",
+      "operationsAlt": "Piso operativo de Digilink",
+      "difference": "La diferencia Digilink",
+      "differenceTitle": "Personas, tecnología y responsabilidad en una sola operación."
+    },
+    "partners": { "eyebrow": "Socios comerciales de confianza", "logo": "Logo de {name}" }
+  },
+  "development": {
+    "hero": {
+      "map": {
+        "product": "Producto",
+        "systems": "Sistemas",
+        "data": "Datos",
+        "delivery": "Entrega"
+      },
+      "eyebrow": "Digilink Corporation · Entrega tecnológica",
+      "titleStart": "Equipos de software que te ayudan a",
+      "rotating": ["crear", "entregar", "escalar"],
+      "titleEnd": "mejor.",
+      "description": "Añade talento de desarrollo comprobado a tu organización, con la estructura, visibilidad y disciplina operativa para convertir ideas de producto, sistemas críticos y datos en progreso significativo.",
+      "primaryAction": "Crea tu equipo de desarrollo",
+      "secondaryAction": "Explora capacidades",
+      "principles": [
+        { "title": "Enfocados en producto", "text": "Construidos alrededor del resultado" },
+        { "title": "Listos para sistemas", "text": "Cómodos con la complejidad" },
+        { "title": "Guiados por entrega", "text": "Progreso que puedes ver" }
+      ]
+    },
+    "capabilities": {
+      "eyebrow": "Lo que construimos",
+      "title": "Desde el primer lanzamiento hasta los sistemas que sostienen tu negocio.",
+      "description": "Aportamos pensamiento de producto, ingeniería práctica y disciplina de entrega al trabajo que tienes por delante, ya sea una idea, un reto de datos o un sistema listo para crecer.",
+      "items": [
+        {
+          "title": "Productos y plataformas digitales",
+          "text": "Experiencias de cliente, herramientas internas y plataformas que hacen posible el trabajo ambicioso."
+        },
+        {
+          "title": "Datos, integraciones y automatización",
+          "text": "Sistemas conectados y flujos de información más claros que convierten la complejidad operativa en impulso."
+        },
+        {
+          "title": "Calidad y confiabilidad",
+          "text": "Prácticas de ingeniería cuidadosas que mantienen las entregas confiables mientras productos y equipos evolucionan."
+        },
+        {
+          "title": "Evolución de producto",
+          "text": "Un equipo constante para modernización, mejoras significativas y el trabajo que mantiene tu hoja de ruta en movimiento."
+        }
+      ]
+    },
+    "workflow": {
+      "eyebrow": "Cómo funciona la entrega",
+      "title": "Capacidad de ingeniería que trabaja como parte de tu equipo.",
+      "description": "Una buena entrega es más que añadir capacidad. Creamos el contexto compartido, el ritmo operativo y el cuidado técnico para que las personas contribuyan pronto y mantengan la responsabilidad sobre el resultado.",
+      "steps": [
+        {
+          "title": "Mapear la oportunidad",
+          "text": "Aclaramos el producto, los sistemas, los datos y las decisiones que darán forma al trabajo."
+        },
+        {
+          "title": "Formar el equipo adecuado",
+          "text": "Reunimos la capacidad de ingeniería y entrega adecuada para la complejidad que tienes por delante."
+        },
+        {
+          "title": "Integrarse al trabajo",
+          "text": "Tu equipo trabaja en tus herramientas, rituales y ritmo de reportes con contexto compartido desde el primer día."
+        },
+        {
+          "title": "Construir, aprender, evolucionar",
+          "text": "Hacemos visible el progreso, aprendemos con tus partes interesadas y escalamos deliberadamente a medida que cambian las prioridades."
+        }
+      ]
+    },
+    "engagement": {
+      "eyebrow": "Modelos de colaboración",
+      "title": "Comienza con el trabajo que más importa.",
+      "models": [
+        {
+          "title": "Equipo dedicado",
+          "description": "Una extensión duradera de tu organización de producto e ingeniería.",
+          "points": [
+            "Contexto profundo de producto y sistemas",
+            "Composición flexible de equipo",
+            "Ritmo de entrega integrado"
+          ]
+        },
+        {
+          "title": "Entrega de proyecto",
+          "description": "Un equipo guiado por entrega para una construcción definida, iniciativa de plataforma o mejora de sistema.",
+          "points": [
+            "Resultados e hitos claros",
+            "Supervisión senior de entrega",
+            "Traspaso y continuidad duraderos"
+          ]
+        }
+      ]
+    }
+  },
+  "contact": {
+    "steps": [
+      {
+        "title": "Comparte tus prioridades",
+        "text": "Cuéntanos sobre el trabajo, calendario y equipo que necesitas."
+      },
+      {
+        "title": "Conoce a un líder de soluciones",
+        "text": "Programaremos una conversación de descubrimiento enfocada."
+      },
+      {
+        "title": "Recibe tu plan",
+        "text": "Obtén un enfoque claro de contratación y próximos pasos."
+      }
+    ],
+    "next": "Qué sucede después",
+    "promise": "Una respuesta considerada, no una derivación automatizada.",
+    "responseTime": "Espera noticias de nuestro equipo dentro de un día hábil.",
+    "replyTime": "Solemos responder en menos de 4 horas",
+    "form": {
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "workEmail": "Correo laboral",
+      "selectService": "Selecciona un servicio",
+      "submitError": "No pudimos enviar tu solicitud. Inténtalo de nuevo o contáctanos directamente.",
+      "successTitle": "Gracias. Estamos en ello.",
+      "sendAnother": "Enviar otra consulta",
+      "validation": {
+        "firstName": "Ingresa tu nombre.",
+        "lastName": "Ingresa tu apellido.",
+        "emailRequired": "Ingresa tu correo laboral.",
+        "emailInvalid": "Ingresa un correo válido.",
+        "service": "Elige un servicio.",
+        "message": "Cuéntanos qué necesitas."
+      }
+    },
+    "general": {
+      "eyebrow": "Construyamos juntos",
+      "title": "Tu próximo gran equipo comienza aquí.",
+      "description": "Cuéntanos qué estás resolviendo. Te responderemos con un plan de contratación a medida y una estimación transparente dentro de un día hábil.",
+      "formTitle": "Inicia la conversación",
+      "serviceLabel": "¿Cómo podemos ayudarte?",
+      "messageLabel": "Cuéntanos tus necesidades",
+      "messagePlaceholder": "Tamaño del equipo, canales, fecha de lanzamiento...",
+      "submitLabel": "Solicita una cotización a medida",
+      "successMessage": "Un especialista en soluciones se pondrá en contacto dentro de un día hábil.",
+      "services": [
+        "Experiencia del cliente",
+        "Mesa de ayuda técnica",
+        "Operaciones de ingresos",
+        "Back office"
+      ]
+    },
+    "development": {
+      "eyebrow": "Construye con Digilink",
+      "title": "Hagamos que la próxima parte de tu producto cuente.",
+      "description": "Cuéntanos dónde necesitas impulso: una experiencia digital, sistema crítico, iniciativa de datos o un equipo capaz de llevar el trabajo adelante.",
+      "formTitle": "Inicia la conversación técnica",
+      "serviceLabel": "¿Dónde podemos ayudar?",
+      "messageLabel": "¿En qué estás trabajando?",
+      "messagePlaceholder": "Producto, plataforma, datos, sistemas, calendario...",
+      "submitLabel": "Inicia la conversación",
+      "successMessage": "Un líder de tecnología se pondrá en contacto dentro de un día hábil.",
+      "services": [
+        "Construcción de producto o plataforma",
+        "Experiencia web o digital",
+        "Datos, analítica o automatización",
+        "Integración o modernización de sistemas",
+        "Equipo de desarrollo dedicado"
+      ]
+    }
+  }
+}

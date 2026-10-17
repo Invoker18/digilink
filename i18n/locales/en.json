@@ -1,0 +1,295 @@
+{
+  "language": {
+    "switcher": "Language",
+    "english": "English",
+    "spanish": "Spanish"
+  },
+  "nav": {
+    "services": "Services",
+    "development": "Development",
+    "advantage": "Our advantage",
+    "contact": "Contact",
+    "getInTouch": "Get in touch",
+    "home": "Digilink home",
+    "main": "Main navigation",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  },
+  "seo": {
+    "homeTitle": "Digilink Corporation | Nearshore Customer Experience",
+    "homeDescription": "Bilingual, high-performance customer experience and technology teams with 20+ years of operational experience.",
+    "developmentTitle": "Software Development Teams | Digilink Corporation",
+    "developmentDescription": "Extend your product team with proven software developers, QA specialists, and delivery support from Digilink."
+  },
+  "footer": {
+    "description": "Bilingual customer experience and technology teams, built for ambitious global brands.",
+    "startConversation": "Start a conversation",
+    "services": "Services",
+    "company": "Company",
+    "callCenter": "Call Center",
+    "technicalSupport": "Technical Support",
+    "softwareDevelopment": "Software Development",
+    "ourAdvantage": "Our Advantage",
+    "infrastructure": "Infrastructure",
+    "contact": "Contact",
+    "eyebrow": "Built for delivery",
+    "title": "Real teams. Real accountability.",
+    "copy": "An operational partner for teams that need dependable capacity and shared momentum.",
+    "tagline": "Bilingual teams, aligned to your operation",
+    "copyright": "All rights reserved.",
+    "bottomTagline": "Customer experience and technology delivery"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Digilink Corporation",
+      "titleStart": "Exceptional customer care,",
+      "rotating": ["expertly", "thoughtfully", "reliably"],
+      "titleEnd": "delivered.",
+      "description": "Build a bilingual, high-performance team backed by 20+ years of operational experience, aligned to your hours, your culture, and your growth.",
+      "primaryAction": "Build your team",
+      "secondaryAction": "Explore services",
+      "statement": "Our people.",
+      "statementAccent": "Your customer experience.",
+      "operations": {
+        "label": "Live operations",
+        "status": "All channels online",
+        "channels": "Voice, chat, email",
+        "coverage": "24/7 coverage"
+      },
+      "metrics": [
+        "Operational uptime",
+        "Bilingual coverage",
+        "Years of experience",
+        "Client satisfaction"
+      ]
+    },
+    "services": {
+      "eyebrow": "What we do",
+      "title": "Built around conversations that matter.",
+      "description": "Our call center is the heart of Digilink. Add technical and development talent as your operation grows.",
+      "coreLabel": "Our core capability",
+      "coreTitle": "Call Center",
+      "coreDescription": "Bilingual voice, chat, email, and social support teams that represent your brand around the clock.",
+      "corePoints": ["EST-aligned coverage", "English & Spanish agents", "Live QA and coaching"],
+      "coverage": "coverage ready",
+      "startConversation": "Start a conversation",
+      "technicalTitle": "Technical Support",
+      "technicalDescription": "Tier 1 and Tier 2 troubleshooting delivered by technically fluent, process-driven specialists.",
+      "developmentTitle": "Software Development",
+      "developmentDescription": "Dedicated development talent for web applications, integrations, product improvements, and ongoing delivery.",
+      "exploreService": "Explore service"
+    },
+    "facility": {
+      "imageAlts": [
+        "Digilink customer service team",
+        "Team planning at a table",
+        "Professionals working together"
+      ],
+      "badgeTitle": "20+ years",
+      "badgeText": "Of operational excellence",
+      "eyebrow": "Why Digilink",
+      "title": "Experience that scales.",
+      "titleAccent": "Service that performs.",
+      "description": "For more than two decades, Digilink has paired skilled teams, disciplined processes, and hands-on leadership to deliver dependable customer and technical experiences.",
+      "items": [
+        {
+          "title": "Aligned to your operation",
+          "text": "Responsive coverage, shared workflows, and direct collaboration keep work moving without handoffs."
+        },
+        {
+          "title": "Customer-ready communication",
+          "text": "English and Spanish-speaking teams deliver clear, empathetic experiences across every channel."
+        },
+        {
+          "title": "Reliable by design",
+          "text": "Resilient connectivity, backup power, monitored systems, and secure workstations protect continuity."
+        }
+      ],
+      "action": "See how we work"
+    },
+    "infrastructure": {
+      "eyebrow": "Secure by design",
+      "title": "Your operation is backed by real infrastructure.",
+      "description": "Our on-site technology environment gives every client a more controlled, reliable foundation than a scattered work-from-home model.",
+      "features": [
+        {
+          "title": "On-site infrastructure",
+          "text": "Dedicated server and network equipment within our delivery environment."
+        },
+        {
+          "title": "Controlled workplace",
+          "text": "Managed workstations inside a supervised professional delivery hub."
+        },
+        {
+          "title": "Operational continuity",
+          "text": "Centralized systems and on-site technical support keep programs connected."
+        }
+      ],
+      "calloutTitle": "Security is an operational advantage",
+      "calloutText": "Infrastructure, people, and process in one accountable location.",
+      "dataCenterAlt": "Network server hardware",
+      "captionLabel": "Digilink infrastructure",
+      "captionTitle": "On-site & controlled",
+      "networkCore": "Network core",
+      "networkText": "Inside our delivery hub",
+      "operationsAlt": "Digilink operations floor",
+      "difference": "The Digilink difference",
+      "differenceTitle": "People, technology, and accountability in one accountable operation."
+    },
+    "partners": {
+      "eyebrow": "Trusted business partners",
+      "logo": "{name} logo"
+    }
+  },
+  "development": {
+    "hero": {
+      "map": { "product": "Product", "systems": "Systems", "data": "Data", "delivery": "Delivery" },
+      "eyebrow": "Digilink Corporation · Technology delivery",
+      "titleStart": "Software teams that help you",
+      "rotating": ["build", "ship", "scale"],
+      "titleEnd": "better.",
+      "description": "Add proven development talent to your organization, with the structure, visibility, and operational discipline to turn product ideas, critical systems, and data into meaningful progress.",
+      "primaryAction": "Build your development team",
+      "secondaryAction": "Explore capabilities",
+      "principles": [
+        { "title": "Product-minded", "text": "Built around the outcome" },
+        { "title": "System-ready", "text": "Comfortable with complexity" },
+        { "title": "Delivery-led", "text": "Progress you can see" }
+      ]
+    },
+    "capabilities": {
+      "eyebrow": "What we build",
+      "title": "From first release to the systems that carry your business.",
+      "description": "We bring product thinking, practical engineering, and delivery discipline to the work in front of you, whether it starts with an idea, a data challenge, or a system ready to grow.",
+      "items": [
+        {
+          "title": "Digital products & platforms",
+          "text": "Customer experiences, internal tools, and the platforms that make ambitious work possible."
+        },
+        {
+          "title": "Data, integrations & automation",
+          "text": "Connected systems and clearer information flows that turn operational complexity into momentum."
+        },
+        {
+          "title": "Quality & reliability",
+          "text": "Thoughtful engineering practices that keep releases dependable as products and teams evolve."
+        },
+        {
+          "title": "Product evolution",
+          "text": "A steady team for modernization, meaningful improvements, and the work that keeps your roadmap moving."
+        }
+      ]
+    },
+    "workflow": {
+      "eyebrow": "How delivery works",
+      "title": "Engineering capacity that works like part of your team.",
+      "description": "Strong delivery is more than adding capacity. We create the shared context, operating rhythm, and technical care that let people contribute quickly and stay accountable to the outcome.",
+      "steps": [
+        {
+          "title": "Map the opportunity",
+          "text": "We get clear on the product, systems, data, and decisions that will shape the work ahead."
+        },
+        {
+          "title": "Shape the right team",
+          "text": "We bring together the right engineering and delivery capability for the complexity in front of you."
+        },
+        {
+          "title": "Embed in the work",
+          "text": "Your team works in your tools, rituals, and reporting cadence with shared context from day one."
+        },
+        {
+          "title": "Build, learn, evolve",
+          "text": "We make progress visible, learn with your stakeholders, and scale deliberately as priorities change."
+        }
+      ]
+    },
+    "engagement": {
+      "eyebrow": "Engagement models",
+      "title": "Start with the work that matters most.",
+      "models": [
+        {
+          "title": "Dedicated team",
+          "description": "A durable extension of your product and engineering organization.",
+          "points": [
+            "Deep product and system context",
+            "Flexible team composition",
+            "Integrated delivery rhythm"
+          ]
+        },
+        {
+          "title": "Project delivery",
+          "description": "A delivery-led team for a defined build, platform initiative, or system improvement.",
+          "points": [
+            "Clear outcomes and milestones",
+            "Senior delivery oversight",
+            "Durable handoff and continuity"
+          ]
+        }
+      ]
+    }
+  },
+  "contact": {
+    "steps": [
+      {
+        "title": "Share your priorities",
+        "text": "Tell us about the work, timeline, and team you need."
+      },
+      {
+        "title": "Meet a solutions lead",
+        "text": "We will schedule a focused discovery conversation."
+      },
+      { "title": "Receive your plan", "text": "Get a clear staffing approach and next steps." }
+    ],
+    "next": "What happens next",
+    "promise": "A thoughtful response, not an automated handoff.",
+    "responseTime": "Expect to hear from our team within one business day.",
+    "replyTime": "Usually replies in under 4 hours",
+    "form": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "workEmail": "Work email",
+      "selectService": "Select a service",
+      "submitError": "We could not send your request. Please try again or contact us directly.",
+      "successTitle": "Thank you. We're on it.",
+      "sendAnother": "Send another inquiry",
+      "validation": {
+        "firstName": "Enter your first name.",
+        "lastName": "Enter your last name.",
+        "emailRequired": "Enter your work email.",
+        "emailInvalid": "Enter a valid email address.",
+        "service": "Choose a service.",
+        "message": "Tell us what you need."
+      }
+    },
+    "general": {
+      "eyebrow": "Let's build together",
+      "title": "Your next great team starts here.",
+      "description": "Tell us what you're solving. We'll reply with a tailored staffing plan and transparent estimate within one business day.",
+      "formTitle": "Start the conversation",
+      "serviceLabel": "What can we help you with?",
+      "messageLabel": "Tell us about your needs",
+      "messagePlaceholder": "Team size, channels, launch timeline...",
+      "submitLabel": "Request a tailored quote",
+      "successMessage": "A solutions specialist will be in touch within one business day.",
+      "services": ["Customer Experience", "Technical Helpdesk", "Revenue Operations", "Back Office"]
+    },
+    "development": {
+      "eyebrow": "Build with Digilink",
+      "title": "Let's make the next piece of your product count.",
+      "description": "Tell us where you need momentum: a digital experience, critical system, data initiative, or capable team to carry the work forward.",
+      "formTitle": "Start the technical conversation",
+      "serviceLabel": "Where can we help?",
+      "messageLabel": "What are you working toward?",
+      "messagePlaceholder": "Product, platform, data, systems, timeline...",
+      "submitLabel": "Start the conversation",
+      "successMessage": "A technology lead will be in touch within one business day.",
+      "services": [
+        "Product or platform build",
+        "Web or digital experience",
+        "Data, analytics, or automation",
+        "Integration or system modernization",
+        "Dedicated development team"
+      ]
+    }
+  }
+}

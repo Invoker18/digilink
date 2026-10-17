@@ -3,19 +3,28 @@ import hero from '@/assets/images/hero.webp'
 import RotatingText from '../bits/rotating-text.vue'
 import CountUp from '../bits/count-up.vue'
 
-const metrics = ref([
-  { value: 99.9, suffix: '%', label: 'Operational uptime', duration: 2 },
-  { value: 24, suffix: '/7', label: 'Bilingual coverage', duration: 1 },
-  { value: 20, suffix: '+', label: 'Years of experience', duration: 1 },
-  { value: 4.9, suffix: '/5', label: 'Client satisfaction', duration: 2 }
+const { t } = useI18n()
+
+const rotatingWords = computed(() => [
+  t('home.hero.rotating.0'),
+  t('home.hero.rotating.1'),
+  t('home.hero.rotating.2')
+])
+
+const metrics = computed(() => [
+  { value: 99.9, suffix: '%', label: t('home.hero.metrics.0'), duration: 2 },
+  { value: 24, suffix: '/7', label: t('home.hero.metrics.1'), duration: 1 },
+  { value: 20, suffix: '+', label: t('home.hero.metrics.2'), duration: 1 },
+  { value: 4.9, suffix: '/5', label: t('home.hero.metrics.3'), duration: 2 }
 ])
 </script>
 
 <template>
-  <section
-    :style="{ backgroundImage: `url(${hero})` }"
-    class="relative isolate overflow-hidden bg-[#092942] bg-cover bg-position-[68%_center] pt-29 text-white sm:pt-43 lg:bg-center"
-  >
+  <section class="relative isolate overflow-hidden bg-[#092942] pt-29 text-white sm:pt-43">
+    <div
+      :style="{ backgroundImage: `url(${hero})` }"
+      class="pointer-events-none absolute -inset-2 scale-[1.02] bg-cover bg-position-[68%_center] blur-[3px] lg:bg-center"
+    />
     <div
       class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(9_41_66/.82)_0%,rgb(9_41_66/.72)_38%,rgb(9_41_66/.94)_100%)] lg:hidden"
     />
@@ -26,23 +35,70 @@ const metrics = ref([
       class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(134_199_255/10%)_1px,transparent_1px),linear-gradient(90deg,rgb(134_199_255/10%)_1px,transparent_1px)] mask-[linear-gradient(90deg,#000,transparent_75%)] bg-size-[64px_64px] opacity-30"
     />
     <div
+      aria-hidden="true"
+      class="pointer-events-none absolute top-1/2 right-[max(3rem,calc((100vw-1180px)/2))] hidden h-102 w-102 -translate-y-1/2 lg:block"
+    >
+      <div class="absolute inset-0 rounded-full border border-white/10" />
+      <div class="border-bright-blue-400/20 absolute inset-10 rounded-full border" />
+      <div
+        class="absolute inset-y-0 left-1/2 w-px bg-linear-to-b from-transparent via-white/15 to-transparent"
+      />
+      <div
+        class="absolute inset-x-0 top-1/2 h-px bg-linear-to-r from-transparent via-white/15 to-transparent"
+      />
+      <div class="border-bright-blue-400/45 absolute top-4 left-4 h-16 w-16 border-t border-l" />
+      <div
+        class="border-bright-blue-400/45 absolute right-4 bottom-4 h-16 w-16 border-r border-b"
+      />
+      <div
+        class="bg-matisse-950/85 border-bright-blue-400/45 absolute top-1/2 left-1/2 grid size-31 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border shadow-[0_0_36px_rgb(32_178_255/0.22)] backdrop-blur-sm"
+      >
+        <UIcon name="i-lucide-headset" class="text-bright-blue-300 size-8" />
+      </div>
+      <span
+        class="text-bright-blue-200 bg-bright-blue-400/15 absolute top-[13%] left-0 px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
+      >
+        {{ t('home.hero.operations.label') }}
+      </span>
+      <span
+        class="text-oslo-gray-100 bg-matisse-950/75 absolute top-[29%] right-[-7%] px-3 py-1 text-[9px] font-semibold tracking-[.12em] uppercase"
+      >
+        {{ t('home.hero.operations.channels') }}
+      </span>
+      <span
+        class="text-oslo-gray-100 bg-matisse-950/75 absolute bottom-[22%] left-[-4%] px-3 py-1 text-[9px] font-semibold tracking-[.12em] uppercase"
+      >
+        {{ t('home.hero.operations.coverage') }}
+      </span>
+      <div
+        class="text-bright-blue-200 absolute right-[6%] bottom-[8%] flex items-center gap-2 text-[9px] font-bold tracking-[.12em] uppercase"
+      >
+        <span
+          class="bg-bright-blue-400 size-1.5 rounded-full shadow-[0_0_14px_rgb(32_178_255/0.9)]"
+        />
+        {{ t('home.hero.operations.status') }}
+      </div>
+    </div>
+    <div
       class="relative z-10 mx-auto flex min-h-105 w-full max-w-295 items-center px-5 sm:min-h-120 sm:px-8 lg:min-h-132 lg:pb-0 xl:px-0"
     >
-      <div class="w-full lg:w-[58%]">
+      <div data-reveal class="w-full lg:w-[58%]">
         <p
+          data-reveal-item
           class="text-bright-blue-500 flex items-center gap-2.5 text-[10px] font-bold tracking-[.16em] uppercase"
         >
           <span
             class="bg-bright-blue-500 ring-bright-blue-500/10 size-1.5 rounded-full ring-5 motion-safe:animate-[ping_1.5s_infinite]"
           />
-          Digilink Corporation
+          {{ t('home.hero.eyebrow') }}
         </p>
         <h1
+          data-reveal-item
           class="mt-5 max-w-160 text-[clamp(2.45rem,11vw,4.4rem)] leading-[1.04] font-bold tracking-tighter"
         >
-          Exceptional customer care,
+          {{ t('home.hero.titleStart') }}
           <RotatingText
-            :texts="['expertly', 'thoughtfully', 'reliably']"
+            :texts="rotatingWords"
             main-class-name="inline-flex text-bright-blue-500 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
             stagger-from="last"
             :initial="{ y: '100%' }"
@@ -54,20 +110,22 @@ const metrics = ref([
             :rotation-interval="4000"
           />
           <br />
-          <em class="text-bright-blue-500 not-italic"> delivered.</em>
+          <em class="text-bright-blue-500 not-italic"> {{ t('home.hero.titleEnd') }}</em>
         </h1>
-        <p class="text-oslo-gray-200 mt-5 max-w-140 text-[15px] leading-7 sm:mt-6 sm:text-[17px]">
-          Build a bilingual, high-performance team backed by 20+ years of operational experience,
-          aligned to your hours, your culture, and your growth.
+        <p
+          data-reveal-item
+          class="text-oslo-gray-200 mt-5 max-w-140 text-[15px] leading-7 sm:mt-6 sm:text-[17px]"
+        >
+          {{ t('home.hero.description') }}
         </p>
-        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+        <div data-reveal-item class="mt-7 flex flex-col gap-3 sm:flex-row">
           <UButton
             to="#contact"
             size="xl"
             trailing-icon="i-lucide-arrow-right"
             class="bg-bright-blue-500 text-matisse-950 hover:bg-bright-blue-500 justify-center font-semibold"
           >
-            Build your team
+            {{ t('home.hero.primaryAction') }}
           </UButton>
           <UButton
             to="#services"
@@ -77,16 +135,15 @@ const metrics = ref([
             icon="i-lucide-play"
             class="justify-center border-white/25 bg-white/5 text-white hover:bg-white/10"
           >
-            Explore services
-          </UButton
-          >
+            {{ t('home.hero.secondaryAction') }}
+          </UButton>
         </div>
-        <div class="my-10 flex items-center gap-3">
+        <div data-reveal-item class="my-10 flex items-center gap-3">
           <div class="grid gap-2">
             <b class="text-[19px] leading-tight sm:text-[22px]">
-              Our people.
+              {{ t('home.hero.statement') }}
               <br />
-              <em class="text-bright-blue-500 not-italic">Your customer experience.</em>
+              <em class="text-bright-blue-500 not-italic">{{ t('home.hero.statementAccent') }}</em>
             </b>
           </div>
           <!-- <div class="flex">
@@ -114,7 +171,7 @@ const metrics = ref([
         class="flex min-h-21 items-center justify-center gap-3 border-r border-white/10 last:border-0 sm:min-h-24"
       >
         <div class="flex items-center gap-1.5 font-bold">
-          <CountUp :to="metric.value" :from="0" :duration="2" className="text-2xl " />
+          <CountUp :to="metric.value" :from="0" :duration="2" class-name="text-2xl" />
           <em class="text-bright-blue-500 text-sm not-italic">{{ metric.suffix }}</em>
         </div>
         <span class="text-oslo-gray-300 w-19 text-[9px] tracking-wide uppercase">{{
