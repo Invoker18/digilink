@@ -96,10 +96,10 @@ const metrics = computed(() => [
           data-reveal-item
           class="mt-5 max-w-160 text-[clamp(2.45rem,11vw,4.4rem)] leading-[1.04] font-bold tracking-tighter"
         >
-          {{ t('home.hero.titleStart') }}
+          <span class="block">{{ t('home.hero.titleStart') }}</span>
           <RotatingText
             :texts="rotatingWords"
-            main-class-name="inline-flex text-bright-blue-500 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+            main-class-name="flex w-full text-bright-blue-500 overflow-hidden py-0.5 sm:py-1 md:py-2 rounded-lg"
             stagger-from="last"
             :initial="{ y: '100%' }"
             :animate="{ y: 0 }"
@@ -109,8 +109,7 @@ const metrics = computed(() => [
             :transition="{ type: 'spring', damping: 30, stiffness: 400 }"
             :rotation-interval="4000"
           />
-          <br />
-          <em class="text-bright-blue-500 not-italic"> {{ t('home.hero.titleEnd') }}</em>
+          <em class="text-bright-blue-500 block not-italic">{{ t('home.hero.titleEnd') }}</em>
         </h1>
         <p
           data-reveal-item

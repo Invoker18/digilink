@@ -89,11 +89,10 @@ const principles = computed(() => [
           data-reveal-item
           class="mt-5 max-w-155 text-[clamp(2.6rem,7vw,5rem)] leading-[1.02] font-bold tracking-tighter"
         >
-          {{ t('development.hero.titleStart') }}
-          <br />
+          <span class="block">{{ t('development.hero.titleStart') }}</span>
           <RotatingText
             :texts="rotatingWords"
-            main-class-name="inline-flex text-bright-blue-400 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+            main-class-name="flex w-full text-bright-blue-400 overflow-hidden py-0.5 sm:py-1 md:py-2 rounded-lg"
             stagger-from="last"
             :initial="{ y: '100%' }"
             :animate="{ y: 0 }"
@@ -103,7 +102,6 @@ const principles = computed(() => [
             :transition="{ type: 'spring', damping: 30, stiffness: 400 }"
             :rotation-interval="4000"
           />
-          {{ t('development.hero.titleEnd') }}
         </h1>
         <p
           data-reveal-item
