@@ -1,24 +1,30 @@
 <!-- eslint-disable @stylistic/arrow-parens -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
+import { gsap } from 'gsap'
 
 import logo from '~/assets/images/logo-digilink.png'
 
 const menuOpen = ref(false)
 const isScrolled = ref(false)
 const route = useRoute()
+const router = useRouter()
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const activeSection = ref('')
 const homeAnchor = (anchor: string) =>
   route.path === localePath('/') ? anchor : `${localePath('/')}${anchor}`
+const contactAnchor = () => {
+  const contactRoutes = [localePath('/'), localePath('/software-development')]
+  return contactRoutes.includes(route.path) ? '#contact' : `${localePath('/')}#contact`
+}
 
 const links = computed(() => [
   { label: t('nav.services'), href: homeAnchor('#services') },
-  { label: t('nav.development'), href: localePath('/software-development') },
   { label: t('nav.advantage'), href: homeAnchor('#facility') },
-  { label: t('nav.contact'), href: homeAnchor('#contact') }
+  { label: t('nav.contact'), href: contactAnchor() },
+  { label: t('nav.development'), href: localePath('/software-development') }
 ])
 
 const languageItems = computed(
@@ -39,9 +45,31 @@ const languageItems = computed(
     ] satisfies DropdownMenuItem[]
 )
 
-const goTop = () => {
-  navigateTo(localePath('/'))
-  window.scrollTo({ top: 0, behavior: 'smooth' })
+const goHome = async () => {
+  menuOpen.value = false
+  activeSection.value = ''
+  const homePath = localePath('/')
+
+  if (route.path === homePath) {
+    if (window.location.hash || window.location.search) {
+      window.history.pushState(null, '', homePath)
+    }
+    await router.replace({ path: homePath, hash: '', query: {} }).catch(() => {})
+
+    gsap.to(window, {
+      duration: 0.8,
+      ease: 'power3.out',
+      overwrite: 'auto',
+      scrollTo: 0
+    })
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  } else {
+    await navigateTo(homePath)
+    if (window.location.hash || window.location.search) {
+      window.history.pushState(null, '', homePath)
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }
 }
 
 const isActiveLink = (href: string) => {
@@ -56,6 +84,9 @@ const handleNavigation = (href: string) => {
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 20
+  if (window.scrollY < 80) {
+    activeSection.value = ''
+  }
 }
 
 let sectionObserver: IntersectionObserver | undefined
@@ -64,11 +95,15 @@ const observeHomeSections = () => {
   sectionObserver?.disconnect()
   if (route.path !== localePath('/')) return
 
-  activeSection.value = route.hash
+  activeSection.value = window.scrollY < 80 ? '' : route.hash
   const sectionIds = links.value.map((link) => link.href).filter((href) => href.startsWith('#'))
 
   sectionObserver = new IntersectionObserver(
     (entries) => {
+      if (window.scrollY < 80) {
+        activeSection.value = ''
+        return
+      }
       const activeEntry = entries.find((entry) => entry.isIntersecting)
       if (activeEntry) activeSection.value = `#${activeEntry.target.id}`
     },
@@ -119,8 +154,14 @@ onBeforeUnmount(() => {
             : 'w-[calc(100%-2rem)] max-w-295 md:w-[calc(100%-3rem)]'
         "
       >
-        <a class="shrink-0" :aria-label="t('nav.home')" @click="goTop()">
-          <img :src="logo" alt="Digilink Corporation" class="w-36 cursor-pointer md:w-44" />
+        <a :href="localePath('/')" class="shrink-0" :aria-label="t('nav.home')" @click.prevent="goHome">
+          <img
+            :src="logo"
+            alt="Digilink Corporation"
+            width="176"
+            height="44"
+            class="w-36 cursor-pointer md:w-44"
+          />
         </a>
         <nav class="hidden md:flex md:items-center md:gap-2 lg:gap-6" :aria-label="t('nav.main')">
           <a
@@ -175,7 +216,7 @@ onBeforeUnmount(() => {
             </template>
           </UDropdownMenu>
           <UButton
-            :to="homeAnchor('#contact')"
+            :to="contactAnchor()"
             trailing-icon="i-lucide-arrow-right"
             class="bg-bright-blue-500 text-matisse-950 hover:bg-bright-blue-400 hidden font-semibold shadow-[0_8px_24px_rgb(0_149_255/0.25)] transition-all duration-300 ease-linear hover:scale-105 md:inline-flex"
           >

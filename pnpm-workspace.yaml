@@ -4,3 +4,6 @@ allowBuilds:
   esbuild: false
   unrs-resolver: false
   vue-demi: false
+permissions:
+  '@nuxtjs/seo':
+    skills: false

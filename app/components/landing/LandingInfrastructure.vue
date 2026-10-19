@@ -74,6 +74,8 @@ const features = computed(() => [
         <img
           :src="dataCenter"
           :alt="t('home.infrastructure.dataCenterAlt')"
+          width="1180"
+          height="560"
           class="size-full object-cover brightness-75 saturate-75"
         />
         <div
@@ -114,6 +116,8 @@ const features = computed(() => [
         data-reveal-image
         :src="desk"
         :alt="t('home.infrastructure.operationsAlt')"
+        width="1180"
+        height="360"
         class="size-full object-cover brightness-40 saturate-75"
       />
       <div

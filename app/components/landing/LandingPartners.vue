@@ -41,6 +41,8 @@ const { t } = useI18n()
             v-if="partner.logo"
             :src="partner.logo"
             :alt="t('home.partners.logo', { name: partner.name })"
+            width="152"
+            height="64"
             :class="partner.logoClass"
             class="object-contain brightness-0 invert"
           />

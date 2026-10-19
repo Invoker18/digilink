@@ -39,6 +39,8 @@ const facilityItems = computed(() => [
           <img
             :src="facility01"
             :alt="t('home.facility.imageAlts.0')"
+            width="720"
+            height="1080"
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"
           />
           <div
@@ -51,6 +53,8 @@ const facilityItems = computed(() => [
           <img
             :src="facility02"
             :alt="t('home.facility.imageAlts.1')"
+            width="720"
+            height="540"
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"
           />
           <div
@@ -63,6 +67,8 @@ const facilityItems = computed(() => [
           <img
             :src="facility03"
             :alt="t('home.facility.imageAlts.2')"
+            width="720"
+            height="540"
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"
           />
           <div

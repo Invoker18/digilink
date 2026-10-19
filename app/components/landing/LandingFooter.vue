@@ -8,7 +8,7 @@ import logo from '~/assets/images/logo-digilink.png'
       class="mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-9 sm:w-[calc(100%-3rem)] sm:grid-cols-3"
     >
       <div>
-        <img :src="logo" alt="Digilink Corporation" class="w-44" />
+        <img :src="logo" alt="Digilink Corporation" width="176" height="44" class="w-44" />
         <p class="mt-4 text-[11px] leading-5">
           Customer experience and technology,<br />powered by proven teams.
         </p>

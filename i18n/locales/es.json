@@ -16,10 +16,12 @@
     "closeMenu": "Cerrar menú de navegación"
   },
   "seo": {
-    "homeTitle": "Digilink Corporation | Experiencia del cliente nearshore",
-    "homeDescription": "Equipos bilingües de experiencia del cliente y tecnología de alto desempeño, respaldados por más de 20 años de experiencia operativa.",
-    "developmentTitle": "Equipos de desarrollo de software | Digilink Corporation",
-    "developmentDescription": "Amplía tu equipo de producto con desarrolladores, especialistas de QA y soporte de entrega comprobados de Digilink."
+    "homeEyebrow": "Experiencia del cliente B2B y entrega tecnológica",
+    "homeTitle": "Atención al cliente excepcional, entregada sin problemas.",
+    "homeDescription": "Crea un equipo bilingüe de alto desempeño respaldado por más de 20 años de experiencia operativa.",
+    "developmentEyebrow": "Equipos de desarrollo de software",
+    "developmentTitle": "Amplía tu equipo de producto con talento de ingeniería de élite.",
+    "developmentDescription": "Modelos de entrega de alto desempeño adaptados a tus horarios, cultura y stack."
   },
   "footer": {
     "description": "Equipos bilingües de experiencia del cliente y tecnología, creados para marcas globales ambiciosas.",

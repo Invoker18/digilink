@@ -16,10 +16,12 @@
     "closeMenu": "Close navigation menu"
   },
   "seo": {
-    "homeTitle": "Digilink Corporation | Nearshore Customer Experience",
-    "homeDescription": "Bilingual, high-performance customer experience and technology teams with 20+ years of operational experience.",
-    "developmentTitle": "Software Development Teams | Digilink Corporation",
-    "developmentDescription": "Extend your product team with proven software developers, QA specialists, and delivery support from Digilink."
+    "homeEyebrow": "B2B Customer Experience & Tech Delivery",
+    "homeTitle": "Exceptional customer care, seamlessly delivered.",
+    "homeDescription": "Build a bilingual, high-performance team backed by 20+ years of operational experience.",
+    "developmentEyebrow": "Software Development Teams",
+    "developmentTitle": "Extend your product team with elite engineering talent.",
+    "developmentDescription": "High-performance delivery models tailored to your hours, culture, and stack."
   },
   "footer": {
     "description": "Bilingual customer experience and technology teams, built for ambitious global brands.",

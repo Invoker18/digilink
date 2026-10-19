@@ -51,12 +51,15 @@
   --color-matisse-800: #1b455f;
   --color-matisse-900: #103e63;
   --color-matisse-950: #061f38;
+
+  --animate-orbit-spin: orbit-spin 40s linear infinite;
+  --animate-orbit-counter: orbit-counter 40s linear infinite;
 }
 
 @layer base {
   html {
-    scroll-padding-top: 8rem; /* 96px */
-    scroll-behavior: smooth;
+    /* scroll-padding-top: 8rem;  */
+    /* scroll-behavior: smooth; */
     scrollbar-gutter: stable;
   }
 
@@ -74,3 +77,32 @@
     }
   }
 }
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-counter {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-orbit-spin {
+  animation: orbit-spin 40s linear infinite;
+  transform-origin: center center;
+}
+
+.animate-orbit-counter {
+  animation: orbit-counter 40s linear infinite;
+  transform-origin: center center;
+}
+
