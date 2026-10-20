@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import hero from '@/assets/images/hero.webp'
+import heroDesktop from '@/assets/images/hero.webp'
+import heroMobile from '@/assets/images/hero-mobile.webp'
 import RotatingText from '../bits/rotating-text.vue'
-import CountUp from '../bits/count-up.vue'
+import LazyCountUp from '../bits/count-up.vue'
 
 const { t } = useI18n()
 
@@ -24,7 +25,16 @@ useHead({
       rel: 'preload',
       as: 'image',
       type: 'image/webp',
-      href: hero,
+      href: heroMobile,
+      media: '(max-width: 1023px)',
+      fetchpriority: 'high'
+    },
+    {
+      rel: 'preload',
+      as: 'image',
+      type: 'image/webp',
+      href: heroDesktop,
+      media: '(min-width: 1024px)',
       fetchpriority: 'high'
     }
   ]
@@ -34,8 +44,11 @@ useHead({
 <template>
   <section class="relative isolate overflow-hidden bg-[#092942] pt-29 text-white sm:pt-43">
     <div
-      :style="{ backgroundImage: `url(${hero})` }"
-      class="pointer-events-none absolute -inset-2 scale-[1.02] bg-cover bg-position-[68%_center] blur-[3px] lg:bg-center"
+      :style="{
+        '--hero-mobile': `url(${heroMobile})`,
+        '--hero-desktop': `url(${heroDesktop})`
+      }"
+      class="pointer-events-none absolute -inset-2 scale-[1.02] bg-(image:--hero-mobile) bg-cover bg-position-[68%_center] blur-[3px] lg:bg-(image:--hero-desktop) lg:bg-center"
     />
     <div
       class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(9_41_66/.82)_0%,rgb(9_41_66/.72)_38%,rgb(9_41_66/.94)_100%)] lg:hidden"
@@ -125,6 +138,7 @@ useHead({
             :transition="{ type: 'spring', damping: 30, stiffness: 400 }"
             :rotation-interval="4000"
           />
+
           <em class="text-bright-blue-500 block not-italic">{{ t('home.hero.titleEnd') }}</em>
         </h1>
         <p
@@ -186,7 +200,9 @@ useHead({
         class="flex min-h-21 items-center justify-center gap-3 border-r border-white/10 last:border-0 sm:min-h-24"
       >
         <div class="flex items-center gap-1.5 font-bold">
-          <CountUp :to="metric.value" :from="0" :duration="2" class-name="text-2xl" />
+          <LazyClientOnly>
+            <LazyCountUp :to="metric.value" :from="0" :duration="2" class-name="text-2xl" />
+          </LazyClientOnly>
           <em class="text-bright-blue-500 text-sm not-italic">{{ metric.suffix }}</em>
         </div>
         <span class="text-oslo-gray-300 w-19 text-[9px] tracking-wide uppercase">{{

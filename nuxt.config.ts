@@ -46,7 +46,6 @@ export default defineNuxtConfig({
       include: ['gsap', 'gsap/ScrollToPlugin', 'gsap/ScrollTrigger']
     }
   },
-  telemetry: false,
 
   eslint: {
     config: {
@@ -56,6 +55,14 @@ export default defineNuxtConfig({
         quoteProps: 'as-needed'
       }
     }
+  },
+
+  fonts: {
+    defaults: {
+      subsets: ['latin'], // Cuts down extra character weight files
+      styles: ['normal'] // Disable italic unless strictly necessary for mobile viewports
+    },
+    families: [{ name: 'DM Sans', preload: true }]
   },
 
   i18n: {

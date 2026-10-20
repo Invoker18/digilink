@@ -2,7 +2,7 @@
 @import '@nuxt/ui';
 
 @theme static {
-  --font-sans: 'DM Sans', sans-serif;
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
 
   --color-bright-blue-50: #f1f8ff;
   --color-bright-blue-100: #ddecff;

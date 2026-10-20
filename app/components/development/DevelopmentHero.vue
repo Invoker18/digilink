@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import desk from '@/assets/images/desk.webp'
+import deskMobile from '@/assets/images/desk-mobile.webp'
 import RotatingText from '@/components/bits/rotating-text.vue'
 
 const { t } = useI18n()
@@ -26,7 +27,16 @@ useHead({
       rel: 'preload',
       as: 'image',
       type: 'image/webp',
+      href: deskMobile,
+      media: '(max-width: 1023px)',
+      fetchpriority: 'high'
+    },
+    {
+      rel: 'preload',
+      as: 'image',
+      type: 'image/webp',
       href: desk,
+      media: '(min-width: 1024px)',
       fetchpriority: 'high'
     }
   ]
@@ -36,8 +46,11 @@ useHead({
 <template>
   <section class="bg-matisse-950 relative isolate overflow-hidden pt-29 text-white sm:pt-42">
     <div
-      :style="{ backgroundImage: `url(${desk})` }"
-      class="pointer-events-none absolute -inset-2 scale-[1.02] bg-cover bg-center blur-[3px]"
+      :style="{
+        '--desk-mobile': `url(${deskMobile})`,
+        '--desk-desktop': `url(${desk})`
+      }"
+      class="pointer-events-none absolute -inset-2 scale-[1.02] bg-(image:--desk-mobile) bg-cover bg-center blur-[3px] lg:bg-(image:--desk-desktop) lg:bg-center"
     />
     <div
       class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(6_31_56/.88)_0%,rgb(6_31_56/.72)_45%,rgb(6_31_56/.94)_100%)] lg:hidden"
@@ -63,17 +76,21 @@ useHead({
       <div class="pointer-events-none absolute inset-0 origin-center">
         <span
           class="bg-bright-blue-400/15 text-bright-blue-200 absolute top-[14%] left-[8%] origin-center px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
-        >{{ t('development.hero.map.product') }}</span>
+          >{{ t('development.hero.map.product') }}</span
+        >
         <span
           class="bg-bright-blue-400/15 text-bright-blue-200 absolute top-[14%] right-[4%] origin-center px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
-        >{{ t('development.hero.map.systems') }}</span>
+          >{{ t('development.hero.map.systems') }}</span
+        >
         <span
           class="bg-bright-blue-400/15 text-bright-blue-200 absolute bottom-[14%] left-[16%] origin-center px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
-        >{{ t('development.hero.map.data') }}</span>
+          >{{ t('development.hero.map.data') }}</span
+        >
       </div>
       <span
         class="border-bright-blue-300 bg-matisse-950/85 text-bright-blue-300 animate-systems-core absolute top-1/2 left-1/2 grid size-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border text-[10px] font-bold tracking-[.16em] uppercase shadow-[0_0_36px_rgb(32_178_255/0.24)]"
-      >{{ t('development.hero.map.delivery') }}</span>
+        >{{ t('development.hero.map.delivery') }}</span
+      >
       <span
         class="bg-bright-blue-400 animate-systems-node absolute top-[29%] left-[31%] size-2 rounded-full shadow-[0_0_20px_rgb(32_178_255/0.9)]"
       />
@@ -141,7 +158,10 @@ useHead({
           </UButton>
         </div>
         <div data-reveal-item class="mt-9 grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
-          <span v-for="principle in principles" :key="principle.title" class="grid gap-1"><b class="text-bright-blue-400 text-xl">{{ principle.title }}</b><small class="text-oslo-gray-300 text-[10px]">{{ principle.text }}</small></span>
+          <span v-for="principle in principles" :key="principle.title" class="grid gap-1"
+            ><b class="text-bright-blue-400 text-xl">{{ principle.title }}</b
+            ><small class="text-oslo-gray-300 text-[10px]">{{ principle.text }}</small></span
+          >
         </div>
       </div>
     </div>
