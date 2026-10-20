@@ -1,178 +1,49 @@
 <template>
-  <span ref="elementRef" :class="className" />
+  <span ref="el">{{ displayValue }}</span>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, computed, useTemplateRef } from 'vue'
-
-interface Props {
-  to: number
-  from?: number
-  direction?: 'up' | 'down'
-  delay?: number
-  duration?: number
-  className?: string
-  startWhen?: boolean
-  separator?: string
-  decimalPlaces?: number
-  onStart?: () => void
-  onEnd?: () => void
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  from: 0,
-  direction: 'up',
-  delay: 0,
-  duration: 2,
-  className: '',
-  startWhen: true,
-  separator: ''
-})
-
-const elementRef = useTemplateRef<HTMLSpanElement>('elementRef')
-const currentValue = ref(props.direction === 'down' ? props.to : props.from)
-const isInView = ref(false)
-const animationId = ref<number | null>(null)
-const hasStarted = ref(false)
-
-let intersectionObserver: IntersectionObserver | null = null
-
-const damping = computed(() => 20 + 40 * (1 / props.duration))
-const stiffness = computed(() => 100 * (1 / props.duration))
-
-let velocity = 0
-let startTime = 0
-
-const getDecimalPlaces = (value: number): number => {
-  const decimalPart = value.toString().split('.')[1]
-  return decimalPart?.length ?? 0
-}
-
-const fractionDigits = computed(() => {
-  return props.decimalPlaces ?? Math.max(getDecimalPlaces(props.from), getDecimalPlaces(props.to))
-})
-
-const formatNumber = (value: number) => {
-  const options = {
-    useGrouping: !!props.separator,
-    minimumFractionDigits: fractionDigits.value,
-    maximumFractionDigits: fractionDigits.value
-  }
-
-  const formattedNumber = Intl.NumberFormat('en-US', options).format(
-    Number(value.toFixed(fractionDigits.value))
-  )
-
-  return props.separator ? formattedNumber.replace(/,/g, props.separator) : formattedNumber
-}
-
-const updateDisplay = () => {
-  if (elementRef.value) {
-    elementRef.value.textContent = formatNumber(currentValue.value)
-  }
-}
-
-const springAnimation = (timestamp: number) => {
-  if (!startTime) startTime = timestamp
-
-  const target = props.direction === 'down' ? props.from : props.to
-  const current = currentValue.value
-
-  const displacement = target - current
-  const springForce = displacement * stiffness.value
-  const dampingForce = velocity * damping.value
-  const acceleration = springForce - dampingForce
-
-  velocity += acceleration * 0.016 // Assuming 60fps
-  currentValue.value += velocity * 0.016
-
-  updateDisplay()
-
-  if (Math.abs(displacement) > 0.01 || Math.abs(velocity) > 0.01) {
-    animationId.value = requestAnimationFrame(springAnimation)
-  } else {
-    currentValue.value = target
-    updateDisplay()
-    animationId.value = null
-
-    if (props.onEnd) {
-      props.onEnd()
-    }
-  }
-}
-
-const startAnimation = () => {
-  if (hasStarted.value || !isInView.value || !props.startWhen) return
-
-  hasStarted.value = true
-
-  if (props.onStart) {
-    props.onStart()
-  }
-
-  setTimeout(() => {
-    startTime = 0
-    velocity = 0
-    animationId.value = requestAnimationFrame(springAnimation)
-  }, props.delay * 1000)
-}
-
-const setupIntersectionObserver = () => {
-  if (!elementRef.value) return
-
-  intersectionObserver = new IntersectionObserver(
-    ([entry]) => {
-      if (entry?.isIntersecting && !isInView.value) {
-        isInView.value = true
-        startAnimation()
-      }
-    },
-    {
-      threshold: 0,
-      rootMargin: '0px'
-    }
-  )
-
-  intersectionObserver.observe(elementRef.value)
-}
-
-const cleanup = () => {
-  if (animationId.value) {
-    cancelAnimationFrame(animationId.value)
-    animationId.value = null
-  }
-
-  if (intersectionObserver) {
-    intersectionObserver.disconnect()
-    intersectionObserver = null
-  }
-}
-
-watch(
-  [() => props.from, () => props.to, () => props.direction],
-  () => {
-    currentValue.value = props.direction === 'down' ? props.to : props.from
-    updateDisplay()
-    hasStarted.value = false
+const props = defineProps({
+  to: {
+    type: Number,
+    required: true
   },
-  { immediate: true }
-)
-
-watch(
-  () => props.startWhen,
-  () => {
-    if (props.startWhen && isInView.value && !hasStarted.value) {
-      startAnimation()
-    }
+  duration: {
+    type: Number,
+    default: 2000 // duration in ms
   }
-)
-
-onMounted(() => {
-  updateDisplay()
-  setupIntersectionObserver()
 })
 
-onUnmounted(() => {
-  cleanup()
+const current = ref(0)
+const el = ref<HTMLElement | null>(null)
+
+// Automatically detect decimal places (e.g., 99.9 -> 1 decimal, 24 -> 0 decimals)
+const decimals = computed(() => (props.to % 1 !== 0 ? 1 : 0))
+const displayValue = computed(() => current.value.toFixed(decimals.value))
+
+function animate() {
+  const startTime = performance.now()
+
+  function update(currentTime: number) {
+    const elapsed = currentTime - startTime
+    const progress = Math.min(elapsed / props.duration, 1)
+
+    // Smooth Ease-Out formula
+    const easeProgress = 1 - Math.pow(1 - progress, 3)
+    current.value = easeProgress * props.to
+
+    if (progress < 1) {
+      requestAnimationFrame(update)
+    } else {
+      current.value = props.to
+    }
+  }
+
+  requestAnimationFrame(update)
+}
+
+// Ensure execution only happens on client side after mount
+onMounted(() => {
+  animate()
 })
 </script>

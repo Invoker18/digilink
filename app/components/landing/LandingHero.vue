@@ -2,7 +2,7 @@
 import heroDesktop from '@/assets/images/hero.webp'
 import heroMobile from '@/assets/images/hero-mobile.webp'
 import RotatingText from '../bits/rotating-text.vue'
-import LazyCountUp from '../bits/count-up.vue'
+import CountUp from '../bits/count-up.vue'
 
 const { t } = useI18n()
 
@@ -13,10 +13,10 @@ const rotatingWords = computed(() => [
 ])
 
 const metrics = computed(() => [
-  { value: 99.9, suffix: '%', label: t('home.hero.metrics.0'), duration: 2 },
-  { value: 24, suffix: '/7', label: t('home.hero.metrics.1'), duration: 1 },
-  { value: 20, suffix: '+', label: t('home.hero.metrics.2'), duration: 1 },
-  { value: 4.9, suffix: '/5', label: t('home.hero.metrics.3'), duration: 2 }
+  { value: 99.9, suffix: '%', label: t('home.hero.metrics.0') },
+  { value: 24, suffix: '/7', label: t('home.hero.metrics.1') },
+  { value: 20, suffix: '+', label: t('home.hero.metrics.2') },
+  { value: 4.9, suffix: '/5', label: t('home.hero.metrics.3') }
 ])
 
 useHead({
@@ -129,13 +129,6 @@ useHead({
           <RotatingText
             :texts="rotatingWords"
             main-class-name="flex w-full text-bright-blue-500 overflow-hidden py-0.5 sm:py-1 md:py-2 rounded-lg"
-            stagger-from="last"
-            :initial="{ y: '100%' }"
-            :animate="{ y: 0 }"
-            :exit="{ y: '-120%' }"
-            :stagger-duration="0.025"
-            split-level-class-name="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-            :transition="{ type: 'spring', damping: 30, stiffness: 400 }"
             :rotation-interval="4000"
           />
 
@@ -200,9 +193,7 @@ useHead({
         class="flex min-h-21 items-center justify-center gap-3 border-r border-white/10 last:border-0 sm:min-h-24"
       >
         <div class="flex items-center gap-1.5 font-bold">
-          <LazyClientOnly>
-            <LazyCountUp :to="metric.value" :from="0" :duration="2" class-name="text-2xl" />
-          </LazyClientOnly>
+          <CountUp class="text-2xl" :to="metric.value" />
           <em class="text-bright-blue-500 text-sm not-italic">{{ metric.suffix }}</em>
         </div>
         <span class="text-oslo-gray-300 w-19 text-[9px] tracking-wide uppercase">{{
