@@ -29,7 +29,7 @@ defineProps<{
 
     <!-- Big Logo -->
     <div class="h-40 w-auto shrink-0">
-      <img src="logo.png" class="size-full object-contain object-left" alt="Logo" />
+      <img src="/logo.png" class="size-full object-contain object-left" alt="Logo" />
     </div>
 
     <!-- Center / Main Content: Big Logo + Title + Description -->
