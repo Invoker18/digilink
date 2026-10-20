@@ -42,7 +42,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const response = await resend.emails.send({
-    from: process.env.RESEND_FROM_EMAIL || 'Digilink <onboarding@resend.dev>',
+    from: process.env.RESEND_FROM_EMAIL || 'Digilink <notifications@digilinkgroup.com>',
     to: [process.env.CONTACT_EMAIL || 'erickcabrera0108@gmail.com'],
     replyTo: email.trim(),
     subject: `New Digilink inquiry: ${firstName.trim()} ${lastName.trim()}`,

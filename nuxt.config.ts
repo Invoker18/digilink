@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   site: {
     // Nuxt SEO automatically uses localhost in dev — always point this at production.
     // Override per-environment with the NUXT_PUBLIC_SITE_URL env var in Vercel.
-    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.digilink.com',
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.digilinkgroup.com',
     name: 'Digilink Corporation',
     description:
       'Bilingual B2B customer support, omnichannel call center operations, and dedicated technology teams.',
@@ -78,7 +78,7 @@ export default defineNuxtConfig({
     identity: {
       type: 'Organization',
       name: 'Digilink Corporation',
-      url: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.digilink.com',
+      url: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.digilinkgroup.com',
       logo: '/logo.png',
       description:
         'Bilingual B2B customer support, omnichannel call center operations, and dedicated technology teams.',

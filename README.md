@@ -62,7 +62,7 @@ The landing contact form validates input with Nuxt UI and sends a `POST` request
 
 ```bash
 RESEND_API_KEY=re_...
-RESEND_FROM_EMAIL="Digilink <inquiries@your-domain.com>"
+RESEND_FROM_EMAIL="Digilink <notifications@digilinkgroup.com>"
 CONTACT_EMAIL=inbox@your-domain.com
 ```
 
