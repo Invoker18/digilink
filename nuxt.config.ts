@@ -6,13 +6,15 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
     '@nuxt/fonts',
-    '@vercel/speed-insights'
+    '@vercel/speed-insights',
+    '@vercel/analytics'
   ],
 
   devtools: {
     enabled: true
   },
   css: ['~/assets/css/main.css'],
+  telemetry: false,
 
   site: {
     // Nuxt SEO automatically uses localhost in dev — always point this at production.
@@ -44,6 +46,7 @@ export default defineNuxtConfig({
       include: ['gsap', 'gsap/ScrollToPlugin', 'gsap/ScrollTrigger']
     }
   },
+  telemetry: false,
 
   eslint: {
     config: {

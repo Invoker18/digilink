@@ -30,8 +30,8 @@ const formState = reactive<ContactFormState>({
 })
 
 const serviceOptions = computed(() => {
-  const prefix =
-    props.variant === 'development' ? 'contact.development.services' : 'contact.general.services'
+  const prefix
+    = props.variant === 'development' ? 'contact.development.services' : 'contact.general.services'
   const count = props.variant === 'development' ? 5 : 4
 
   return Array.from({ length: count }, (_, index) => t(`${prefix}.${index}`))
@@ -196,7 +196,9 @@ const nextSteps = computed(() => [
             name="i-lucide-check"
             class="bg-bright-blue-400 text-matisse-950 ring-bright-blue-300/30 size-14 rounded-full p-3 shadow-[0_0_28px_rgb(0_149_255/0.35)] ring-4"
           />
-          <h3 class="text-xl font-bold">{{ t('contact.form.successTitle') }}</h3>
+          <h3 class="text-xl font-bold">
+            {{ t('contact.form.successTitle') }}
+          </h3>
           <p class="text-oslo-gray-200 max-w-75">
             {{ copy.successMessage }}
           </p>

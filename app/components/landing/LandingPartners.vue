@@ -43,6 +43,8 @@ const { t } = useI18n()
             :alt="t('home.partners.logo', { name: partner.name })"
             width="152"
             height="64"
+            loading="lazy"
+            decoding="async"
             :class="partner.logoClass"
             class="object-contain brightness-0 invert"
           />

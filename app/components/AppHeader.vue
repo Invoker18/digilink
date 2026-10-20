@@ -160,6 +160,8 @@ onBeforeUnmount(() => {
             alt="Digilink Corporation"
             width="176"
             height="44"
+            decoding="async"
+            fetchpriority="high"
             class="w-36 cursor-pointer md:w-44"
           />
         </a>

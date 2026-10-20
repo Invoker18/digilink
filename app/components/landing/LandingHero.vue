@@ -17,6 +17,18 @@ const metrics = computed(() => [
   { value: 20, suffix: '+', label: t('home.hero.metrics.2'), duration: 1 },
   { value: 4.9, suffix: '/5', label: t('home.hero.metrics.3'), duration: 2 }
 ])
+
+useHead({
+  link: [
+    {
+      rel: 'preload',
+      as: 'image',
+      type: 'image/webp',
+      href: hero,
+      fetchpriority: 'high'
+    }
+  ]
+})
 </script>
 
 <template>
@@ -56,25 +68,25 @@ const metrics = computed(() => [
         <UIcon name="i-lucide-headset" class="text-bright-blue-300 size-8" />
       </div>
       <div
-        class="pointer-events-none absolute inset-0 origin-center animate-orbit-spin will-change-transform"
+        class="animate-orbit-spin pointer-events-none absolute inset-0 origin-center will-change-transform"
       >
         <span
-          class="text-bright-blue-200 bg-bright-blue-400/15 animate-orbit-counter absolute top-[13%] left-0 flex origin-center items-center px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase whitespace-nowrap will-change-transform"
+          class="text-bright-blue-200 bg-bright-blue-400/15 animate-orbit-counter absolute top-[13%] left-0 flex origin-center items-center px-3 py-1 text-[9px] font-bold tracking-[.16em] whitespace-nowrap uppercase will-change-transform"
         >
           {{ t('home.hero.operations.label') }}
         </span>
         <span
-          class="text-oslo-gray-100 bg-matisse-950/75 animate-orbit-counter absolute top-[29%] right-[-7%] flex origin-center items-center px-3 py-1 text-[9px] font-semibold tracking-[.12em] uppercase whitespace-nowrap will-change-transform"
+          class="text-oslo-gray-100 bg-matisse-950/75 animate-orbit-counter absolute top-[29%] right-[-7%] flex origin-center items-center px-3 py-1 text-[9px] font-semibold tracking-[.12em] whitespace-nowrap uppercase will-change-transform"
         >
           {{ t('home.hero.operations.channels') }}
         </span>
         <span
-          class="text-oslo-gray-100 bg-matisse-950/75 animate-orbit-counter absolute bottom-[22%] left-[-4%] flex origin-center items-center px-3 py-1 text-[9px] font-semibold tracking-[.12em] uppercase whitespace-nowrap will-change-transform"
+          class="text-oslo-gray-100 bg-matisse-950/75 animate-orbit-counter absolute bottom-[22%] left-[-4%] flex origin-center items-center px-3 py-1 text-[9px] font-semibold tracking-[.12em] whitespace-nowrap uppercase will-change-transform"
         >
           {{ t('home.hero.operations.coverage') }}
         </span>
         <div
-          class="text-bright-blue-200 animate-orbit-counter absolute right-[6%] bottom-[8%] flex origin-center items-center gap-2 text-[9px] font-bold tracking-[.12em] uppercase whitespace-nowrap will-change-transform"
+          class="text-bright-blue-200 animate-orbit-counter absolute right-[6%] bottom-[8%] flex origin-center items-center gap-2 text-[9px] font-bold tracking-[.12em] whitespace-nowrap uppercase will-change-transform"
         >
           <span
             class="bg-bright-blue-400 size-1.5 rounded-full shadow-[0_0_14px_rgb(32_178_255/0.9)]"

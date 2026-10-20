@@ -1,12 +1,12 @@
 <template>
   <div
     ref="divRef"
+    :class="['relative overflow-hidden rounded-3xl border p-8', className]"
     @mousemove="handleMouseMove"
     @focus="handleFocus"
     @blur="handleBlur"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
-    :class="['relative overflow-hidden rounded-3xl border p-8', className]"
   >
     <div
       class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out"

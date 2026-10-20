@@ -31,15 +31,22 @@ const companyLinks = computed(() => [
       class="mx-auto grid w-[calc(100%-2rem)] max-w-295 gap-10 py-14 sm:w-[calc(100%-3rem)] sm:py-18 lg:grid-cols-[1.35fr_.8fr_.8fr_1fr] lg:gap-12"
     >
       <div>
-        <img :src="logo" alt="Digilink Corporation" width="160" height="40" class="w-40" />
+        <img
+          :src="logo"
+          alt="Digilink Corporation"
+          width="160"
+          height="40"
+          loading="lazy"
+          decoding="async"
+          class="w-40"
+        />
         <p class="text-oslo-gray-300 mt-5 max-w-69 text-[12px] leading-6">
           {{ t('footer.description') }}
         </p>
         <a
           :href="contactAnchor()"
           class="text-bright-blue-400 hover:text-bright-blue-300 mt-6 inline-flex items-center gap-2 text-[12px] font-bold transition"
-          >{{ t('footer.startConversation') }} <UIcon name="i-lucide-arrow-up-right" class="size-4"
-        /></a>
+        >{{ t('footer.startConversation') }} <UIcon name="i-lucide-arrow-up-right" class="size-4" /></a>
       </div>
 
       <div class="grid content-start gap-3 text-[12px]">
@@ -51,8 +58,7 @@ const companyLinks = computed(() => [
           :key="link.label"
           :href="link.href"
           class="hover:text-bright-blue-400 w-fit transition"
-          >{{ link.label }}</a
-        >
+        >{{ link.label }}</a>
       </div>
 
       <div class="grid content-start gap-3 text-[12px]">
@@ -64,8 +70,7 @@ const companyLinks = computed(() => [
           :key="link.label"
           :href="link.href"
           class="hover:text-bright-blue-400 w-fit transition"
-          >{{ link.label }}</a
-        >
+        >{{ link.label }}</a>
       </div>
 
       <div class="border-t border-white/10 pt-7 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-9">

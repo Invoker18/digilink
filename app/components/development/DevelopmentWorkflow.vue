@@ -37,11 +37,8 @@ const workflow = computed(() => [
           :key="step[0]"
           class="grid gap-3 py-5 sm:grid-cols-[3.5rem_1fr] sm:gap-5"
         >
-          <span class="text-bright-blue-400 text-xl font-bold">{{ step[0] }}</span
-          ><span
-            ><b class="text-[15px]">{{ step[1] }}</b>
-            <p class="text-oslo-gray-300 mt-1 text-[13px] leading-6">{{ step[2] }}</p></span
-          >
+          <span class="text-bright-blue-400 text-xl font-bold">{{ step[0] }}</span><span><b class="text-[15px]">{{ step[1] }}</b>
+            <p class="text-oslo-gray-300 mt-1 text-[13px] leading-6">{{ step[2] }}</p></span>
         </li>
       </ol>
     </div>

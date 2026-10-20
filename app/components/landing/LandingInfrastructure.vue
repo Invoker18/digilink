@@ -76,6 +76,8 @@ const features = computed(() => [
           :alt="t('home.infrastructure.dataCenterAlt')"
           width="1180"
           height="560"
+          loading="lazy"
+          decoding="async"
           class="size-full object-cover brightness-75 saturate-75"
         />
         <div
@@ -99,12 +101,9 @@ const features = computed(() => [
           <span
             class="size-2 rounded-full border-2 border-emerald-400 bg-emerald-400/90 ring-6 ring-emerald-400/15 motion-safe:animate-[ping_1.5s_infinite]"
           />
-          <span class="grid gap-0.5"
-            ><b class="text-[12px]">{{ t('home.infrastructure.networkCore') }}</b
-            ><small class="text-oslo-gray-200 text-[8px]">{{
-              t('home.infrastructure.networkText')
-            }}</small></span
-          >
+          <span class="grid gap-0.5"><b class="text-[12px]">{{ t('home.infrastructure.networkCore') }}</b><small class="text-oslo-gray-200 text-[8px]">{{
+            t('home.infrastructure.networkText')
+          }}</small></span>
         </div>
       </figure>
     </div>
@@ -118,6 +117,8 @@ const features = computed(() => [
         :alt="t('home.infrastructure.operationsAlt')"
         width="1180"
         height="360"
+        loading="lazy"
+        decoding="async"
         class="size-full object-cover brightness-40 saturate-75"
       />
       <div
@@ -126,8 +127,7 @@ const features = computed(() => [
       <figcaption class="absolute inset-y-0 left-6 grid content-center gap-3 sm:left-9">
         <span class="text-bright-blue-400 text-[8px] font-bold tracking-[.16em] uppercase">{{
           t('home.infrastructure.difference')
-        }}</span
-        ><b class="text-xl leading-snug sm:text-2xl">{{
+        }}</span><b class="text-xl leading-snug sm:text-2xl">{{
           t('home.infrastructure.differenceTitle')
         }}</b>
       </figcaption>

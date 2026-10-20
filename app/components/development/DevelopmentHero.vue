@@ -19,6 +19,18 @@ const principles = computed(() => [
   },
   { title: t('development.hero.principles.2.title'), text: t('development.hero.principles.2.text') }
 ])
+
+useHead({
+  link: [
+    {
+      rel: 'preload',
+      as: 'image',
+      type: 'image/webp',
+      href: desk,
+      fetchpriority: 'high'
+    }
+  ]
+})
 </script>
 
 <template>
@@ -51,21 +63,17 @@ const principles = computed(() => [
       <div class="pointer-events-none absolute inset-0 origin-center">
         <span
           class="bg-bright-blue-400/15 text-bright-blue-200 absolute top-[14%] left-[8%] origin-center px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
-          >{{ t('development.hero.map.product') }}</span
-        >
+        >{{ t('development.hero.map.product') }}</span>
         <span
           class="bg-bright-blue-400/15 text-bright-blue-200 absolute top-[14%] right-[4%] origin-center px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
-          >{{ t('development.hero.map.systems') }}</span
-        >
+        >{{ t('development.hero.map.systems') }}</span>
         <span
           class="bg-bright-blue-400/15 text-bright-blue-200 absolute bottom-[14%] left-[16%] origin-center px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
-          >{{ t('development.hero.map.data') }}</span
-        >
+        >{{ t('development.hero.map.data') }}</span>
       </div>
       <span
         class="border-bright-blue-300 bg-matisse-950/85 text-bright-blue-300 animate-systems-core absolute top-1/2 left-1/2 grid size-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border text-[10px] font-bold tracking-[.16em] uppercase shadow-[0_0_36px_rgb(32_178_255/0.24)]"
-        >{{ t('development.hero.map.delivery') }}</span
-      >
+      >{{ t('development.hero.map.delivery') }}</span>
       <span
         class="bg-bright-blue-400 animate-systems-node absolute top-[29%] left-[31%] size-2 rounded-full shadow-[0_0_20px_rgb(32_178_255/0.9)]"
       />
@@ -133,10 +141,7 @@ const principles = computed(() => [
           </UButton>
         </div>
         <div data-reveal-item class="mt-9 grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
-          <span v-for="principle in principles" :key="principle.title" class="grid gap-1"
-            ><b class="text-bright-blue-400 text-xl">{{ principle.title }}</b
-            ><small class="text-oslo-gray-300 text-[10px]">{{ principle.text }}</small></span
-          >
+          <span v-for="principle in principles" :key="principle.title" class="grid gap-1"><b class="text-bright-blue-400 text-xl">{{ principle.title }}</b><small class="text-oslo-gray-300 text-[10px]">{{ principle.text }}</small></span>
         </div>
       </div>
     </div>
