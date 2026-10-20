@@ -44,9 +44,9 @@
   "home": {
     "hero": {
       "eyebrow": "Digilink Corporation",
-      "titleStart": "Atención al cliente excepcional,",
-      "rotating": ["experta", "atenta", "confiable"],
-      "titleEnd": "entregada.",
+      "titleStart": "Equipos que",
+      "rotating": ["conectan", "resuelven", "acompañan"],
+      "titleEnd": "de verdad.",
       "description": "Crea un equipo bilingüe de alto desempeño respaldado por más de 20 años de experiencia operativa, alineado a tus horarios, cultura y crecimiento.",
       "primaryAction": "Crea tu equipo",
       "secondaryAction": "Explora servicios",
