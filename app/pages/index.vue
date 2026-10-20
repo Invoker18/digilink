@@ -41,14 +41,10 @@ useSchemaOrg([
   })
 ])
 
-// ---------------------------------------------------------------------------
-// OG Image via Playwright screenshot.
-// NOTE: Do NOT gate this with `import.meta.server`. Nuxt SEO's prerender
-// crawler runs during the build phase and needs this call to execute
-// unconditionally so the screenshot task is registered for every route.
-// ---------------------------------------------------------------------------
-defineOgImageScreenshot({
-  delay: 1000
+defineOgImage('Digilink.takumi', {
+  eyebrow: () => t('seo.homeEyebrow'),
+  title: () => t('seo.homeTitle'),
+  description: () => t('seo.homeDescription')
 })
 </script>
 

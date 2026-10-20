@@ -42,34 +42,38 @@ const principles = computed(() => [
     >
       <div class="absolute inset-y-0 left-1/2 w-px bg-white/10" />
       <div class="absolute inset-x-0 top-1/2 h-px bg-white/10" />
-      <div class="border-bright-blue-400/45 absolute top-7 left-7 h-18 w-18 border-t border-l" />
       <div
-        class="border-bright-blue-400/45 absolute right-7 bottom-7 h-18 w-18 border-r border-b"
+        class="border-bright-blue-400/45 animate-systems-corner-top absolute top-7 left-7 h-18 w-18 origin-top-left border-t border-l will-change-transform"
       />
+      <div
+        class="border-bright-blue-400/45 animate-systems-corner-bottom absolute right-7 bottom-7 h-18 w-18 origin-bottom-right border-r border-b will-change-transform"
+      />
+      <div class="pointer-events-none absolute inset-0 origin-center">
+        <span
+          class="bg-bright-blue-400/15 text-bright-blue-200 absolute top-[14%] left-[8%] origin-center px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
+          >{{ t('development.hero.map.product') }}</span
+        >
+        <span
+          class="bg-bright-blue-400/15 text-bright-blue-200 absolute top-[14%] right-[4%] origin-center px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
+          >{{ t('development.hero.map.systems') }}</span
+        >
+        <span
+          class="bg-bright-blue-400/15 text-bright-blue-200 absolute bottom-[14%] left-[16%] origin-center px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
+          >{{ t('development.hero.map.data') }}</span
+        >
+      </div>
       <span
-        class="bg-bright-blue-400/15 text-bright-blue-200 absolute top-[14%] left-[8%] px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
-        >{{ t('development.hero.map.product') }}</span
-      >
-      <span
-        class="bg-bright-blue-400/15 text-bright-blue-200 absolute top-[14%] right-[4%] px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
-        >{{ t('development.hero.map.systems') }}</span
-      >
-      <span
-        class="bg-bright-blue-400/15 text-bright-blue-200 absolute bottom-[14%] left-[16%] px-3 py-1 text-[9px] font-bold tracking-[.16em] uppercase"
-        >{{ t('development.hero.map.data') }}</span
-      >
-      <span
-        class="border-bright-blue-300 bg-matisse-950/85 text-bright-blue-300 absolute top-1/2 left-1/2 grid size-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border text-[10px] font-bold tracking-[.16em] uppercase shadow-[0_0_36px_rgb(32_178_255/0.24)]"
+        class="border-bright-blue-300 bg-matisse-950/85 text-bright-blue-300 animate-systems-core absolute top-1/2 left-1/2 grid size-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border text-[10px] font-bold tracking-[.16em] uppercase shadow-[0_0_36px_rgb(32_178_255/0.24)]"
         >{{ t('development.hero.map.delivery') }}</span
       >
       <span
-        class="bg-bright-blue-400 absolute top-[29%] left-[31%] size-2 rounded-full shadow-[0_0_20px_rgb(32_178_255/0.9)]"
+        class="bg-bright-blue-400 animate-systems-node absolute top-[29%] left-[31%] size-2 rounded-full shadow-[0_0_20px_rgb(32_178_255/0.9)]"
       />
       <span
-        class="bg-bright-blue-400 absolute top-[31%] right-[28%] size-2 rounded-full shadow-[0_0_20px_rgb(32_178_255/0.9)]"
+        class="bg-bright-blue-400 animate-systems-node animate-delay-1 absolute top-[31%] right-[28%] size-2 rounded-full shadow-[0_0_20px_rgb(32_178_255/0.9)]"
       />
       <span
-        class="bg-bright-blue-400 absolute bottom-[29%] left-[37%] size-2 rounded-full shadow-[0_0_20px_rgb(32_178_255/0.9)]"
+        class="bg-bright-blue-400 animate-systems-node animate-delay-2 absolute bottom-[29%] left-[37%] size-2 rounded-full shadow-[0_0_20px_rgb(32_178_255/0.9)]"
       />
     </div>
     <div

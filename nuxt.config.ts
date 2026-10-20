@@ -23,7 +23,6 @@ export default defineNuxtConfig({
   },
 
   // All pages are statically prerendered for Vercel edge delivery.
-  // Each route also triggers a browser screenshot for its OG image.
   routeRules: {
     '/': { prerender: true },
     '/software-development': { prerender: true },
@@ -57,12 +56,6 @@ export default defineNuxtConfig({
       { code: 'en', name: 'English', file: 'en.json' },
       { code: 'es', name: 'Español', file: 'es.json' }
     ]
-  },
-
-  // Use the Playwright-based browser renderer for screenshot OG images.
-  // `browser: true` is required when using defineOgImageScreenshot().
-  ogImage: {
-    browser: true
   },
 
   // Robots: in production, allow SEO bots while blocking AI scrapers and non-search crawlers.
