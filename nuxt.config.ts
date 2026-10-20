@@ -80,6 +80,7 @@ export default defineNuxtConfig({
       name: 'Digilink Corporation',
       url: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.digilinkgroup.com',
       logo: '/logo.png',
+      email: 'notifications@digilinkgroup.com',
       description:
         'Bilingual B2B customer support, omnichannel call center operations, and dedicated technology teams.',
       sameAs: ['https://www.linkedin.com/company/digilink-corporation'],
