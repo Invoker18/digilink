@@ -69,8 +69,9 @@ const facilityItems = computed(() => [
           <LazyNuxtImg
             src="/images/facility-03.webp"
             :alt="t('home.facility.imageAlts.2')"
-            width="480"
-            height="700"
+            width="250"
+            height="350"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 250px"
             loading="lazy"
             decoding="async"
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"

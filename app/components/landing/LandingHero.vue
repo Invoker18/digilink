@@ -28,7 +28,7 @@ const metrics = computed(() => [
       :preload="{ fetchPriority: 'high' }"
       loading="eager"
       fetchpriority="high"
-      sizes="xs:100vw sm:100vw md:100vw lg:1440px"
+      sizes="xs:360px sm:640px md:1024px lg:1440px"
       class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
     />
     <div

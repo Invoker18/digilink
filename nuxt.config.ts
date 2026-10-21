@@ -29,7 +29,10 @@ export default defineNuxtConfig({
   },
 
   ui: {
-    colorMode: false
+    colorMode: false,
+    experimental: {
+      componentDetection: true
+    }
   },
 
   // Prerender all route paths (including i18n variants) statically
