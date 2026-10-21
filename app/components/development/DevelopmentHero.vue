@@ -22,16 +22,18 @@ const principles = computed(() => [
 
 <template>
   <section class="bg-matisse-950 relative isolate overflow-hidden pt-29 text-white sm:pt-42">
-    <NuxtImg
+    <NuxtPicture
       src="/images/desk.webp"
       alt="Hero background"
       width="1920"
       height="1080"
+      format="avif,webp"
       :preload="{ fetchPriority: 'high' }"
       loading="eager"
       fetchpriority="high"
-      sizes="xs:360px sm:640px md:1024px lg:1440px"
-      class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
+      quality="75"
+      sizes="xs:320vw sm:640vw md:1024vw lg:1440vw"
+      class="absolute inset-0 h-full w-full object-cover blur-[3px] will-change-transform"
     />
 
     <div
