@@ -27,11 +27,13 @@ const principles = computed(() => [
       alt="Hero background"
       width="1920"
       height="1080"
-      preload
+      :preload="{ fetchPriority: 'high' }"
+      loading="eager"
       fetchpriority="high"
       sizes="xs:100vw sm:100vw md:100vw lg:1440px"
       class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
     />
+
     <div
       class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(6_31_56/.88)_0%,rgb(6_31_56/.72)_45%,rgb(6_31_56/.94)_100%)] lg:hidden"
     />

@@ -25,7 +25,8 @@ const metrics = computed(() => [
       alt="Hero background"
       width="1920"
       height="1080"
-      preload
+      :preload="{ fetchPriority: 'high' }"
+      loading="eager"
       fetchpriority="high"
       sizes="xs:100vw sm:100vw md:100vw lg:1440px"
       class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
