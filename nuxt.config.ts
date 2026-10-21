@@ -82,11 +82,16 @@ export default defineNuxtConfig({
     }
   },
 
+  features: {
+    inlineStyles: true // Enables critical CSS inlining for better FCP
+  },
+
   // Experimental flags for maximum speed on Vercel Edge
   experimental: {
     payloadExtraction: false, // Keeps pure static output clean of redundant json fetches
     inlineRouteRules: true
   },
+
   compatibilityDate: '2026-06-30',
 
   vite: {
@@ -126,7 +131,7 @@ export default defineNuxtConfig({
         'sans-serif': ['system-ui', '-apple-system', 'sans-serif']
       }
     },
-    families: [{ name: 'DM Sans', provider: 'google', preload: true }]
+    families: [{ name: 'DM Sans', provider: 'google', preload: true, display: 'swap' }]
   },
 
   i18n: {
