@@ -181,7 +181,12 @@ const metrics = computed(() => [
         class="flex min-h-21 items-center justify-center gap-3 border-r border-white/10 last:border-0 sm:min-h-24"
       >
         <div class="flex items-center gap-1.5 font-bold">
-          <CountUp class="text-2xl" :to="metric.value" />
+          <ClientOnly>
+            <CountUp class="text-2xl" :to="metric.value" />
+            <template #fallback>
+              <span class="text-2xl">0</span>
+            </template>
+          </ClientOnly>
           <em class="text-bright-blue-500 text-sm not-italic">{{ metric.suffix }}</em>
         </div>
         <span class="text-oslo-gray-300 w-19 text-[9px] tracking-wide uppercase">{{
