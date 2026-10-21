@@ -24,13 +24,12 @@ const principles = computed(() => [
   <section class="bg-matisse-950 relative isolate overflow-hidden pt-29 text-white sm:pt-42">
     <NuxtImg
       src="/images/desk.webp"
-      alt="Development hero background"
+      alt="Hero background"
       width="1920"
       height="1080"
-      :preload="{ fetchPriority: 'high' }"
-      loading="eager"
+      preload
       fetchpriority="high"
-      sizes="xs:320vw sm:640vw md:1024vw lg:1440vw"
+      sizes="360px sm:640px md:1024px lg:1440px"
       class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
     />
     <div
