@@ -15,6 +15,25 @@ export default defineNuxtConfig({
     enabled: process.env.NODE_ENV !== 'production'
   },
 
+  app: {
+    head: {
+      link: [
+        // Standard legacy favicon (includes 16x16, 32x32, 48x48)
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+
+        // PNG sizes for browsers and Google search snippets
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+
+        // Apple iOS home screen icon
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+
+        // Web app manifest (for Android / PWA)
+        { rel: 'manifest', href: '/site.webmanifest' }
+      ]
+    }
+  },
+
   css: ['~/assets/css/main.css'],
 
   site: {
