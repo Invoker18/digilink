@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import desk from '@/assets/images/desk.webp'
-import deskMobile from '@/assets/images/desk-mobile.webp'
 import RotatingText from '@/components/bits/rotating-text.vue'
 
 const { t } = useI18n()
@@ -20,37 +18,19 @@ const principles = computed(() => [
   },
   { title: t('development.hero.principles.2.title'), text: t('development.hero.principles.2.text') }
 ])
-
-useHead({
-  link: [
-    {
-      rel: 'preload',
-      as: 'image',
-      type: 'image/webp',
-      href: deskMobile,
-      media: '(max-width: 1023px)',
-      fetchpriority: 'high'
-    },
-    {
-      rel: 'preload',
-      as: 'image',
-      type: 'image/webp',
-      href: desk,
-      media: '(min-width: 1024px)',
-      fetchpriority: 'high'
-    }
-  ]
-})
 </script>
 
 <template>
   <section class="bg-matisse-950 relative isolate overflow-hidden pt-29 text-white sm:pt-42">
-    <div
-      :style="{
-        '--desk-mobile': `url(${deskMobile})`,
-        '--desk-desktop': `url(${desk})`
-      }"
-      class="pointer-events-none absolute -inset-2 scale-[1.02] bg-(image:--desk-mobile) bg-cover bg-center blur-[3px] lg:bg-(image:--desk-desktop) lg:bg-center"
+    <NuxtImg
+      src="/images/desk.webp"
+      alt="Hero background"
+      width="1920"
+      height="1080"
+      preload
+      fetchpriority="high"
+      sizes="xs:100vw sm:100vw md:100vw lg:1440px"
+      class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
     />
     <div
       class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(6_31_56/.88)_0%,rgb(6_31_56/.72)_45%,rgb(6_31_56/.94)_100%)] lg:hidden"

@@ -3,8 +3,6 @@
 import type { DropdownMenuItem } from '@nuxt/ui'
 import { gsap } from 'gsap'
 
-import logo from '~/assets/images/logo-digilink.png'
-
 const menuOpen = ref(false)
 const isScrolled = ref(false)
 const route = useRoute()
@@ -154,14 +152,20 @@ onBeforeUnmount(() => {
             : 'w-[calc(100%-2rem)] max-w-295 md:w-[calc(100%-3rem)]'
         "
       >
-        <a :href="localePath('/')" class="shrink-0" :aria-label="t('nav.home')" @click.prevent="goHome">
-          <img
-            :src="logo"
+        <a
+          :href="localePath('/')"
+          class="shrink-0"
+          :aria-label="t('nav.home')"
+          @click.prevent="goHome"
+        >
+          <NuxtImg
+            src="/images/logo-digilink.png"
             alt="Digilink Corporation"
             width="176"
             height="44"
             decoding="async"
             fetchpriority="high"
+            format="webp"
             class="w-36 cursor-pointer md:w-44"
           />
         </a>
@@ -182,7 +186,7 @@ onBeforeUnmount(() => {
           </a>
         </nav>
         <div class="ml-auto flex shrink-0 items-center gap-2 md:gap-3">
-          <UDropdownMenu
+          <LazyUDropdownMenu
             :items="languageItems"
             :modal="false"
             :content="{ align: 'end', sideOffset: 8 }"
@@ -216,7 +220,7 @@ onBeforeUnmount(() => {
                 class="text-bright-blue-400 size-3"
               />
             </template>
-          </UDropdownMenu>
+          </LazyUDropdownMenu>
           <UButton
             :to="contactAnchor()"
             trailing-icon="i-lucide-arrow-right"

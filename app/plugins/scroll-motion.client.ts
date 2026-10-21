@@ -3,10 +3,15 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export default defineNuxtPlugin((nuxtApp) => {
+  // Only execute GSAP setup on the client side
+  if (import.meta.server) return
+
   gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
   let context: gsap.Context | undefined
+
+  // Helper to check reduced motion safely on the client
+  const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   const scrollToHash = (hash: string) => {
     const target = document.querySelector<HTMLElement>(hash)
@@ -15,7 +20,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     const header = document.querySelector<HTMLElement>('header')
     const offset = (header?.offsetHeight ?? 0) + 16
 
-    if (reducedMotion.matches) {
+    if (prefersReducedMotion()) {
       target.scrollIntoView()
       return
     }
@@ -43,7 +48,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const createReveals = () => {
     context?.revert()
-    if (reducedMotion.matches) return
+    if (prefersReducedMotion()) return
 
     context = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((element) => {
@@ -93,7 +98,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   })
 
-  nuxtApp.hook('app:beforeUnmount', () => {
+  // Cleanup on app teardown
+  nuxtApp.vueApp.onUnmount(() => {
     document.removeEventListener('click', handleAnchorClick)
     context?.revert()
   })

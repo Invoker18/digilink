@@ -7,14 +7,15 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxt/fonts',
     '@vercel/speed-insights',
-    '@vercel/analytics'
+    '@vercel/analytics',
+    '@nuxt/image'
   ],
 
   devtools: {
-    enabled: true
+    enabled: process.env.NODE_ENV !== 'production'
   },
+
   css: ['~/assets/css/main.css'],
-  telemetry: false,
 
   site: {
     // Nuxt SEO automatically uses localhost in dev — always point this at production.
@@ -31,21 +32,57 @@ export default defineNuxtConfig({
     colorMode: false
   },
 
-  // All pages are statically prerendered for Vercel edge delivery.
+  // Prerender all route paths (including i18n variants) statically
   routeRules: {
-    '/': { prerender: true },
-    '/software-development': { prerender: true },
-    '/es': { prerender: true },
-    '/es/software-development': { prerender: true }
+    '/': {
+      prerender: true,
+      headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=31536000, immutable' }
+    },
+    '/software-development': {
+      prerender: true,
+      headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=31536000, immutable' }
+    },
+    '/es': {
+      prerender: true,
+      headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=31536000, immutable' }
+    },
+    '/es/software-development': {
+      prerender: true,
+      headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=31536000, immutable' }
+    },
+    '/images/**': {
+      headers: { 'Cache-Control': 'public, max-age=31536000, immutable' }
+    },
+    '/_ipx/**': {
+      headers: { 'Cache-Control': 'public, max-age=31536000, immutable' }
+    }
   },
 
+  // Experimental flags for maximum speed on Vercel Edge
+  experimental: {
+    payloadExtraction: false, // Keeps pure static output clean of redundant json fetches
+    inlineRouteRules: true
+  },
   compatibilityDate: '2026-06-30',
 
   vite: {
     optimizeDeps: {
       include: ['gsap', 'gsap/ScrollToPlugin', 'gsap/ScrollTrigger']
+    },
+    build: {
+      // Ensure smooth asset code-splitting
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules/gsap')) {
+              return 'gsap'
+            }
+          }
+        }
+      }
     }
   },
+  telemetry: false,
 
   eslint: {
     config: {
@@ -59,10 +96,13 @@ export default defineNuxtConfig({
 
   fonts: {
     defaults: {
-      subsets: ['latin'], // Cuts down extra character weight files
-      styles: ['normal'] // Disable italic unless strictly necessary for mobile viewports
+      subsets: ['latin'],
+      styles: ['normal'],
+      fallbacks: {
+        'sans-serif': ['system-ui', '-apple-system', 'sans-serif']
+      }
     },
-    families: [{ name: 'DM Sans', preload: true }]
+    families: [{ name: 'DM Sans', provider: 'google', preload: true }]
   },
 
   i18n: {
@@ -74,6 +114,19 @@ export default defineNuxtConfig({
       { code: 'en', name: 'English', file: 'en.json' },
       { code: 'es', name: 'Español', file: 'es.json' }
     ]
+  },
+
+  image: {
+    quality: 80,
+    format: ['webp'],
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536
+    }
   },
 
   // Robots: in production, allow SEO bots while blocking AI scrapers and non-search crawlers.

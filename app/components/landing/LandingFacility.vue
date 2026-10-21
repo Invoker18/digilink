@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import facility01 from '@/assets/images/facility-01.webp'
-import facility02 from '@/assets/images/facility-02.webp'
-import facility03 from '@/assets/images/facility-03.webp'
-
 const { t } = useI18n()
 
 const facilityItems = computed(() => [
@@ -36,14 +32,15 @@ const facilityItems = computed(() => [
       >
         <!-- Main Left Image -->
         <div class="group relative row-span-2 overflow-hidden rounded-l-lg">
-          <img
-            :src="facility01"
+          <LazyNuxtImg
+            src="/images/facility-01.webp"
             :alt="t('home.facility.imageAlts.0')"
-            width="720"
-            height="1080"
+            width="480"
+            height="700"
             loading="lazy"
             decoding="async"
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"
+            format="webp"
           />
           <div
             class="from-matisse-950/90 absolute inset-0 bg-linear-to-t via-transparent to-transparent"
@@ -52,14 +49,15 @@ const facilityItems = computed(() => [
 
         <!-- Top Right Image -->
         <div class="group relative overflow-hidden rounded-tr-lg">
-          <img
-            :src="facility02"
+          <LazyNuxtImg
+            src="/images/facility-02.webp"
             :alt="t('home.facility.imageAlts.1')"
             width="720"
-            height="540"
+            height="480"
             loading="lazy"
             decoding="async"
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"
+            format="webp"
           />
           <div
             class="from-matisse-950/90 absolute inset-0 bg-linear-to-t via-transparent to-transparent"
@@ -68,14 +66,15 @@ const facilityItems = computed(() => [
 
         <!-- Bottom Right Image -->
         <div class="group relative overflow-hidden rounded-br-lg">
-          <img
-            :src="facility03"
+          <LazyNuxtImg
+            src="/images/facility-03.webp"
             :alt="t('home.facility.imageAlts.2')"
-            width="720"
-            height="540"
+            width="480"
+            height="700"
             loading="lazy"
             decoding="async"
             class="size-full transform-gpu object-cover brightness-75 saturate-75 transition-transform duration-500 ease-out backface-hidden group-hover:scale-105"
+            format="webp"
           />
           <div
             class="from-matisse-950/90 absolute inset-0 bg-linear-to-t via-transparent to-transparent"

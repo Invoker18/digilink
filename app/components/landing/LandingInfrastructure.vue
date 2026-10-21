@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import dataCenter from '@/assets/images/datacenter.webp'
-import desk from '@/assets/images/desk.webp'
-
 const { t } = useI18n()
 const features = computed(() => [
   {
@@ -71,14 +68,15 @@ const features = computed(() => [
         data-reveal-item
         class="border-bright-blue-400/30 relative order-last h-90 overflow-hidden rounded-xl border sm:h-140 lg:order-0"
       >
-        <img
-          :src="dataCenter"
+        <LazyNuxtImg
+          src="/images/datacenter.webp"
           :alt="t('home.infrastructure.dataCenterAlt')"
-          width="1180"
-          height="560"
+          width="540"
+          height="800"
           loading="lazy"
           decoding="async"
           class="size-full object-cover brightness-75 saturate-75"
+          format="webp"
         />
         <div
           class="from-matisse-950/90 absolute inset-0 bg-linear-to-br via-transparent to-transparent"
@@ -101,9 +99,12 @@ const features = computed(() => [
           <span
             class="size-2 rounded-full border-2 border-emerald-400 bg-emerald-400/90 ring-6 ring-emerald-400/15 motion-safe:animate-[ping_1.5s_infinite]"
           />
-          <span class="grid gap-0.5"><b class="text-[12px]">{{ t('home.infrastructure.networkCore') }}</b><small class="text-oslo-gray-200 text-[8px]">{{
-            t('home.infrastructure.networkText')
-          }}</small></span>
+          <span class="grid gap-0.5"
+            ><b class="text-[12px]">{{ t('home.infrastructure.networkCore') }}</b
+            ><small class="text-oslo-gray-200 text-[8px]">{{
+              t('home.infrastructure.networkText')
+            }}</small></span
+          >
         </div>
       </figure>
     </div>
@@ -111,15 +112,16 @@ const features = computed(() => [
       data-reveal
       class="relative mx-auto mt-14 h-45 w-[calc(100%-2rem)] max-w-295 overflow-hidden rounded-xl border border-white/10 sm:mt-20 sm:w-[calc(100%-3rem)]"
     >
-      <img
+      <LazyNuxtImg
         data-reveal-image
-        :src="desk"
+        src="/images/desk.webp"
         :alt="t('home.infrastructure.operationsAlt')"
-        width="1180"
-        height="360"
+        width="800"
+        height="450"
         loading="lazy"
         decoding="async"
         class="size-full object-cover brightness-40 saturate-75"
+        format="webp"
       />
       <div
         class="from-matisse-950 via-matisse-950/70 absolute inset-0 bg-linear-to-r to-transparent"
@@ -127,7 +129,8 @@ const features = computed(() => [
       <figcaption class="absolute inset-y-0 left-6 grid content-center gap-3 sm:left-9">
         <span class="text-bright-blue-400 text-[8px] font-bold tracking-[.16em] uppercase">{{
           t('home.infrastructure.difference')
-        }}</span><b class="text-xl leading-snug sm:text-2xl">{{
+        }}</span
+        ><b class="text-xl leading-snug sm:text-2xl">{{
           t('home.infrastructure.differenceTitle')
         }}</b>
       </figcaption>

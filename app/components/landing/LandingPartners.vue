@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import Printres from '@/assets/images/logo-printres.svg'
-import Datalink from '@/assets/images/logo-datalink.png'
-import Arche from '@/assets/images/logo-arche.webp'
-
 type Partner = {
   name: string
   logo?: string
@@ -10,9 +6,9 @@ type Partner = {
 }
 
 const partners: Partner[] = [
-  { name: 'Printres', logo: Printres, logoClass: 'h-9 w-38' },
-  { name: 'Datalink', logo: Datalink, logoClass: 'h-12 w-38' },
-  { name: 'Arche', logo: Arche, logoClass: 'h-16 w-38 ' }
+  { name: 'Printres', logo: '/images/logo-printres.svg', logoClass: 'h-9 w-38' },
+  { name: 'Datalink', logo: '/images/logo-datalink.svg', logoClass: 'h-12 w-38' },
+  { name: 'Arche', logo: '/images/logo-arche.webp', logoClass: 'h-16 w-38 ' }
 ]
 
 const { t } = useI18n()
@@ -37,20 +33,16 @@ const { t } = useI18n()
           :class="index ? 'border-t border-white/15 sm:border-t-0' : ''"
           class="flex min-h-16 items-center justify-center px-7 py-4 sm:min-w-52"
         >
-          <img
-            v-if="partner.logo"
+          <LazyNuxtImg
             :src="partner.logo"
             :alt="t('home.partners.logo', { name: partner.name })"
-            width="152"
-            height="64"
+            sizes="(max-width: 640px) 100vw, 152px"
             loading="lazy"
             decoding="async"
             :class="partner.logoClass"
             class="object-contain brightness-0 invert"
+            format="webp"
           />
-          <span v-else class="text-lg font-semibold tracking-[.04em] text-white">
-            {{ partner.name }}
-          </span>
         </div>
       </div>
     </div>

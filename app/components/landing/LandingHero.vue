@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import heroDesktop from '@/assets/images/hero.webp'
-import heroMobile from '@/assets/images/hero-mobile.webp'
 import RotatingText from '../bits/rotating-text.vue'
 import CountUp from '../bits/count-up.vue'
 
@@ -18,37 +16,19 @@ const metrics = computed(() => [
   { value: 20, suffix: '+', label: t('home.hero.metrics.2') },
   { value: 4.9, suffix: '/5', label: t('home.hero.metrics.3') }
 ])
-
-useHead({
-  link: [
-    {
-      rel: 'preload',
-      as: 'image',
-      type: 'image/webp',
-      href: heroMobile,
-      media: '(max-width: 1023px)',
-      fetchpriority: 'high'
-    },
-    {
-      rel: 'preload',
-      as: 'image',
-      type: 'image/webp',
-      href: heroDesktop,
-      media: '(min-width: 1024px)',
-      fetchpriority: 'high'
-    }
-  ]
-})
 </script>
 
 <template>
   <section class="relative isolate overflow-hidden bg-[#092942] pt-29 text-white sm:pt-43">
-    <div
-      :style="{
-        '--hero-mobile': `url(${heroMobile})`,
-        '--hero-desktop': `url(${heroDesktop})`
-      }"
-      class="pointer-events-none absolute -inset-2 scale-[1.02] bg-(image:--hero-mobile) bg-cover bg-position-[68%_center] blur-[3px] lg:bg-(image:--hero-desktop) lg:bg-center"
+    <NuxtImg
+      src="/images/hero.webp"
+      alt="Hero background"
+      width="1920"
+      height="1080"
+      preload
+      fetchpriority="high"
+      sizes="xs:100vw sm:100vw md:100vw lg:1440px"
+      class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
     />
     <div
       class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(9_41_66/.82)_0%,rgb(9_41_66/.72)_38%,rgb(9_41_66/.94)_100%)] lg:hidden"
