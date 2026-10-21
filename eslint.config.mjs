@@ -30,13 +30,24 @@ export default withNuxt(
     }
   },
   {
+    files: ['app/components/bits/rotating-text.vue'],
+    rules: {
+      'better-tailwindcss/no-unknown-classes': ['error', { ignore: ['^rotating-text'] }]
+    }
+  },
+  {
+    files: ['app/components/development/DevelopmentHero.vue'],
+    rules: {
+      'better-tailwindcss/no-unknown-classes': [
+        'error',
+        { ignore: ['^animate-systems-', '^animate-delay-'] }
+      ]
+    }
+  },
+  {
     rules: {
       'vue/no-multiple-template-root': 'off',
       'vue/max-attributes-per-line': 'off',
-      'vue/html-self-closing': 'off',
-      // Only quote object properties when required (e.g. '@type').
-      // This matches Prettier's default and avoids conflicts with Schema.org keys.
-      '@stylistic/quote-props': ['error', 'as-needed']
       'vue/html-self-closing': 'off'
     }
   }
