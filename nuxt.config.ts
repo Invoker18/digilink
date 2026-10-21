@@ -29,24 +29,7 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
 
         // Web app manifest (for Android / PWA)
-        { rel: 'manifest', href: '/site.webmanifest' },
-        // Preload mobile hero image with high priority for mobile viewports
-        {
-          rel: 'preload',
-          as: 'image',
-          href: '/images/hero-mobile.webp',
-          media: '(max-width: 1023px)',
-          fetchpriority: 'high'
-        },
-
-        // Preload desktop hero image with high priority for desktop viewports
-        {
-          rel: 'preload',
-          as: 'image',
-          href: '/images/hero.webp',
-          media: '(min-width: 1024px)',
-          fetchpriority: 'high'
-        }
+        { rel: 'manifest', href: '/site.webmanifest' }
       ]
     }
   },
