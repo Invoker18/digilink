@@ -22,20 +22,17 @@ const principles = computed(() => [
 
 <template>
   <section class="bg-matisse-950 relative isolate overflow-hidden pt-29 text-white sm:pt-42">
-    <NuxtPicture
+    <NuxtImg
       src="/images/desk.webp"
-      alt="Hero background"
+      alt="Development hero background"
       width="1920"
       height="1080"
-      format="avif,webp"
       :preload="{ fetchPriority: 'high' }"
       loading="eager"
       fetchpriority="high"
-      quality="75"
       sizes="xs:320vw sm:640vw md:1024vw lg:1440vw"
-      class="absolute inset-0 h-full w-full object-cover blur-[3px] will-change-transform"
+      class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
     />
-
     <div
       class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(6_31_56/.88)_0%,rgb(6_31_56/.72)_45%,rgb(6_31_56/.94)_100%)] lg:hidden"
     />
