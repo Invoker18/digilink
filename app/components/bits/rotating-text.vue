@@ -15,7 +15,7 @@ const animationStyle = computed(() => ({
   '--rotation-interval': `${props.rotationInterval}ms`
 }))
 
-const phrases = computed(() => props.texts.map(text => Array.from(text)))
+const phrases = computed(() => props.texts.map((text) => Array.from(text)))
 </script>
 
 <template>
