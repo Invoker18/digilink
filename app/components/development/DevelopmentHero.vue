@@ -29,7 +29,7 @@ const principles = computed(() => [
       height="1080"
       preload
       fetchpriority="high"
-      sizes="360px sm:640px md:1024px lg:1440px"
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1440px"
       class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
     />
     <div

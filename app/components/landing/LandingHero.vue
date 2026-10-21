@@ -29,7 +29,7 @@ const metrics = computed(() => [
       loading="eager"
       fetchpriority="high"
       quality="75"
-      sizes="xs:320px sm:640px md:1024px lg:1440px"
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1440px"
       class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
     />
     <!-- 3. Your improved mobile gradient overlay -->
@@ -109,11 +109,16 @@ const metrics = computed(() => [
           class="mt-5 max-w-160 text-[clamp(2.45rem,11vw,4.4rem)] leading-[1.04] font-bold tracking-tighter"
         >
           <span class="block">{{ t('home.hero.titleStart') }}</span>
-          <RotatingText
-            :texts="rotatingWords"
-            main-class-name="flex w-full text-bright-blue-500 overflow-hidden py-0.5 sm:py-1 md:py-2 rounded-lg"
-            :rotation-interval="4000"
-          />
+          <ClientOnly>
+            <RotatingText
+              :texts="rotatingWords"
+              main-class-name="flex w-full text-bright-blue-500 overflow-hidden py-0.5 sm:py-1 md:py-2 rounded-lg"
+              :rotation-interval="4000"
+            />
+            <template #fallback>
+              <span class="text-bright-blue-500">{{ t('home.hero.rotating.0') }}</span>
+            </template>
+          </ClientOnly>
 
           <em class="text-bright-blue-500 block not-italic">{{ t('home.hero.titleEnd') }}</em>
         </h1>
