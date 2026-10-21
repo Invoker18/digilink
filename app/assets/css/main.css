@@ -78,34 +78,6 @@
   }
 }
 
-@keyframes orbit-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes orbit-counter {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-.animate-orbit-spin {
-  animation: orbit-spin 40s linear infinite;
-  transform-origin: center center;
-}
-
-.animate-orbit-counter {
-  animation: orbit-counter 40s linear infinite;
-  transform-origin: center center;
-}
-
 @keyframes systems-corner-top {
   0%,
   100% {
@@ -171,4 +143,44 @@
 
 .animate-systems-core {
   animation: systems-core 3.6s ease-in-out infinite;
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-counter {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Default: Mobile (no animation to save battery and CPU) */
+.animate-orbit-spin {
+  animation: none;
+}
+
+.animate-orbit-counter {
+  animation: none;
+}
+
+/* Desktop and up: Enable the infinite animations */
+@media (min-width: 1024px) {
+  .animate-orbit-spin {
+    animation: orbit-spin 40s linear infinite;
+    transform-origin: center center;
+  }
+
+  .animate-orbit-counter {
+    animation: orbit-counter 40s linear infinite;
+    transform-origin: center center;
+  }
 }

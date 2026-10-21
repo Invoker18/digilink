@@ -97,18 +97,6 @@ export default defineNuxtConfig({
   vite: {
     optimizeDeps: {
       include: ['gsap', 'gsap/ScrollToPlugin', 'gsap/ScrollTrigger']
-    },
-    build: {
-      // Ensure smooth asset code-splitting
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes('node_modules/gsap')) {
-              return 'gsap'
-            }
-          }
-        }
-      }
     }
   },
   telemetry: false,

@@ -19,7 +19,7 @@ const metrics = computed(() => [
 </script>
 
 <template>
-  <section class="relative isolate overflow-hidden bg-[#092942] pt-29 text-white sm:pt-43">
+  <section class="relative isolate overflow-hidden bg-[#092942] pt-26 text-white sm:pt-40">
     <NuxtImg
       src="/images/hero.webp"
       alt="Hero background"
@@ -28,11 +28,12 @@ const metrics = computed(() => [
       :preload="{ fetchPriority: 'high' }"
       loading="eager"
       fetchpriority="high"
-      sizes="360px sm:640px md:1024px lg:1440px"
+      sizes="xs:360px sm:640px md:1024px lg:1440px"
       class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
     />
+    <!-- 3. Your improved mobile gradient overlay -->
     <div
-      class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(9_41_66/.82)_0%,rgb(9_41_66/.72)_38%,rgb(9_41_66/.94)_100%)] lg:hidden"
+      class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(9_41_66/.88)_0%,rgb(9_41_66/.65)_40%,rgb(9_41_66/.96)_100%)] lg:hidden"
     />
     <div
       class="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,#092942_0%,rgb(9_41_66/.94)_29%,rgb(9_41_66/.55)_57%,rgb(9_41_66/.15)_100%)] lg:block"
