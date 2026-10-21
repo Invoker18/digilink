@@ -35,26 +35,28 @@ export default defineNuxtConfig({
   // Prerender all route paths (including i18n variants) statically
   routeRules: {
     '/': {
-      prerender: true,
-      headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=31536000, immutable' }
+      swr: 3600, // Or whatever your current cache/SWR setting is
+      cache: {
+        varies: ['accept']
+      }
     },
     '/software-development': {
-      prerender: true,
-      headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=31536000, immutable' }
+      swr: 3600,
+      cache: {
+        varies: ['accept']
+      }
     },
     '/es': {
-      prerender: true,
-      headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=31536000, immutable' }
+      swr: 3600,
+      cache: {
+        varies: ['accept']
+      }
     },
     '/es/software-development': {
-      prerender: true,
-      headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=31536000, immutable' }
-    },
-    '/images/**': {
-      headers: { 'Cache-Control': 'public, max-age=31536000, immutable' }
-    },
-    '/_ipx/**': {
-      headers: { 'Cache-Control': 'public, max-age=31536000, immutable' }
+      swr: 3600,
+      cache: {
+        varies: ['accept']
+      }
     }
   },
 
@@ -158,6 +160,7 @@ export default defineNuxtConfig({
   // Sitemap auto-generates /sitemap.xml and /es/sitemap.xml.
   // `autoI18n: true` mirrors @nuxtjs/i18n prefix_except_default strategy.
   sitemap: {
+    zeroRuntime: true,
     autoI18n: true,
     xslColumns: [
       { label: 'URL', width: '50%' },

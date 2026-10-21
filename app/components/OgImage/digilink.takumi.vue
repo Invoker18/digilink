@@ -18,7 +18,7 @@ defineProps<{
     ></div>
 
     <!-- Top / Eyebrow Section -->
-    <div class="flex items-center space-x-3">
+    <div class="flex items-center">
       <span
         v-if="eyebrow"
         class="text-bright-blue-400 text-lg font-semibold tracking-widest uppercase"
@@ -33,7 +33,7 @@ defineProps<{
     </div>
 
     <!-- Center / Main Content: Big Logo + Title + Description -->
-    <div class="flex items-center space-x-12">
+    <div class="flex items-center">
       <!-- Title & Description -->
       <div class="flex flex-col gap-6">
         <h1 class="text-5xl leading-tight font-bold tracking-tight text-white">
