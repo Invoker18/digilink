@@ -20,7 +20,25 @@ const metrics = computed(() => [
 
 <template>
   <section class="relative isolate overflow-hidden bg-[#092942] pt-26 text-white sm:pt-40">
-    <NuxtImg
+    <picture
+      class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
+    >
+      <!-- Desktop image (loads on screens 1024px wide and up) -->
+      <source media="(min-width: 1024px)" srcset="/images/hero.webp" width="1920" height="1080" />
+
+      <!-- Mobile image fallback (loads on phones/tablets under 1024px) -->
+      <!-- (Make sure to save your mobile-optimized asset as /images/hero-mobile.webp) -->
+      <img
+        src="/images/hero-mobile.webp"
+        alt="Hero background"
+        width="700"
+        height="420"
+        fetchpriority="high"
+        loading="eager"
+        class="absolute inset-2 h-full w-full object-cover"
+      />
+    </picture>
+    <!-- <NuxtImg
       src="/images/hero.webp"
       alt="Hero background"
       width="1920"
@@ -30,7 +48,7 @@ const metrics = computed(() => [
       fetchpriority="high"
       sizes="xs:360px sm:640px md:1024px lg:1440px"
       class="pointer-events-none absolute inset-2 h-full w-full object-cover blur-[3px] will-change-transform"
-    />
+    /> -->
     <!-- 3. Your improved mobile gradient overlay -->
     <div
       class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(9_41_66/.88)_0%,rgb(9_41_66/.65)_40%,rgb(9_41_66/.96)_100%)] lg:hidden"
