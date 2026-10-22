@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@vercel/speed-insights',
     '@vercel/analytics',
-    '@nuxt/image'
+    '@nuxt/image',
+    '@nuxt/scripts'
   ],
 
   devtools: {
@@ -183,6 +184,14 @@ export default defineNuxtConfig({
         '@type': 'ContactPoint',
         contactType: 'sales',
         availableLanguage: ['English', 'Spanish']
+      }
+    }
+  },
+
+  scripts: {
+    registry: {
+      vercelAnalytics: {
+        trigger: 'onNuxtReady'
       }
     }
   },

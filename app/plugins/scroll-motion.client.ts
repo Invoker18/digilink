@@ -2,24 +2,26 @@
 export default defineNuxtPlugin((nuxtApp) => {
   if (import.meta.server) return
 
-  let gsapInstance: typeof import('gsap').gsap | undefined
-  let ScrollTriggerInstance: typeof import('gsap/ScrollTrigger').ScrollTrigger | undefined
+  let loadPromise: Promise<{
+    gsap: typeof import('gsap').gsap
+    ScrollTrigger: typeof import('gsap/ScrollTrigger').ScrollTrigger
+  }> | null = null
+
   let context: any
 
-  // Dynamically load GSAP and plugins only when needed
-  const loadGsap = async () => {
-    if (gsapInstance) return { gsap: gsapInstance, ScrollTrigger: ScrollTriggerInstance }
-
-    const [{ gsap }, { ScrollToPlugin }, { ScrollTrigger }] = await Promise.all([
-      import('gsap'),
-      import('gsap/ScrollToPlugin'),
-      import('gsap/ScrollTrigger')
-    ])
-
-    gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
-    gsapInstance = gsap
-    ScrollTriggerInstance = ScrollTrigger
-    return { gsap, ScrollTrigger }
+  // Safely cache the promise to prevent duplicate concurrent imports
+  const loadGsap = () => {
+    if (loadPromise) return loadPromise
+    loadPromise = (async () => {
+      const [{ gsap }, { ScrollToPlugin }, { ScrollTrigger }] = await Promise.all([
+        import('gsap'),
+        import('gsap/ScrollToPlugin'),
+        import('gsap/ScrollTrigger')
+      ])
+      gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
+      return { gsap, ScrollTrigger }
+    })()
+    return loadPromise
   }
 
   const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -112,10 +114,5 @@ export default defineNuxtPlugin((nuxtApp) => {
       const { ScrollTrigger } = await loadGsap()
       ScrollTrigger?.refresh()
     })
-  })
-
-  nuxtApp.vueApp.onUnmount(() => {
-    document.removeEventListener('click', handleAnchorClick)
-    context?.revert()
   })
 })
