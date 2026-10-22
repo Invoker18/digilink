@@ -94,12 +94,34 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2026-06-30',
 
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/', '/es'] // Asegura que la landing se genere estáticamente
+    }
+  },
+
   vite: {
     optimizeDeps: {
       include: ['gsap', 'gsap/ScrollToPlugin', 'gsap/ScrollTrigger']
     }
   },
   telemetry: false,
+
+  // nuxt.config.ts
+  hooks: {
+    'build:manifest': (manifest) => {
+      // Busca la entrada principal de Nuxt en el manifest
+      for (const key in manifest) {
+        const entry = manifest[key]
+        // Solo actuamos sobre la entrada principal (la que tiene isEntry: true)
+        if (entry?.isEntry && entry?.css) {
+          // Filtramos el array para quitar solo los archivos que empiezan con 'entry'
+          entry.css = entry?.css.filter((cssFile) => !cssFile.startsWith('entry'))
+        }
+      }
+    }
+  },
 
   eslint: {
     config: {
@@ -144,6 +166,10 @@ export default defineNuxtConfig({
       xl: 1280,
       '2xl': 1536
     }
+  },
+
+  ogImage: {
+    zeroRuntime: true
   },
 
   // Robots: in production, allow SEO bots while blocking AI scrapers and non-search crawlers.
