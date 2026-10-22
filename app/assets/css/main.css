@@ -57,12 +57,6 @@
 }
 
 @layer base {
-  html {
-    /* scroll-padding-top: 8rem;  */
-    /* scroll-behavior: smooth; */
-    scrollbar-gutter: stable;
-  }
-
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -183,4 +177,77 @@
     animation: orbit-counter 40s linear infinite;
     transform-origin: center center;
   }
+}
+
+.rotating-text {
+  position: relative;
+  display: block;
+  min-block-size: 1.15em;
+}
+
+.rotating-text__item {
+  position: absolute;
+  inset-inline-start: 0;
+  display: block;
+  white-space: pre;
+}
+
+.rotating-text__letter {
+  display: inline-block;
+  opacity: 0;
+  animation: rotate-letter var(--rotation-duration) cubic-bezier(0.22, 1, 0.36, 1) infinite both;
+}
+
+@keyframes rotate-letter {
+  0% {
+    opacity: 0;
+    transform: translateY(105%);
+  }
+  7%,
+  27% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  34%,
+  100% {
+    opacity: 0;
+    transform: translateY(-105%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rotating-text__letter {
+    animation: none;
+  }
+
+  .rotating-text__item:not(:first-of-type) {
+    display: none;
+  }
+
+  .rotating-text__item:first-of-type .rotating-text__letter {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+input:-webkit-autofill,
+input:autofill {
+  -webkit-text-fill-color: var(--color-oslo-gray-50);
+  caret-color: var(--color-oslo-gray-50);
+  box-shadow: 0 0 0 1000px var(--color-matisse-950) inset;
+  -webkit-box-shadow: 0 0 0 1000px var(--color-matisse-950) inset;
+}
+
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-oslo-gray-50);
+  caret-color: var(--color-oslo-gray-50);
+  box-shadow: 0 0 0 1000px var(--color-matisse-950) inset;
+  -webkit-box-shadow: 0 0 0 1000px var(--color-matisse-950) inset;
+}
+
+input:-webkit-autofill:hover {
+  -webkit-text-fill-color: var(--color-oslo-gray-50);
+  caret-color: var(--color-oslo-gray-50);
+  box-shadow: 0 0 0 1000px var(--color-matisse-950) inset;
+  -webkit-box-shadow: 0 0 0 1000px var(--color-matisse-950) inset;
 }

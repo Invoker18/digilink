@@ -138,5 +138,3 @@ const facilityItems = computed(() => [
     </div>
   </section>
 </template>
-
-<style scoped></style>

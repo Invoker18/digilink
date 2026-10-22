@@ -30,8 +30,8 @@ const formState = reactive<ContactFormState>({
 })
 
 const serviceOptions = computed(() => {
-  const prefix
-    = props.variant === 'development' ? 'contact.development.services' : 'contact.general.services'
+  const prefix =
+    props.variant === 'development' ? 'contact.development.services' : 'contact.general.services'
   const count = props.variant === 'development' ? 5 : 4
 
   return Array.from({ length: count }, (_, index) => t(`${prefix}.${index}`))
@@ -319,15 +319,3 @@ const nextSteps = computed(() => [
     </div>
   </section>
 </template>
-
-<style scoped>
-:deep(input:-webkit-autofill),
-:deep(input:-webkit-autofill:hover),
-:deep(input:-webkit-autofill:focus),
-:deep(input:autofill) {
-  -webkit-text-fill-color: var(--color-oslo-gray-50);
-  caret-color: var(--color-oslo-gray-50);
-  box-shadow: 0 0 0 1000px var(--color-matisse-950) inset;
-  -webkit-box-shadow: 0 0 0 1000px var(--color-matisse-950) inset;
-}
-</style>

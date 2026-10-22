@@ -35,7 +35,7 @@ export default defineNuxtConfig({
     }
   },
 
-  // css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css'],
 
   site: {
     // Nuxt SEO automatically uses localhost in dev — always point this at production.
