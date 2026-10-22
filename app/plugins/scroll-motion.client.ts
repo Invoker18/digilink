@@ -9,7 +9,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   let context: any
 
-  // Safely cache the promise to prevent duplicate concurrent imports
   const loadGsap = () => {
     if (loadPromise) return loadPromise
     loadPromise = (async () => {
@@ -64,8 +63,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     context?.revert()
     if (prefersReducedMotion()) return
 
-    // PERFORMANCE FIX: Check if animated elements exist on THIS page first.
-    // If none exist, exit immediately without loading GSAP chunks.
     const hasRevealElements = Boolean(
       document.querySelector('[data-reveal]') || document.querySelector('[data-reveal-image]')
     )
@@ -119,8 +116,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   })
 
+  // FIX: Use a small timeout on page:finish to ensure the new page layout is fully painted
   nuxtApp.hook('page:finish', () => {
-    nextTick(async () => {
+    setTimeout(async () => {
       await createReveals()
       if (loadPromise) {
         requestAnimationFrame(async () => {
@@ -128,6 +126,6 @@ export default defineNuxtPlugin((nuxtApp) => {
           ScrollTrigger?.refresh()
         })
       }
-    })
+    }, 100) // 100ms lets Nuxt finish mounting components and calculating positions
   })
 })
