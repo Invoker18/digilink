@@ -7,6 +7,7 @@
 </template>
 
 <script setup lang="ts">
+import '~/assets/css/main.css'
 const { locale } = useI18n()
 
 // ---------------------------------------------------------------------------
