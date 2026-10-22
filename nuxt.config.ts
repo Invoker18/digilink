@@ -6,8 +6,6 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
     '@nuxt/fonts',
-    '@vercel/speed-insights',
-    '@vercel/analytics',
     '@nuxt/image',
     '@nuxt/scripts'
   ],
@@ -191,7 +189,10 @@ export default defineNuxtConfig({
   scripts: {
     registry: {
       vercelAnalytics: {
-        trigger: 'onNuxtReady'
+        trigger: 'onIdle'
+      },
+      vercelSpeedInsights: {
+        trigger: 'onIdle'
       }
     }
   },

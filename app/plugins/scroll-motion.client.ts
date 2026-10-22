@@ -64,6 +64,13 @@ export default defineNuxtPlugin((nuxtApp) => {
     context?.revert()
     if (prefersReducedMotion()) return
 
+    // PERFORMANCE FIX: Check if animated elements exist on THIS page first.
+    // If none exist, exit immediately without loading GSAP chunks.
+    const hasRevealElements = Boolean(
+      document.querySelector('[data-reveal]') || document.querySelector('[data-reveal-image]')
+    )
+    if (!hasRevealElements) return
+
     const { gsap } = await loadGsap()
 
     context = gsap.context(() => {
@@ -104,15 +111,23 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   nuxtApp.hook('app:mounted', async () => {
     await createReveals()
-    const { ScrollTrigger } = await loadGsap()
-    ScrollTrigger?.refresh()
+    if (loadPromise) {
+      requestAnimationFrame(async () => {
+        const { ScrollTrigger } = await loadGsap()
+        ScrollTrigger?.refresh()
+      })
+    }
   })
 
   nuxtApp.hook('page:finish', () => {
     nextTick(async () => {
       await createReveals()
-      const { ScrollTrigger } = await loadGsap()
-      ScrollTrigger?.refresh()
+      if (loadPromise) {
+        requestAnimationFrame(async () => {
+          const { ScrollTrigger } = await loadGsap()
+          ScrollTrigger?.refresh()
+        })
+      }
     })
   })
 })
