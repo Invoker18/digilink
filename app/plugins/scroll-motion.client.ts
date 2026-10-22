@@ -1,41 +1,43 @@
-// scroll-motion.client.ts
-import type { gsap as GSAPType } from 'gsap'
-import type { ScrollTrigger as ScrollTriggerType } from 'gsap/ScrollTrigger'
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export default defineNuxtPlugin((nuxtApp) => {
   if (import.meta.server) return
 
-  let context: ReturnType<typeof GSAPType.context> | undefined
-  let gsapInstance: typeof GSAPType | undefined
-  let ScrollTriggerInstance: typeof ScrollTriggerType | undefined
+  let gsapInstance: typeof import('gsap').gsap | undefined
+  let ScrollTriggerInstance: typeof import('gsap/ScrollTrigger').ScrollTrigger | undefined
+  let context: any
+
+  // Dynamically load GSAP and plugins only when needed
+  const loadGsap = async () => {
+    if (gsapInstance) return { gsap: gsapInstance, ScrollTrigger: ScrollTriggerInstance }
+
+    const [{ gsap }, { ScrollToPlugin }, { ScrollTrigger }] = await Promise.all([
+      import('gsap'),
+      import('gsap/ScrollToPlugin'),
+      import('gsap/ScrollTrigger')
+    ])
+
+    gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
+    gsapInstance = gsap
+    ScrollTriggerInstance = ScrollTrigger
+    return { gsap, ScrollTrigger }
+  }
 
   const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-  const loadGsap = async () => {
-    if (gsapInstance) return
-    const gsapModule = await import('gsap')
-    const scrollTriggerModule = await import('gsap/ScrollTrigger')
-    const scrollToModule = await import('gsap/ScrollToPlugin')
-
-    gsapInstance = gsapModule.gsap
-    ScrollTriggerInstance = scrollTriggerModule.ScrollTrigger
-    gsapInstance.registerPlugin(ScrollTriggerInstance, scrollToModule.ScrollToPlugin)
-  }
 
   const scrollToHash = async (hash: string) => {
     const target = document.querySelector<HTMLElement>(hash)
     if (!target) return
+
+    const header = document.querySelector<HTMLElement>('header')
+    const offset = (header?.offsetHeight ?? 0) + 16
 
     if (prefersReducedMotion()) {
       target.scrollIntoView()
       return
     }
 
-    await loadGsap()
-    const header = document.querySelector<HTMLElement>('header')
-    const offset = (header?.offsetHeight ?? 0) + 16
-
-    gsapInstance!.to(window, {
+    const { gsap } = await loadGsap()
+    gsap.to(window, {
       duration: 1.1,
       ease: 'power3.inOut',
       overwrite: 'auto',
@@ -60,16 +62,14 @@ export default defineNuxtPlugin((nuxtApp) => {
     context?.revert()
     if (prefersReducedMotion()) return
 
-    // 1. Cargamos GSAP (si no está cargado)
-    await loadGsap()
+    const { gsap } = await loadGsap()
 
-    // 2. Ejecutamos EXACTAMENTE tu lógica original
-    context = gsapInstance!.context(() => {
-      gsapInstance!.utils.toArray<HTMLElement>('[data-reveal]').forEach((element) => {
+    context = gsap.context(() => {
+      gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((element) => {
         const items = element.querySelectorAll<HTMLElement>('[data-reveal-item]')
         const targets = items.length ? items : element
 
-        gsapInstance!.from(targets, {
+        gsap.from(targets, {
           autoAlpha: 0,
           y: 28,
           duration: 0.72,
@@ -83,8 +83,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         })
       })
 
-      gsapInstance!.utils.toArray<HTMLElement>('[data-reveal-image]').forEach((image) => {
-        gsapInstance!.from(image, {
+      gsap.utils.toArray<HTMLElement>('[data-reveal-image]').forEach((image) => {
+        gsap.from(image, {
           scale: 1.08,
           duration: 1.1,
           ease: 'power2.out',
@@ -100,16 +100,17 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   document.addEventListener('click', handleAnchorClick)
 
-  // 3. Esperamos a que GSAP cargue y ejecutamos inmediatamente
   nuxtApp.hook('app:mounted', async () => {
     await createReveals()
-    ScrollTriggerInstance?.refresh() // Ahora sí, ScrollTrigger existe
+    const { ScrollTrigger } = await loadGsap()
+    ScrollTrigger?.refresh()
   })
 
   nuxtApp.hook('page:finish', () => {
     nextTick(async () => {
       await createReveals()
-      ScrollTriggerInstance?.refresh()
+      const { ScrollTrigger } = await loadGsap()
+      ScrollTrigger?.refresh()
     })
   })
 
