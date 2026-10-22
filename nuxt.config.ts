@@ -143,6 +143,12 @@ export default defineNuxtConfig({
     ]
   },
 
+  icon: {
+    clientBundle: {
+      scan: true
+    }
+  },
+
   image: {
     quality: 80,
     format: ['webp'],

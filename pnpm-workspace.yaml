@@ -5,5 +5,7 @@ allowBuilds:
   unrs-resolver: false
   vue-demi: false
 permissions:
+  '@nuxt/scripts':
+    skills: false
   '@nuxtjs/seo':
     skills: false
